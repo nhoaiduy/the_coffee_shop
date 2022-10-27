@@ -156,5 +156,17 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("DanhMucSanPham");
         }
+        public ActionResult TimKiem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult TimKiem(string TENSP)
+        {
+            var sanPhams = db.SANPHAMs.Where(s => s.TENSP.ToLower().Trim().Contains(TENSP.ToLower().Trim()));
+            ViewBag.SEARCHSTRING = TENSP;
+            return View(sanPhams.ToList());
+        }
     }
 }

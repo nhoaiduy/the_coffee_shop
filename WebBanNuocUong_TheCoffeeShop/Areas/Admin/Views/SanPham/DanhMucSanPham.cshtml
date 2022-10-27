@@ -28,7 +28,7 @@
     </div>
     <div class="content">
         <div class="top">
-            <span class="circle-btn"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-solid fa-magnifying-glass"></i></span>
             <span class="circle-btn" onclick="DisplayWrap('s')"><i class="fa-regular fa-plus"></i></span>
             <span style="color: var(--primary-color);">Số lượng sản phẩm: @Model.ToList().Count</span>
         </div>
@@ -123,6 +123,22 @@
 
             }
         </div>
+        <div id="timKiem">
+            <h2>Tìm kiếm sản phẩm</h2>
+            @using (Html.BeginForm("TimKiem", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Tên sản phẩm</span>
+                    <input type="text" id="tenSP" name="TENSP" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Tìm kiếm" />
+                </div>
+
+            }
+        </div>
     </div>
 </div>
 
@@ -134,8 +150,10 @@
         document.getElementsByTagName('body')[0].style.overflow = 'hidden';
         if (type == 'l') {
             document.getElementById('loaiSanPham').style.display = 'flex';
-        } else {
+        } else if (type == 's') {
             document.getElementById('sanPham').style.display = 'flex';
+        } else {
+            document.getElementById('timKiem').style.display = 'flex';
         }
     }
 
@@ -144,6 +162,8 @@
         document.getElementsByTagName('body')[0].style.overflow = 'visible';
         document.getElementById('loaiSanPham').style.display = 'none';
         document.getElementById('sanPham').style.display = 'none';
+        document.getElementById('timKiem').style.display = 'none';
+
     }
 </script>
 

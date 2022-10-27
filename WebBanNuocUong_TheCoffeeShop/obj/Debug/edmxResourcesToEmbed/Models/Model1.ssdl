@@ -15,7 +15,7 @@
       <PropertyRef Name="MADH" />
     </Key>
     <Property Name="MADH" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="MAKM" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MAKM" Type="char" MaxLength="5" />
     <Property Name="TINHTRANG" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="NGAYLAP" Type="datetime" Nullable="false" />
     <Property Name="TENNGUOINHAN" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -42,6 +42,7 @@
     <Property Name="NGAYHETHAN" Type="datetime" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
     <Property Name="DIEUKIEN" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MOTAKM" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="LOAIPTTT">
     <Key>
@@ -101,6 +102,12 @@
     <Property Name="USERPASSWORD" Type="varchar(max)" Nullable="false" />
     <Property Name="PHANQUYEN" Type="char" MaxLength="2" Nullable="false" />
   </EntityType>
+  <EntityType Name="TINHTRANG">
+    <Key>
+      <PropertyRef Name="TINHTRANG" />
+    </Key>
+    <Property Name="TINHTRANG" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
     <End Role="CTDONHANG" Type="Self.CTDONHANG" Multiplicity="*" />
@@ -126,7 +133,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_DH_KM">
-    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="1" />
+    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="0..1" />
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KHUYENMAI">
@@ -148,6 +155,18 @@
       <Dependent Role="DONHANG">
         <PropertyRef Name="SOTK" />
         <PropertyRef Name="TENPTTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_TT">
+    <End Role="TINHTRANG" Type="Self.TINHTRANG" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINHTRANG">
+        <PropertyRef Name="TINHTRANG" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="TINHTRANG" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -248,6 +267,7 @@
     <EntitySet Name="PTTHANHTOAN" EntityType="Self.PTTHANHTOAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TINHTRANG" EntityType="Self.TINHTRANG" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANG" />
       <End Role="CTDONHANG" EntitySet="CTDONHANG" />
@@ -262,6 +282,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_DH_PTTT" Association="Self.FK_DH_PTTT">
       <End Role="PTTHANHTOAN" EntitySet="PTTHANHTOAN" />
+      <End Role="DONHANG" EntitySet="DONHANG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_TT" Association="Self.FK_DH_TT">
+      <End Role="TINHTRANG" EntitySet="TINHTRANG" />
       <End Role="DONHANG" EntitySet="DONHANG" />
     </AssociationSet>
     <AssociationSet Name="FK_PTTT_LOAIPTTT" Association="Self.FK_PTTT_LOAIPTTT">

@@ -64,6 +64,10 @@
     background-color: white;
 }
 
+.content > h1{
+    color: var(--primary-color);
+}
+
 .top{
     display: flex;
     justify-content: flex-end;
@@ -80,6 +84,7 @@
     align-items: center;
     margin-right: 16px;
     border-radius: 50%;
+    margin-left: 16px;
 }
 
 .circle-btn:hover{
@@ -174,7 +179,7 @@
     font-size: 28px;
 }
 
-#sanPham, #loaiSanPham{
+#sanPham, #loaiSanPham, #timKiem{
     display: none;
     flex-direction: column;
 }
