@@ -37,6 +37,7 @@
     <EntitySetMapping Name="KHUYENMAIs">
       <EntityTypeMapping TypeName="thecoffeeshopModel.KHUYENMAI">
         <MappingFragment StoreEntitySet="KHUYENMAI">
+          <ScalarProperty Name="MOTAKM" ColumnName="MOTAKM" />
           <ScalarProperty Name="MAKM" ColumnName="MAKM" />
           <ScalarProperty Name="TENKM" ColumnName="TENKM" />
           <ScalarProperty Name="SOTIENGIAM" ColumnName="SOTIENGIAM" />
@@ -152,5 +153,12 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_CapNhatNguoiDung" FunctionName="thecoffeeshopModel.Store.sp_CapNhatNguoiDung" />
     <FunctionImportMapping FunctionImportName="sp_DoiMatKhau" FunctionName="thecoffeeshopModel.Store.sp_DoiMatKhau" />
+    <EntitySetMapping Name="TINHTRANGs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.TINHTRANG">
+        <MappingFragment StoreEntitySet="TINHTRANG">
+          <ScalarProperty Name="TINHTRANG1" ColumnName="TINHTRANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

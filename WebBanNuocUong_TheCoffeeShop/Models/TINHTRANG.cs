@@ -15,11 +15,11 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
 using System;
     using System.Collections.Generic;
     
-public partial class KHUYENMAI
+public partial class TINHTRANG
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public KHUYENMAI()
+    public TINHTRANG()
     {
 
         this.DONHANGs = new HashSet<DONHANG>();
@@ -27,21 +27,7 @@ public partial class KHUYENMAI
     }
 
 
-    public string MAKM { get; set; }
-
-    public string TENKM { get; set; }
-
-    public decimal SOTIENGIAM { get; set; }
-
-    public string ANHKM { get; set; }
-
-    public System.DateTime NGAYHETHAN { get; set; }
-
-    public int SOLUONG { get; set; }
-
-    public decimal DIEUKIEN { get; set; }
-
-    public string MOTAKM { get; set; }
+    public string TINHTRANG1 { get; set; }
 
 
 

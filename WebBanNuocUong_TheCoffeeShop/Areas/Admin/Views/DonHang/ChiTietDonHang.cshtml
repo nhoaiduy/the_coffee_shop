@@ -1,0 +1,117 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.DONHANG
+
+@{
+    ViewBag.Title = "Chi tiết - "+Model.MADH;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<WebBanNuocUong_TheCoffeeShop.Models.TINHTRANG> tinhTrangs = ViewBag.TINHTRANG;
+    int i = 1;
+}
+
+<div class="main">
+    <div class="content">
+        <h1>Chi tiết đơn hàng - @Model.MADH</h1>
+        <div style="display: flex; justify-content: space-between">
+            <div class="customer-info">
+                <table>
+                    <tr>
+                        <td>Họ tên:</td>
+                        <td>@Model.TENNGUOINHAN</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>@Model.SDT</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>@Model.DIACHI</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="status-update">
+                @using (Html.BeginForm("SetStatus", "DonHang", FormMethod.Get))
+                {
+                    <select value="@Model.TINHTRANG" name="Status" class="btn-default">
+                    @foreach (var item in tinhTrangs)
+                    {
+                        <option value="@item.TINHTRANG1">@item.TINHTRANG1</option>
+                    }
+                    </select>
+                    <input type="submit" id="status" value="Cập nhật" class="active create-btn" />
+                    <input type="text" name="MADH" value="@Model.MADH" style="display: none;" />
+                }
+            </div>
+        </div>
+        <div class="categories__data">
+            <table class="table">
+                <tr>
+                    <th class="order-number">
+                        STT
+                    </th>
+                    <th class="name">
+                        Tên sản phẩm
+                    </th>
+                    <th class="image">
+                        Ảnh sản phẩm
+                    </th>
+                    <th class="image">
+                        Giá
+                    </th>
+                    <th class="quantity">
+                        Số lượng
+                    </th>
+                    <th class="total">
+                        Thành tiền
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.CTDONHANGs.ToList())
+                {
+                    <tr>
+                        <td class="order-number">
+                            @i++
+                        </td>
+
+                        <td class="name">
+                            @item.SANPHAM.TENSP
+                        </td>
+                        <td class="image">
+                            <img src="@Url.Content(item.SANPHAM.ANHSP)" style="width:100px;" />
+                        </td>
+                        <td class="image">
+                            @item.SANPHAM.GIASP VNĐ
+                        </td>
+                        <td class="quantity">
+                            @Html.DisplayFor(modelItem => item.SOLUONG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.THANHTIEN)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <hr />
+        <div class="total" style="display: flex; justify-content: flex-end">
+            <table>
+                <tr>
+                    <td>Tạm tính:</td>
+                    <td>@Model.TAMTINH</td>
+                </tr>
+                <tr>
+                    <td>Giảm giá:</td>
+                    <td>@Model.SOTIENGIAMKM</td>
+                </tr>
+                <tr>
+                    <td>Điểm tích lũy:</td>
+                    <td>@Model.TRUDIEMTINHLUY</td>
+                </tr>
+                <tr>
+                    <td>Tổng tiền:</td>
+                    <td>@Model.TONGITEN</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -15,7 +15,8 @@
     <div class="container">
         <div class="navbar">
             <div class="navbar-brand">
-                The Coffee Shop
+                <a href="@Url.Action("DanhMucSanPham", "SanPham")" class="navbar-menu__item__link">The Coffee Shop</a>
+
             </div>
             <div class="navbar-menu">
                 <ul class="navbar-menu__list">
@@ -23,7 +24,7 @@
                         <a href="@Url.Action("DanhMucSanPham", "SanPham")" class="navbar-menu__item__link">Sản phẩm</a>
                     </li>
                     <li class="navbar-menu__item">
-                        <a href="#" class="navbar-menu__item__link">Đơn hàng</a>
+                        <a href="@Url.Action("DanhSachDonHang", "DonHang")" class="navbar-menu__item__link">Đơn hàng</a>
                     </li>
                     <li class="navbar-menu__item">                       
                         <a href="@Url.Action("Index", "Promotion")" class="navbar-menu__item__link">Khuyến mãi</a>

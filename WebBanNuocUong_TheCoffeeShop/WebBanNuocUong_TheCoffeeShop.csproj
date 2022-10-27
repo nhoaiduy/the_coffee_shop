@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
@@ -193,6 +194,9 @@
     <Compile Include="Models\TAIKHOAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TINHTRANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +205,7 @@
     <Content Include="Banner\banner3.jpg" />
     <Content Include="Banner\banner4.jpg" />
     <Content Include="Banner\logo.jpg" />
+    <Content Include="Content\adminDonHang.css" />
     <Content Include="Content\adminLayout.css" />
     <Content Include="Content\adminSanPham.css" />
     <Content Include="Content\banner.css" />
@@ -245,6 +250,10 @@
     </Content>
     <Content Include="Areas\Admin\Views\SanPham\ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\Promotion\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\TimKiem.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\DanhSachDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\TimKiem.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHang\ChiTietDonHang.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />

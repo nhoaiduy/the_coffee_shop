@@ -53,6 +53,8 @@ public partial class thecoffeeshopEntities : DbContext
 
     public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
 
+    public virtual DbSet<TINHTRANG> TINHTRANGs { get; set; }
+
 
     public virtual ObjectResult<sp_DanhSachSanPham_Result> sp_DanhSachSanPham(string ten_loai)
     {

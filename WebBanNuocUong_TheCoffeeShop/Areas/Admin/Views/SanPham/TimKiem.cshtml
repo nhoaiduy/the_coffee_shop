@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM>
+
+@{
+    string searchString = ViewBag.SEARCHSTRING;
+    ViewBag.Title = "Kết quả - " + searchString;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="content">
+        <h1>Kết quả - @searchString</h1>
+        <hr />
+        <ul class="product__list">
+            @foreach (var item in Model)
+            {
+                <li class="product__item">
+                    <a href="@Url.Action("ChiTiet", new {@productName = item.TENSP})">
+                        <img src="@Url.Content(item.ANHSP)" alt="Alternate Text" class="product__item__img" />
+                        <span class="product__item__name">
+                            @item.TENSP
+                        </span>
+                        <span class="product__item__price">
+                            @item.GIASP VNĐ
+                        </span>
+                        <span class="product__item__quantity">
+                            Số Lượng: @item.SOLUONG
+                        </span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+

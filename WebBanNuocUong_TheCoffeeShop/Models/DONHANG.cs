@@ -69,6 +69,8 @@ public partial class DONHANG
 
     public virtual PTTHANHTOAN PTTHANHTOAN { get; set; }
 
+    public virtual TINHTRANG TINHTRANG1 { get; set; }
+
 }
 
 }

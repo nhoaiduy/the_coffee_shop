@@ -22,6 +22,8 @@
         <AssociationConnector Association="thecoffeeshopModel.FK_SP_LOAISP" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_PTTT_ND" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_TK_ND" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.TINHTRANG" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="thecoffeeshopModel.FK_DH_TT" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

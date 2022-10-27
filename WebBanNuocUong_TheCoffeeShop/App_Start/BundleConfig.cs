@@ -29,7 +29,8 @@ namespace WebBanNuocUong_TheCoffeeShop
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/login.css",
-                      "~/Content/adminSanPham.css"));
+                      "~/Content/adminSanPham.css",
+                      "~/Content/adminDonHang.css"));
         }
     }
 }
