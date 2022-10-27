@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - The Coffee Shop</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/adminLayout.css" rel="stylesheet" />
+    <link href="~/Content/adminSanPham.css" rel="stylesheet" />
+    <link href="~/Content/customerLayout.css" rel="stylesheet" />
+    <link href="~/Content/cusProduct.css" rel="stylesheet" />
+    <link href="~/Content/cart_shopping.css" rel="stylesheet" />
+    <link href="~/Content/customerInfo.css" rel="stylesheet" />
+    <link href="~/Content/banner.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">
+                The Coffee Shop
+            </div>
+            <div class="navbar-menu">
+                <ul class="navbar-menu__list" style="margin-left:50px;">
+                    <li class="navbar-menu__item">
+                        <a href="@Url.Action("Index","TrangChu")" class="navbar-menu__item__link">Trang chủ</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="@Url.Action("Index","CusSanPham")" class="navbar-menu__item__link">Sản phẩm</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="@Url.Action("Index","KhuyenMai")" class="navbar-menu__item__link">Khuyến mãi</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="navbar-menu_right">
+                <form action="#" class="navbar-menu-search" method="get">
+                    <input type="text" class="navbar-menu_boxsearch" placeholder="Tìm kiếm" name="searchString">
+                    <button class="navbar-menu_btn-search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <div class="">
+                    <a href="@Url.Action("TTCaNhan","QuanLy")" >
+                        <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
+                    </a>
+                </div>
+                <ul class="navbar-menu__list">
+                    <li class="navbar-menu__item1">
+                        <a href="#" class="navbar-menu__item1__link">Đăng ký</a>
+                    </li>
+                    <li class="navbar-menu__item1">
+                        <a href="#" class="navbar-menu__item1__link">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <footer>
+            <div class="footer-list">
+                <div class="footer-list_item">
+                    <h2>Liên hệ</h2>
+                    <p><i class="fas fa-home"></i> 828 Sư Vạn Hạnh P13, Q10, TPHCM</p>
+                    <p><i class="fas fa-envelope"></i> thecoffeeshop@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 0356472338</p>
+                </div>
+                <div class="footer-list_item">
+                    <img src="~/Banner/logo.jpg" />
+                </div>
+                <div class="footer-list_item">
+                    <h2>Kết nối</h2>
+                    <p>
+                        <a href="#"><i class="fa-brands fa-github fa-2x"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook fa-2x"></i></a>
+                        <a href="#"><i class="fa-solid fa-cloud fa-2x"></i></a>
+                    </p>
+
+                </div>
+            </div>
+
+            <p style="padding-top:8px;">&copy; @DateTime.Now.Year - The Coffee Shop</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/format_currency.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

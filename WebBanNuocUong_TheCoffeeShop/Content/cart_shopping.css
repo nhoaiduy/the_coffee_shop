@@ -1,0 +1,41 @@
+﻿.main-b {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    
+}
+.content_left-b {
+    width: 15%;
+    margin: 64px 0;
+}
+
+.content_right-b {
+    width: 85%;
+    margin: 64px 0;
+}
+
+
+th {
+    color: var(--primary-color);
+}
+
+th, td {
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    padding: 8px 16px;
+    background-color:white;
+}
+.order-number {
+    width: 50px;
+}
+
+.name, .total {
+    width: 220px;
+}
+
+.quantity, .image, .price {
+    width: 100px;
+}
+.chucnang{
+    width: 80px;
+}

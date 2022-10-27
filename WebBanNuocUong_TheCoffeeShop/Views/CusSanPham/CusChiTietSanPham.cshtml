@@ -1,0 +1,46 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="product-detail">
+        <div class="product-detail__left">
+            <img src="@Url.Content(Model.ANHSP)" alt="@Model.TENSP" title="@Model.TENSP" class="product-detail__left__img" />
+
+        </div>
+        <div class="product-detail__right">
+            <div class="product-detail__element">
+                <h1 class="product-detail__element__heading">@Model.TENSP</h1>
+
+            </div>
+            <div class="product-detail__element">
+                <span class="product-detail__element__title">
+                    Giá:
+                </span>
+                <span class="product-detail__element__title__data format_currency">
+                    @Model.GIASP
+                </span>
+            </div>
+            <div class="product-detail__element">
+                <span class="product-detail__element__title">
+                    Mô tả:
+                </span>
+                <span class="product-detail__element__title__data">
+                    
+                </span>
+            </div>
+            <div class="product-detail__element colum">
+                <span class="product-detail__element__title">
+                    
+                </span>
+                <span class="product-detail__element__title__data">
+
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+

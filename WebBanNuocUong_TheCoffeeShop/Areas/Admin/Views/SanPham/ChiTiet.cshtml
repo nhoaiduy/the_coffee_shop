@@ -1,0 +1,132 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.SANPHAM
+
+@{
+    ViewBag.Title = Model.TENSP;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="product-detail">
+        <div class="product-detail__left">
+            <img src="@Url.Content(Model.ANHSP)" alt="@Model.TENSP" title="@Model.TENSP" class="product-detail__left__img" />
+        </div>
+        <div class="product-detail__right">
+            <div class="product-detail__element">
+                <h1 class="product-detail__element__heading">@Model.TENSP</h1>
+                <span class="product-detail__element__btn-wrap">
+                    <span class="circle-btn"  onclick="DisplayWrap('s')" title="Chỉnh sửa">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </span>
+                    <span class="circle-btn"  onclick="DisplayWrap('l')" title="Xóa">
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
+                </span>
+            </div>
+            <div class="product-detail__element">
+                <span class="product-detail__element__title">
+                    Giá:
+                </span>
+                <span class="product-detail__element__title__data">
+                    @Model.GIASP VNĐ
+                </span>
+            </div>
+            <div class="product-detail__element">
+                <span class="product-detail__element__title">
+                    Số lượng:
+                </span>
+                <span class="product-detail__element__title__data">
+                    @Model.SOLUONG Ly
+                </span>
+            </div>
+            <div class="product-detail__element column" style="flex-direction: column; align-items: start">
+                <span class="product-detail__element__title">
+                    Mô tả:
+                </span>
+                <span class="product-detail__element__title__data">
+                    @Model.MOTASP
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="create-modal modal">
+        <span class="close-btn" onclick="HideWrap()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div id="sanPham">
+            <h2>Cập nhật sản phẩm</h2>
+            @using (Html.BeginForm("ChinhSuaSanPham", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.Hidden("MASP")
+
+                <div class="form-group">
+                    <span class="label">Tên sản phẩm:</span>
+                    <input type="text" name="TENSP" value="@Model.TENSP" placeholder="Tên sản phẩm" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Ảnh sản phẩm:</span>
+                    <input type="file" name="image" value="@Model.ANHSP" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Giá sản phẩm:</span>
+                    <input type="number" name="GIASP" value="@Model.GIASP" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Số lượng:</span>
+                    <input type="number" name="SOLUONG" value="@Model.SOLUONG" placeholder="1" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Mô tả sản phẩm:</span>
+                    <input type="text" name="MOTASP" value="@Model.MOTASP" />
+                </div>
+                @*<div class="form-group">
+                    <span class="label">Loại sản phẩm:</span>
+                    @Html.DropDownList("MALOAISP", null, htmlAttributes: new { @class = "form-control" })
+                </div>*@
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Cập nhật" />
+                </div>
+
+            }
+        </div>
+        <div id="loaiSanPham">
+            <h2>Xác nhận xóa sản phẩm</h2>
+            @using (Html.BeginForm("XoaSanPham", "SanPham",new { MASP = Model.MASP}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <p>Bạn có muốn xóa @Model.TENSP</p>
+                </div>
+                <div class="form-group" style="display: flex; justify-content:space-evenly">
+                    <input type="button" name="create-btn" style="margin: 0; width: 40%;" onclick="HideWrap()" class="create-btn" value="Hủy" />
+                    <input type="submit" name="create-btn" style="margin: 0; width: 40%;" class="create-btn active" value="Xóa" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var wrap = document.getElementsByClassName('wrap')[0];
+
+    function DisplayWrap(type) {
+        wrap.style.display = 'flex';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+        if (type == 'l') {
+            document.getElementById('loaiSanPham').style.display = 'flex';
+        } else {
+            document.getElementById('sanPham').style.display = 'flex';
+        }
+    }
+
+    function HideWrap() {
+        wrap.style.display = 'none';
+        document.getElementsByTagName('body')[0].style.overflow = 'visible';
+        document.getElementById('loaiSanPham').style.display = 'none';
+        document.getElementById('sanPham').style.display = 'none';
+    }
+</script>

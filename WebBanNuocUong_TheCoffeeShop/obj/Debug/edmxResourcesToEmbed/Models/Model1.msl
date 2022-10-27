@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="thecoffeeshopModelStoreContainer" CdmEntityContainer="thecoffeeshopEntities">
+    <EntitySetMapping Name="CTDONHANGs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.CTDONHANG">
+        <MappingFragment StoreEntitySet="CTDONHANG">
+          <ScalarProperty Name="MACTDH" ColumnName="MACTDH" />
+          <ScalarProperty Name="MADH" ColumnName="MADH" />
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="MADH" ColumnName="MADH" />
+          <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+          <ScalarProperty Name="TINHTRANG" ColumnName="TINHTRANG" />
+          <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+          <ScalarProperty Name="TENNGUOINHAN" ColumnName="TENNGUOINHAN" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="THOIGIANGIAOHANG" ColumnName="THOIGIANGIAOHANG" />
+          <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+          <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+          <ScalarProperty Name="TAMTINH" ColumnName="TAMTINH" />
+          <ScalarProperty Name="TRUDIEMTINHLUY" ColumnName="TRUDIEMTINHLUY" />
+          <ScalarProperty Name="SOTIENGIAMKM" ColumnName="SOTIENGIAMKM" />
+          <ScalarProperty Name="TONGITEN" ColumnName="TONGITEN" />
+          <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+          <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHUYENMAIs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.KHUYENMAI">
+        <MappingFragment StoreEntitySet="KHUYENMAI">
+          <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+          <ScalarProperty Name="TENKM" ColumnName="TENKM" />
+          <ScalarProperty Name="SOTIENGIAM" ColumnName="SOTIENGIAM" />
+          <ScalarProperty Name="ANHKM" ColumnName="ANHKM" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAIPTTTs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.LOAIPTTT">
+        <MappingFragment StoreEntitySet="LOAIPTTT">
+          <ScalarProperty Name="MALOAIPTTT" ColumnName="MALOAIPTTT" />
+          <ScalarProperty Name="TENLOAIPTTT" ColumnName="TENLOAIPTTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISANPHAMs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.LOAISANPHAM">
+        <MappingFragment StoreEntitySet="LOAISANPHAM">
+          <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+          <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGUOIDUNGs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.NGUOIDUNG">
+        <MappingFragment StoreEntitySet="NGUOIDUNG">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="DIACHI2" ColumnName="DIACHI2" />
+          <ScalarProperty Name="DIEMTICHLUY" ColumnName="DIEMTICHLUY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PTTHANHTOANs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.PTTHANHTOAN">
+        <MappingFragment StoreEntitySet="PTTHANHTOAN">
+          <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+          <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="MALOAIPTTT" ColumnName="MALOAIPTTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="MOTASP" ColumnName="MOTASP" />
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIASP" ColumnName="GIASP" />
+          <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="thecoffeeshopModel.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="USERPASSWORD" ColumnName="USERPASSWORD" />
+          <ScalarProperty Name="PHANQUYEN" ColumnName="PHANQUYEN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DanhSachSanPham" FunctionName="thecoffeeshopModel.Store.sp_DanhSachSanPham">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_DanhSachSanPham_Result">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIASP" ColumnName="GIASP" />
+          <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TaoMaSanPham" FunctionName="thecoffeeshopModel.Store.sp_TaoMaSanPham" />
+    <FunctionImportMapping FunctionImportName="sp_ThemSanPham" FunctionName="thecoffeeshopModel.Store.sp_ThemSanPham" />
+    <FunctionImportMapping FunctionImportName="sp_ChuyenMaLoai" FunctionName="thecoffeeshopModel.Store.sp_ChuyenMaLoai" />
+    <FunctionImportMapping FunctionImportName="sp_ChiTietSanPham" FunctionName="thecoffeeshopModel.Store.sp_ChiTietSanPham">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ChiTietSanPham_Result">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIASP" ColumnName="GIASP" />
+          <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_XemKhuyenMai" FunctionName="thecoffeeshopModel.Store.sp_XemKhuyenMai">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_XemKhuyenMai_Result">
+          <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+          <ScalarProperty Name="TENKM" ColumnName="TENKM" />
+          <ScalarProperty Name="SOTIENGIAM" ColumnName="SOTIENGIAM" />
+          <ScalarProperty Name="ANHKM" ColumnName="ANHKM" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CapNhatNguoiDung" FunctionName="thecoffeeshopModel.Store.sp_CapNhatNguoiDung" />
+    <FunctionImportMapping FunctionImportName="sp_DoiMatKhau" FunctionName="thecoffeeshopModel.Store.sp_DoiMatKhau" />
+  </EntityContainerMapping>
+</Mapping>

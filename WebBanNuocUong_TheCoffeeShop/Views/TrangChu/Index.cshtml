@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<WebBanNuocUong_TheCoffeeShop.Models.LOAISANPHAM> lOAISANPHAMs = ViewBag.LOAISP;
+}
+<style>
+    .hidden_text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="main-c">
+    @Html.Action("GetBanner", "TrangChu");
+
+    <div class="wrap-list-c">
+        <h2 class="wrap_list-title-c">Sản phẩm mới</h2>
+        <ul class="product-list__row-c">
+            @{
+                int nCount = Model.Count();
+                if (nCount < 5)
+                {
+                    for (int i = 0; i < Model.Count(); i++)
+                    {
+                        <li class="product__item-c">
+                            <a href="@Url.Action("CusChiTietSanPham","CusSanPham", new {@productName = Model.ElementAt(i).TENSP})" style="text-decoration: none;">
+                                <img src="@Url.Content(@Model.ElementAt(i).ANHSP)" alt="Alternate Text" class="product__item__img-c" />
+                                <div class="product__item__title-c hidden_text">@Model.ElementAt(i).TENSP</div>
+                                <div class="product__item__price-c format_currency">@Model.ElementAt(i).GIASP </div>
+                            </a>
+
+                            <input type="submit" name="cart-btn" style="margin: 16px 8px; cursor: pointer; " value="Đặt ngay" class="btn-default btn-color btnDat" />
+                        </li>
+
+                    }
+                }
+                else
+                {
+                    int nTemp = 0;
+                    for (int i = Model.Count() - 1; nTemp < 4; i--)
+                    {
+                        <li class="product__item-c">
+                            <a href="@Url.Action("CusChiTietSanPham","CusSanPham", new {@productName = Model.ElementAt(i).TENSP})" style="text-decoration: none;">
+                                <img src="@Url.Content(@Model.ElementAt(i).ANHSP)" alt="Alternate Text" class="product__item__img-c" />
+                                <div class="product__item__title-c hidden_text">@Model.ElementAt(i).TENSP</div>
+                                <div class="product__item__price-c format_currency">@Model.ElementAt(i).GIASP </div>
+                            </a>
+
+                            <input type="submit" name="cart-btn" style="margin: 16px 8px; cursor: pointer; " value="Đặt ngay" class="btn-default btn-color btnDat" />
+                        </li>
+                        nTemp++;
+                    }
+                }
+            }
+        </ul>
+
+
+        <h2 class="wrap_list-title-c">Trà</h2>
+        <ul class="product-list__row-c">
+            @{
+                int count = Model.Count();
+                int temp = 0;
+                if (count < 4) { temp = count; }
+                else if (count < 8) { temp = count; }
+                else { temp = 8; }
+                for (int i = 0; i < temp; i++)
+                {
+                    if (Model.ElementAt(i).MALOAISP=="TR")
+                    {
+                        <li class="product__item-c">
+                            <a href="@Url.Action("CusChiTietSanPham","CusSanPham", new {@productName = Model.ElementAt(i).TENSP})" style="text-decoration: none;">
+                                <img src="@Url.Content(@Model.ElementAt(i).ANHSP)" alt="Alternate Text" class="product__item__img-c" />
+                                <div class="product__item__title-c hidden_text">@Model.ElementAt(i).TENSP</div>
+                                <div class="product__item__price-c format_currency">@Model.ElementAt(i).GIASP </div>
+                            </a>
+                            <input type="submit" name="cart-btn" style="margin: 16px 8px; cursor: pointer; " value="Đặt ngay" class="btn-default btn-color btnDat" />
+                        </li>
+                    }
+                }
+            }
+        </ul>
+
+
+    </div>
+
+</div>
+

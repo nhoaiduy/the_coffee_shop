@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-b">
+    <div class="content_left-b">
+        <div class="categories_sidebar-p" style="box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
+            <ul class="categories_list-p">
+                <li class="categories_item-p">
+                    <a href="@Url.Action("TTCaNhan","QuanLy")" class="categories_item_link-p">Thông tin cá nhân</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("GioHang","QuanLy")" class="categories_item_link-p">Giỏ hàng</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DonHang","QuanLy")" class="categories_item_link-p">Đơn hàng</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content_right-b">
+        <h2 style="color: var(--primary-color);">Đơn hàng</h2>
+    </div>
+</div>

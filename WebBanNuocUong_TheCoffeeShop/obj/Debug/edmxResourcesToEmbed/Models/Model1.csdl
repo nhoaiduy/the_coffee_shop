@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="thecoffeeshopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CTDONHANG">
+    <Key>
+      <PropertyRef Name="MACTDH" />
+    </Key>
+    <Property Name="MACTDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MADH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MASP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="THANHTIEN" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DONHANG" Relationship="Self.FK_CTDH_DH" FromRole="CTDONHANG" ToRole="DONHANG" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CTDH_SP" FromRole="CTDONHANG" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="DONHANG">
+    <Key>
+      <PropertyRef Name="MADH" />
+    </Key>
+    <Property Name="MADH" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAKM" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TINHTRANG" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYLAP" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TENNGUOINHAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="THOIGIANGIAOHANG" Type="DateTime" Precision="3" />
+    <Property Name="DANHGIA" Type="Byte" />
+    <Property Name="NHANXET" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TAMTINH" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="TRUDIEMTINHLUY" Type="Int32" />
+    <Property Name="SOTIENGIAMKM" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="TONGITEN" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="SOTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TENPTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK_CTDH_DH" FromRole="DONHANG" ToRole="CTDONHANG" />
+    <NavigationProperty Name="KHUYENMAI" Relationship="Self.FK_DH_KM" FromRole="DONHANG" ToRole="KHUYENMAI" />
+    <NavigationProperty Name="PTTHANHTOAN" Relationship="Self.FK_DH_PTTT" FromRole="DONHANG" ToRole="PTTHANHTOAN" />
+  </EntityType>
+  <EntityType Name="KHUYENMAI">
+    <Key>
+      <PropertyRef Name="MAKM" />
+    </Key>
+    <Property Name="MAKM" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENKM" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SOTIENGIAM" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ANHKM" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYHETHAN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="DIEUKIEN" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DH_KM" FromRole="KHUYENMAI" ToRole="DONHANG" />
+  </EntityType>
+  <EntityType Name="LOAIPTTT">
+    <Key>
+      <PropertyRef Name="MALOAIPTTT" />
+    </Key>
+    <Property Name="MALOAIPTTT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAIPTTT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PTTHANHTOANs" Relationship="Self.FK_PTTT_LOAIPTTT" FromRole="LOAIPTTT" ToRole="PTTHANHTOAN" />
+  </EntityType>
+  <EntityType Name="LOAISANPHAM">
+    <Key>
+      <PropertyRef Name="MALOAISP" />
+    </Key>
+    <Property Name="MALOAISP" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAISP" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SP_LOAISP" FromRole="LOAISANPHAM" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="NGUOIDUNG">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYSINH" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DIACHI2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIEMTICHLUY" Type="Int32" />
+    <NavigationProperty Name="PTTHANHTOANs" Relationship="Self.FK_PTTT_ND" FromRole="NGUOIDUNG" ToRole="PTTHANHTOAN" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK_TK_ND" FromRole="NGUOIDUNG" ToRole="TAIKHOAN" />
+  </EntityType>
+  <EntityType Name="PTTHANHTOAN">
+    <Key>
+      <PropertyRef Name="SOTK" />
+      <PropertyRef Name="TENPTTT" />
+    </Key>
+    <Property Name="SOTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENPTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="USERID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MALOAIPTTT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DH_PTTT" FromRole="PTTHANHTOAN" ToRole="DONHANG" />
+    <NavigationProperty Name="LOAIPTTT" Relationship="Self.FK_PTTT_LOAIPTTT" FromRole="PTTHANHTOAN" ToRole="LOAIPTTT" />
+    <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK_PTTT_ND" FromRole="PTTHANHTOAN" ToRole="NGUOIDUNG" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GIASP" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="ANHSP" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+    <Property Name="MALOAISP" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CTDONHANGs" Relationship="Self.FK_CTDH_SP" FromRole="SANPHAM" ToRole="CTDONHANG" />
+    <NavigationProperty Name="LOAISANPHAM" Relationship="Self.FK_SP_LOAISP" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
+    <Property Name="MOTASP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="USERID" />
+    </Key>
+    <Property Name="USERID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USERPASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PHANQUYEN" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK_TK_ND" FromRole="TAIKHOAN" ToRole="NGUOIDUNG" />
+  </EntityType>
+  <Association Name="FK_CTDH_DH">
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
+    <End Role="CTDONHANG" Type="Self.CTDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DONHANG">
+        <PropertyRef Name="MADH" />
+      </Principal>
+      <Dependent Role="CTDONHANG">
+        <PropertyRef Name="MADH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTDH_SP">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTDONHANG" Type="Self.CTDONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTDONHANG">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_KM">
+    <End Role="KHUYENMAI" Type="Self.KHUYENMAI" Multiplicity="1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHUYENMAI">
+        <PropertyRef Name="MAKM" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="MAKM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DH_PTTT">
+    <End Role="PTTHANHTOAN" Type="Self.PTTHANHTOAN" Multiplicity="0..1" />
+    <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PTTHANHTOAN">
+        <PropertyRef Name="SOTK" />
+        <PropertyRef Name="TENPTTT" />
+      </Principal>
+      <Dependent Role="DONHANG">
+        <PropertyRef Name="SOTK" />
+        <PropertyRef Name="TENPTTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PTTT_LOAIPTTT">
+    <End Role="LOAIPTTT" Type="Self.LOAIPTTT" Multiplicity="1" />
+    <End Role="PTTHANHTOAN" Type="Self.PTTHANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIPTTT">
+        <PropertyRef Name="MALOAIPTTT" />
+      </Principal>
+      <Dependent Role="PTTHANHTOAN">
+        <PropertyRef Name="MALOAIPTTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SP_LOAISP">
+    <End Role="LOAISANPHAM" Type="Self.LOAISANPHAM" Multiplicity="1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISANPHAM">
+        <PropertyRef Name="MALOAISP" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="MALOAISP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PTTT_ND">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+    <End Role="PTTHANHTOAN" Type="Self.PTTHANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="PTTHANHTOAN">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TK_ND">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="TAIKHOAN">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="thecoffeeshopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CTDONHANGs" EntityType="Self.CTDONHANG" />
+    <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
+    <EntitySet Name="KHUYENMAIs" EntityType="Self.KHUYENMAI" />
+    <EntitySet Name="LOAIPTTTs" EntityType="Self.LOAIPTTT" />
+    <EntitySet Name="LOAISANPHAMs" EntityType="Self.LOAISANPHAM" />
+    <EntitySet Name="NGUOIDUNGs" EntityType="Self.NGUOIDUNG" />
+    <EntitySet Name="PTTHANHTOANs" EntityType="Self.PTTHANHTOAN" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+    <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+      <End Role="CTDONHANG" EntitySet="CTDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTDH_SP" Association="Self.FK_CTDH_SP">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTDONHANG" EntitySet="CTDONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_KM" Association="Self.FK_DH_KM">
+      <End Role="KHUYENMAI" EntitySet="KHUYENMAIs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DH_PTTT" Association="Self.FK_DH_PTTT">
+      <End Role="PTTHANHTOAN" EntitySet="PTTHANHTOANs" />
+      <End Role="DONHANG" EntitySet="DONHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PTTT_LOAIPTTT" Association="Self.FK_PTTT_LOAIPTTT">
+      <End Role="LOAIPTTT" EntitySet="LOAIPTTTs" />
+      <End Role="PTTHANHTOAN" EntitySet="PTTHANHTOANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SP_LOAISP" Association="Self.FK_SP_LOAISP">
+      <End Role="LOAISANPHAM" EntitySet="LOAISANPHAMs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PTTT_ND" Association="Self.FK_PTTT_ND">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="PTTHANHTOAN" EntitySet="PTTHANHTOANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TK_ND" Association="Self.FK_TK_ND">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+    </AssociationSet>
+    <FunctionImport Name="sp_DanhSachSanPham" ReturnType="Collection(thecoffeeshopModel.sp_DanhSachSanPham_Result)">
+      <Parameter Name="ten_loai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_TaoMaSanPham">
+      <Parameter Name="ma_loai" Mode="In" Type="String" />
+      <Parameter Name="dem" Mode="In" Type="Int32" />
+      <Parameter Name="ma" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemSanPham">
+      <Parameter Name="ten_sp" Mode="In" Type="String" />
+      <Parameter Name="gia_sp" Mode="In" Type="Decimal" />
+      <Parameter Name="anh_sp" Mode="In" Type="String" />
+      <Parameter Name="soluong" Mode="In" Type="Int32" />
+      <Parameter Name="ma_loai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ChuyenMaLoai">
+      <Parameter Name="ten_loai" Mode="In" Type="String" />
+      <Parameter Name="ma_loai" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ChiTietSanPham" ReturnType="Collection(thecoffeeshopModel.sp_ChiTietSanPham_Result)">
+      <Parameter Name="ten_sp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
+    <FunctionImport Name="sp_CapNhatNguoiDung">
+      <Parameter Name="userid" Mode="In" Type="String" />
+      <Parameter Name="phanquyen" Mode="In" Type="String" />
+      <Parameter Name="hoten" Mode="InOut" Type="String" />
+      <Parameter Name="sdt" Mode="InOut" Type="String" />
+      <Parameter Name="diachi" Mode="InOut" Type="String" />
+      <Parameter Name="ngaysinh" Mode="InOut" Type="DateTime" />
+      <Parameter Name="email" Mode="InOut" Type="String" />
+      <Parameter Name="diachi2" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DoiMatKhau">
+      <Parameter Name="userid" Mode="In" Type="String" />
+      <Parameter Name="phanquyen" Mode="In" Type="String" />
+      <Parameter Name="userpassword" Mode="InOut" Type="String" />
+      <Parameter Name="confirm_password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_DanhSachSanPham_Result">
+    <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="TENSP" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="GIASP" Nullable="false" Precision="5" Scale="0" />
+    <Property Type="String" Name="ANHSP" Nullable="false" />
+    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+    <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="sp_ChiTietSanPham_Result">
+    <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="TENSP" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="GIASP" Nullable="false" Precision="5" Scale="0" />
+    <Property Type="String" Name="ANHSP" Nullable="false" />
+    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+    <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="MOTASP" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_XemKhuyenMai_Result">
+    <Property Type="String" Name="MAKM" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="TENKM" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="SOTIENGIAM" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="ANHKM" Nullable="false" />
+    <Property Type="DateTime" Name="NGAYHETHAN" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+    <Property Type="Decimal" Name="DIEUKIEN" Nullable="false" Precision="18" Scale="0" />
+  </ComplexType>
+</Schema>

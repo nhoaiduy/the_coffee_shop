@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM>
+@using WebBanNuocUong_TheCoffeeShop.Models
+
+@{
+    ViewBag.Title = "Sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    List<LOAISANPHAM> lOAISANPHAMs = ViewBag.LOAISP;
+}
+
+@Html.Action("GetBanner", "TrangChu");
+<div class="main-p">
+    <div class="content_left-p">
+        <div class="categories_sidebar-p">
+            <ul class="categories_list-p">
+                <li class="categories_item-p">
+                    <a href="@Url.Action("Index","CusSanPham", new { categoryName = ""})" class="categories_item_link-p choose">Tất cả</a>
+                </li>
+                @foreach (var category in lOAISANPHAMs)
+                {
+                    <li class="categories_item-p">
+                        <a href="@Url.Action("Index","CusSanPham", new { categoryName = category.TENLOAISP})" class="categories_item_link-p">@category.TENLOAISP</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="content_right-p">
+        <ul class="product-list__row-c" style="padding:0 16px;margin:0;">
+            @{
+                foreach (var item in Model)
+                {
+                    <li class="product__item-c" style="margin:0;">
+                        <a href="@Url.Action("CusChiTietSanPham", new {@productName = item.TENSP})" style="text-decoration: none;">
+                            <img src="@Url.Content(item.ANHSP)" alt="Alternate Text" class="product__item__img-c" />
+                            <div class="product__item__title-c hidden_text">@item.TENSP</div>
+                            <div class="product__item__price-c format_currency">@item.GIASP </div>
+                        </a>
+                        <input type="submit" name="cart-btn" style="margin: 16px 8px; cursor: pointer; " value="Đặt ngay" class="btn-default btn-color btnDat" />
+                    </li>
+
+                }
+            }
+        </ul>
+
+    </div>
+</div>

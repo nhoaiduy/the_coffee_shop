@@ -1,0 +1,149 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM>
+@using WebBanNuocUong_TheCoffeeShop.Models
+
+@{
+    ViewBag.Title = "Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    List<LOAISANPHAM> lOAISANPHAMs = ViewBag.LOAISP;
+}
+
+
+<div class="main">
+    <div class="categories__sidebar">
+        <ul class="categories__list">
+            <li class="categories__item">
+                <a href="@Url.Action("DanhMucSanPham", new { categoryName = ""})" class="categories__item__link  active">Tất cả</a>
+            </li>
+            @foreach (var category in lOAISANPHAMs)
+            {
+                <li class="categories__item">
+                    <a href="@Url.Action("DanhMucSanPham", new { categoryName = category.TENLOAISP})" class="categories__item__link">@category.TENLOAISP</a>
+                </li>
+            }
+            <li class="categories__item"  id="create-category__btn" onclick="DisplayWrap('l')">
+                <i class="fa-regular fa-plus"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="top">
+            <span class="circle-btn"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="circle-btn" onclick="DisplayWrap('s')"><i class="fa-regular fa-plus"></i></span>
+            <span style="color: var(--primary-color);">Số lượng sản phẩm: @Model.ToList().Count</span>
+        </div>
+        <div class="bottom">
+            <div class="categories__data">
+                <ul class="product__list">
+                    @foreach (var item in Model)
+                    {
+                        <li class="product__item">
+                            <a href="@Url.Action("ChiTiet", new {@productName = item.TENSP})">
+                                <img src="@Url.Content(item.ANHSP)" alt="Alternate Text" class="product__item__img" />
+                                <span class="product__item__name">
+                                    @item.TENSP
+                                </span>
+                                <span class="product__item__price">
+                                    @item.GIASP VNĐ
+                                </span>
+                                <span class="product__item__quantity">
+                                    Số Lượng: @item.SOLUONG
+                                </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="create-modal modal">
+        <span class="close-btn" onclick="HideWrap()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div id="sanPham">
+            <h2>Thêm sản phẩm mới</h2>
+            @using (Html.BeginForm("ThemSanPham", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <span class="label">Tên sản phẩm:</span>
+                    <input type="text" name="TENSP" value="" placeholder="Tên sản phẩm" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Ảnh sản phẩm:</span>
+                    <input type="file" name="image" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Giá sản phẩm:</span>
+                    <input type="number" name="GIASp" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Số lượng:</span>
+                    <input type="number" name="SOLUONG" value="" placeholder="1" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Mô tả sản phẩm:</span>
+                    <input type="text" name="MOTASP" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Loại sản phẩm:</span>
+                    @Html.DropDownList("MALOAISP", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Thêm" />
+                </div>
+
+            }
+        </div>
+        <div id="loaiSanPham">
+            <h2>Thêm loại sản phẩm mới</h2>
+            @using (Html.BeginForm("ThemLoaiSanPham", "LoaiSanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Mã loại sản phẩm:</span>
+                    <input type="text" id="maLoaiSP" name="MALOAISP" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Tên loại sản phẩm:</span>
+                    <input type="text" name="TENLOAISP" value="" placeholder="Tên loại sản phẩm" />
+                </div>
+                <div class="form-group">
+                    <span class="noti">*Mã đã tồn tại</span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Thêm" />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var wrap = document.getElementsByClassName('wrap')[0];
+
+    function DisplayWrap(type) {
+        wrap.style.display = 'flex';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+        if (type == 'l') {
+            document.getElementById('loaiSanPham').style.display = 'flex';
+        } else {
+            document.getElementById('sanPham').style.display = 'flex';
+        }
+    }
+
+    function HideWrap() {
+        wrap.style.display = 'none';
+        document.getElementsByTagName('body')[0].style.overflow = 'visible';
+        document.getElementById('loaiSanPham').style.display = 'none';
+        document.getElementById('sanPham').style.display = 'none';
+    }
+</script>
+

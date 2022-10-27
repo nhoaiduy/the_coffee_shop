@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - The Coffee Shop</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/adminLayout.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="~/Scripts/displayWrap.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">
+                The Coffee Shop
+            </div>
+            <div class="navbar-menu">
+                <ul class="navbar-menu__list">
+                    <li class="navbar-menu__item">
+                        <a href="@Url.Action("DanhMucSanPham", "SanPham")" class="navbar-menu__item__link">Sản phẩm</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="#" class="navbar-menu__item__link">Đơn hàng</a>
+                    </li>
+                    <li class="navbar-menu__item">                       
+                        <a href="@Url.Action("Index", "Promotion")" class="navbar-menu__item__link">Khuyến mãi</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="#" class="navbar-menu__item__link">Người dùng</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="#" class="navbar-menu__item__link">Tài khoản</a>
+                    </li>
+                    <li class="navbar-menu__item">
+                        <a href="#" class="navbar-menu__item__link">Thống kê</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-account">
+                <img src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/307119121_1530264394084920_4041558140547054848_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lXcQPCMoEs4AX-FuSAR&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT_L5XuEz_cL7X_HK3QrNZkwTvpwSSCKRw4xcN6NQZmMnQ&oe=635BC4D2" alt="Alternate Text" class="navbar-account__img" />
+                <span class="navbar-account__name" onclick="DisplayDropList();">
+                    Nguyễn Hoài Duy
+                </span>
+                <div class="navbar-account__drop-list" id="navbar-account__drop-list">
+                    <div class="navbar-account__drop-list__close" onclick="HideDropList()">&#x2715</div>
+                    <ul class="navbar-account__drop-list__list">
+                        <li class="navbar-account__drop-list__item">
+                            <a href="#" class="navbar-account__drop-list__item__link">Thông tin tài khoản</a>
+                        </li>
+                        <li class="navbar-account__drop-list__item">
+                            <a href="#" class="navbar-account__drop-list__item__link">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+
+            function DisplayDropList() {
+                var dropList = document.getElementById('navbar-account__drop-list');
+                dropList.style.display = 'flex';
+            }
+
+            function HideDropList(){
+                var dropList = document.getElementById('navbar-account__drop-list');
+                dropList.style.display = 'none';
+            }
+        </script>
+    </div>
+
+    <div class="container body-content" style="position: relative">
+        @RenderBody()
+        
+    </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - The Coffee Shop</p>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

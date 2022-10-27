@@ -1,0 +1,34 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.KHUYENMAI>
+@using WebBanNuocUong_TheCoffeeShop.Models
+
+@{
+    ViewBag.Title = "Khuyến mãi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .hidden_text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+@Html.Action("GetBanner", "TrangChu");
+<div class="wrap-list-c">
+    <h2 class="wrap_list-title-c">Khuyến mãi</h2>
+    <ul class="product-list__row-c">
+        @{
+            foreach (var item in Model)
+            {
+                <li class="product__item-c">
+                    <a href="#" style="text-decoration: none;">
+                        <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img-c" />
+                        <div class="product__item__title-c hidden_text">@item.TENKM</div>
+                        <div class="product__item__price-c">@item.NGAYHETHAN.ToShortDateString()</div>
+                    </a>
+                </li>
+}
+        }
+    </ul>
+</div>
+
+
