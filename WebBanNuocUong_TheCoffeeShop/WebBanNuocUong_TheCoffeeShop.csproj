@@ -132,13 +132,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\PromotionController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Data\LoginModel.cs" />
     <Compile Include="Controllers\CusSanPhamController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
     <Compile Include="Controllers\QuanLyController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,6 +209,7 @@
     <Content Include="Content\adminDonHang.css" />
     <Content Include="Content\adminLayout.css" />
     <Content Include="Content\adminSanPham.css" />
+    <Content Include="Content\adminTaiKhoan.css" />
     <Content Include="Content\banner.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -217,7 +219,7 @@
     <Content Include="Content\cusProduct.css" />
     <Content Include="Content\customerInfo.css" />
     <Content Include="Content\customerLayout.css" />
-    <Content Include="Content\login.css" />
+    <Content Include="Content\taiKhoan.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -238,7 +240,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Login\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\DanhMucSanPham.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
@@ -254,6 +255,7 @@
     <Content Include="Areas\Admin\Views\DonHang\DanhSachDonHang.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\TimKiem.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\ChiTietDonHang.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />
@@ -287,6 +289,7 @@
     <Content Include="Views\QuanLy\DonHang.cshtml" />
     <Content Include="Views\QuanLy\DoiMatKhau.cshtml" />
     <Content Include="Views\CusSanPham\CusChiTietSanPham.cshtml" />
+    <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,7 +16,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         // GET: Admin/DonHang
         public ActionResult DanhSachDonHang(string tinhTrang)
         {
-            var donHangs = db.DONHANGs.ToList();
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).ToList();
             if (!string.IsNullOrEmpty(tinhTrang))
             {
                 if(tinhTrang.Equals("Tất cả"))

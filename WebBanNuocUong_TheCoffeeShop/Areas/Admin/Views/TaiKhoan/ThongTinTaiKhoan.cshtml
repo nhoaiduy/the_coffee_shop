@@ -1,0 +1,102 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.NGUOIDUNG
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    if (!string.IsNullOrEmpty(ViewBag.Fail))
+    {
+        <script type="text/javascript">
+        alert("@ViewBag.Fail");
+        </script>
+    }
+}
+<link href="~/Content/adminTaiKhoan.css" rel="stylesheet" />
+
+
+<div class="main">
+    <div class="content" style="width: 40%">
+        <h1>Thông tin tài khoản</h1>
+        <div class="feature-options">
+            <div id="info-user" class="info-user active" onclick="changeFeature(true)">
+                Thông tin tài khoản
+            </div>
+            <div id="change-password" class="change-password" onclick="changeFeature(false)">
+                Đổi mật khẩu
+            </div>
+        </div>
+        <div id="info-user__form">
+            @using (Html.BeginForm("ChinhSuaThongTin", "TaiKhoan", new { area = "Admin" }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Họ tên:</span>
+                    <input type="text" name="HOTEN" value="@Model.HOTEN" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Số điện thoại:</span>
+                    <input type="text" name="SDT" value="@Model.SDT" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Địa chỉ:</span>
+                    <input type="text" name="DIACHI" value="@Model.DIACHI" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Ngày sinh:</span>
+                    <input type="date" name="NGAYSINH" value="@Model.NGAYSINH" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Email:</span>
+                    <input type="text" name="EMAIL" value="@Model.EMAIL" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Cập nhật" />
+                </div>
+
+            }
+        </div>
+        <div id="change-password__form">
+            @using (Html.BeginForm("DoiMatKhau", "TaiKhoan", new { area = "Admin" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Mật khẩu hiện tại:</span>
+                    <input type="password" name="MATKHAU" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Mật khẩu mới:</span>
+                    <input type="password" name="MATKHAUMOI" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Nhập lại mật khẩu mới:</span>
+                    <input type="password" name="NMATKHAUMOI" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Cập nhật" />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var change_password = document.getElementById('change-password__form')
+    var info_user = document.getElementById('info-user__form')
+
+    function changeFeature(type) {
+        if (type) {
+            info_user.style.display = 'block'
+            document.getElementById('info-user').classList.add('active')
+            change_password.style.display = 'none'
+            document.getElementById('change-password').classList.remove('active')
+        }
+        else {
+            change_password.style.display = 'block'
+            document.getElementById('change-password').classList.add('active')
+            info_user.style.display = 'none'
+            document.getElementById('info-user').classList.remove('active')
+        }
+    }
+</script>
+

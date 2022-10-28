@@ -9,15 +9,17 @@
 
 <div class="main">
     <div class="content">
-        <div class="top">
+        <div class="top" style="justify-content: flex-start">
+            <span>
+                <a href="@Url.Action("DanhSachDonHang")" class="order-status">Tất cả</a>
+            </span>
             @foreach (var item in tinhTrangs)
             {
                 <span>
-                    <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})"  class="order-status">@item.TINHTRANG1</a>
+                    <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})" class="order-status">@item.TINHTRANG1</a>
                 </span>
             }
             <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <span style="color: var(--primary-color);">Số lượng đơn chưa hoành thành: @Model.ToList().Count</span>
         </div>
         <div class="bottom">
             <div class="categories__data">
