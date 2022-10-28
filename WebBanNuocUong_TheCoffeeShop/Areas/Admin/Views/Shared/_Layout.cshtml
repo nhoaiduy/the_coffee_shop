@@ -11,12 +11,22 @@
     <script src="~/Scripts/displayWrap.js"></script>
 </head>
 <body>
+    @{
+        WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities db = new WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities();
+        var user = Session["admin"] as WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN;
+        var infoUser = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+        if (!string.IsNullOrEmpty(ViewBag.Fail))
+        {
+            <script type="text/javascript">
+            alert("@ViewBag.Fail");
+            </script>
+        }
+    }
 
     <div class="container">
         <div class="navbar">
             <div class="navbar-brand">
                 <a href="@Url.Action("DanhMucSanPham", "SanPham")" class="navbar-menu__item__link">The Coffee Shop</a>
-
             </div>
             <div class="navbar-menu">
                 <ul class="navbar-menu__list">
@@ -26,7 +36,7 @@
                     <li class="navbar-menu__item">
                         <a href="@Url.Action("DanhSachDonHang", "DonHang")" class="navbar-menu__item__link">Đơn hàng</a>
                     </li>
-                    <li class="navbar-menu__item">                       
+                    <li class="navbar-menu__item">
                         <a href="@Url.Action("Index", "Promotion")" class="navbar-menu__item__link">Khuyến mãi</a>
                     </li>
                     <li class="navbar-menu__item">
@@ -43,16 +53,16 @@
             <div class="navbar-account">
                 <img src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/307119121_1530264394084920_4041558140547054848_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lXcQPCMoEs4AX-FuSAR&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT_L5XuEz_cL7X_HK3QrNZkwTvpwSSCKRw4xcN6NQZmMnQ&oe=635BC4D2" alt="Alternate Text" class="navbar-account__img" />
                 <span class="navbar-account__name" onclick="DisplayDropList();">
-                    Nguyễn Hoài Duy
+                    @infoUser.HOTEN
                 </span>
                 <div class="navbar-account__drop-list" id="navbar-account__drop-list">
                     <div class="navbar-account__drop-list__close" onclick="HideDropList()">&#x2715</div>
                     <ul class="navbar-account__drop-list__list">
                         <li class="navbar-account__drop-list__item">
-                            <a href="#" class="navbar-account__drop-list__item__link">Thông tin tài khoản</a>
+                            <a href="@Url.Action("ThongTinTaiKhoan", "TaiKhoan", new {area = "Admin"})" class="navbar-account__drop-list__item__link">Thông tin tài khoản</a>
                         </li>
                         <li class="navbar-account__drop-list__item">
-                            <a href="#" class="navbar-account__drop-list__item__link">Đăng xuất</a>
+                            <a href="~/TaiKhoan/DangXuat" class="navbar-account__drop-list__item__link">Đăng xuất</a>
                         </li>
                     </ul>
                 </div>
@@ -66,7 +76,7 @@
                 dropList.style.display = 'flex';
             }
 
-            function HideDropList(){
+            function HideDropList() {
                 var dropList = document.getElementById('navbar-account__drop-list');
                 dropList.style.display = 'none';
             }
@@ -75,7 +85,7 @@
 
     <div class="container body-content" style="position: relative">
         @RenderBody()
-        
+
     </div>
     <footer>
         <p>&copy; @DateTime.Now.Year - The Coffee Shop</p>

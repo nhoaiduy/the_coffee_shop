@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng Nhập</title>
+    <link href="~/Content/taiKhoan.css" rel="stylesheet" />
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(ViewBag.Fail))
+    {
+        <script type="text/javascript">
+        alert("@ViewBag.Fail");
+        </script>
+    }
+    <div class="main">
+        <div class="content">
+            <h2>Đăng nhập</h2>
+            @using (Html.BeginForm("DangNhap", "TaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Tên đăng nhập:</span>
+                    <input type="text" id="username" name="username" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Mật khẩu:</span>
+                    <input type="password" name="password" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Đăng nhập" />
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

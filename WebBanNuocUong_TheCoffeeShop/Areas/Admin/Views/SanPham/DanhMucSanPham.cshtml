@@ -8,7 +8,12 @@
     List<LOAISANPHAM> lOAISANPHAMs = ViewBag.LOAISP;
 }
 
-
+@if (!string.IsNullOrEmpty(ViewBag.Fail))
+{
+    <script type="text/javascript">
+        alert("@ViewBag.Fail");
+    </script>
+}
 <div class="main">
     <div class="categories__sidebar">
         <ul class="categories__list">
@@ -21,7 +26,7 @@
                     <a href="@Url.Action("DanhMucSanPham", new { categoryName = category.TENLOAISP})" class="categories__item__link">@category.TENLOAISP</a>
                 </li>
             }
-            <li class="categories__item"  id="create-category__btn" onclick="DisplayWrap('l')">
+            <li class="categories__item" id="create-category__btn" onclick="DisplayWrap('l')">
                 <i class="fa-regular fa-plus"></i>
             </li>
         </ul>
