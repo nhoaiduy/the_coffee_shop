@@ -148,7 +148,7 @@ public partial class thecoffeeshopEntities : DbContext
     }
 
 
-    public virtual int sp_CapNhatNguoiDung(string userid, string phanquyen, ObjectParameter hoten, ObjectParameter sdt, ObjectParameter diachi, ObjectParameter ngaysinh, ObjectParameter email, ObjectParameter diachi2)
+    public virtual int sp_CapNhatNguoiDung(string userid, string hoten, string sdt, string diachi, Nullable<System.DateTime> ngaysinh, string email, string diachi2)
     {
 
         var useridParameter = userid != null ?
@@ -156,16 +156,41 @@ public partial class thecoffeeshopEntities : DbContext
             new ObjectParameter("userid", typeof(string));
 
 
-        var phanquyenParameter = phanquyen != null ?
-            new ObjectParameter("phanquyen", phanquyen) :
-            new ObjectParameter("phanquyen", typeof(string));
+        var hotenParameter = hoten != null ?
+            new ObjectParameter("hoten", hoten) :
+            new ObjectParameter("hoten", typeof(string));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatNguoiDung", useridParameter, phanquyenParameter, hoten, sdt, diachi, ngaysinh, email, diachi2);
+        var sdtParameter = sdt != null ?
+            new ObjectParameter("sdt", sdt) :
+            new ObjectParameter("sdt", typeof(string));
+
+
+        var diachiParameter = diachi != null ?
+            new ObjectParameter("diachi", diachi) :
+            new ObjectParameter("diachi", typeof(string));
+
+
+        var ngaysinhParameter = ngaysinh.HasValue ?
+            new ObjectParameter("ngaysinh", ngaysinh) :
+            new ObjectParameter("ngaysinh", typeof(System.DateTime));
+
+
+        var emailParameter = email != null ?
+            new ObjectParameter("email", email) :
+            new ObjectParameter("email", typeof(string));
+
+
+        var diachi2Parameter = diachi2 != null ?
+            new ObjectParameter("diachi2", diachi2) :
+            new ObjectParameter("diachi2", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatNguoiDung", useridParameter, hotenParameter, sdtParameter, diachiParameter, ngaysinhParameter, emailParameter, diachi2Parameter);
     }
 
 
-    public virtual int sp_DoiMatKhau(string userid, string phanquyen, ObjectParameter userpassword, string confirm_password)
+    public virtual int sp_DoiMatKhau(string userid, string userpassword, string confirm_password)
     {
 
         var useridParameter = userid != null ?
@@ -173,9 +198,9 @@ public partial class thecoffeeshopEntities : DbContext
             new ObjectParameter("userid", typeof(string));
 
 
-        var phanquyenParameter = phanquyen != null ?
-            new ObjectParameter("phanquyen", phanquyen) :
-            new ObjectParameter("phanquyen", typeof(string));
+        var userpasswordParameter = userpassword != null ?
+            new ObjectParameter("userpassword", userpassword) :
+            new ObjectParameter("userpassword", typeof(string));
 
 
         var confirm_passwordParameter = confirm_password != null ?
@@ -183,7 +208,56 @@ public partial class thecoffeeshopEntities : DbContext
             new ObjectParameter("confirm_password", typeof(string));
 
 
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DoiMatKhau", useridParameter, phanquyenParameter, userpassword, confirm_passwordParameter);
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_DoiMatKhau", useridParameter, userpasswordParameter, confirm_passwordParameter);
+    }
+
+
+    public virtual int sp_ThemNVQuanTri(string hoTen, Nullable<System.DateTime> ngaySinh, string diaChi, string diaChi2, string sdt, string email)
+    {
+
+        var hoTenParameter = hoTen != null ?
+            new ObjectParameter("hoTen", hoTen) :
+            new ObjectParameter("hoTen", typeof(string));
+
+
+        var ngaySinhParameter = ngaySinh.HasValue ?
+            new ObjectParameter("ngaySinh", ngaySinh) :
+            new ObjectParameter("ngaySinh", typeof(System.DateTime));
+
+
+        var diaChiParameter = diaChi != null ?
+            new ObjectParameter("diaChi", diaChi) :
+            new ObjectParameter("diaChi", typeof(string));
+
+
+        var diaChi2Parameter = diaChi2 != null ?
+            new ObjectParameter("diaChi2", diaChi2) :
+            new ObjectParameter("diaChi2", typeof(string));
+
+
+        var sdtParameter = sdt != null ?
+            new ObjectParameter("sdt", sdt) :
+            new ObjectParameter("sdt", typeof(string));
+
+
+        var emailParameter = email != null ?
+            new ObjectParameter("email", email) :
+            new ObjectParameter("email", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemNVQuanTri", hoTenParameter, ngaySinhParameter, diaChiParameter, diaChi2Parameter, sdtParameter, emailParameter);
+    }
+
+
+    public virtual int sp_taoMaNV(Nullable<int> dem, ObjectParameter ma)
+    {
+
+        var demParameter = dem.HasValue ?
+            new ObjectParameter("dem", dem) :
+            new ObjectParameter("dem", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_taoMaNV", demParameter, ma);
     }
 
 }

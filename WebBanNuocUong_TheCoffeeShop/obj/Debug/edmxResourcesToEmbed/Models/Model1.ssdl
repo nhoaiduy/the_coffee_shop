@@ -220,13 +220,12 @@
   </Association>
   <Function Name="sp_CapNhatNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userid" Type="char" Mode="In" />
-    <Parameter Name="phanquyen" Type="char" Mode="In" />
-    <Parameter Name="hoten" Type="nvarchar" Mode="InOut" />
-    <Parameter Name="sdt" Type="char" Mode="InOut" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="InOut" />
-    <Parameter Name="ngaysinh" Type="date" Mode="InOut" />
-    <Parameter Name="email" Type="varchar" Mode="InOut" />
-    <Parameter Name="diachi2" Type="nvarchar" Mode="InOut" />
+    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="char" Mode="In" />
+    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaysinh" Type="date" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="diachi2" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_ChiTietSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
@@ -240,14 +239,25 @@
   </Function>
   <Function Name="sp_DoiMatKhau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userid" Type="char" Mode="In" />
-    <Parameter Name="phanquyen" Type="char" Mode="In" />
-    <Parameter Name="userpassword" Type="varchar(max)" Mode="InOut" />
+    <Parameter Name="userpassword" Type="varchar(max)" Mode="In" />
     <Parameter Name="confirm_password" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_taoMaNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dem" Type="int" Mode="In" />
+    <Parameter Name="ma" Type="char" Mode="InOut" />
   </Function>
   <Function Name="sp_TaoMaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ma_loai" Type="char" Mode="In" />
     <Parameter Name="dem" Type="int" Mode="In" />
     <Parameter Name="ma" Type="char" Mode="InOut" />
+  </Function>
+  <Function Name="sp_ThemNVQuanTri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaySinh" Type="date" Mode="In" />
+    <Parameter Name="diaChi" Type="nvarchar" Mode="In" />
+    <Parameter Name="diaChi2" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="char" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
   </Function>
   <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />

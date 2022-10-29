@@ -1,0 +1,161 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.NGUOIDUNG>
+
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    SelectList quyen = ViewBag.QUYEN;
+
+    WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN acc = ViewBag.EMPLOYEE;
+
+    string getRole(string uid)
+    {
+        WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities db = new WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities();
+        var account = db.TAIKHOANs.FirstOrDefault(a => a.USERID.Equals(uid));
+        if (account.PHANQUYEN == "AD")
+        {
+            return "NV Quản trị";
+        }
+        return "Khách hàng";
+    }
+}
+
+
+<div class="main">
+    <div class="content">
+        <div class="top" style="width: 50%; float: right">
+            <span class="circle-btn" onclick="DisplayWrap('t');"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <span class="circle-btn" onclick="DisplayWrap('s')"><i class="fa-regular fa-plus"></i></span>
+        </div>
+        <div class="bottom">
+            <div class="categories__data">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Mã người dùng
+                        </th>
+                        <th>
+                            Họ tên
+                        </th>
+                        <th>
+                            Quyền
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="order-item">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.USERID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HOTEN)
+                            </td>
+                            <td>
+                                @getRole(item.USERID)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ChiTietNguoiDung", new { @nguoiDung = item.USERID})">Chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="create-modal modal">
+        <span class="close-btn" onclick="HideWrap()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div id="sanPham">
+            <h2>Thêm NV Quản trị mới</h2>
+            @using (Html.BeginForm("ThemNVMoi", "TaiKhoan", new {area = "Admin"}, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <span class="label">Họ tên:</span>
+                    <input type="text" name="HOTEN" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Ngày sinh:</span>
+                    <input type="date" name="NGAYSINH" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Địa chỉ 1:</span>
+                    <input type="text" name="DIACHI" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Địa chỉ 2:</span>
+                    <input type="text" name="DIACHI2" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Số điện thoại:</span>
+                    <input type="tel" name="SDT" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Email:</span>
+                    <input type="email" name="EMAIL" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Thêm" />
+                </div>
+
+            }
+        </div>
+        <div id="timKiem">
+            <h2>Tìm kiếm người dùng</h2>
+            @using (Html.BeginForm("DanhSachTaiKhoan", "TaiKhoan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Tên người dùng</span>
+                    <input type="text" id="tenND" name="HOTEN" value="" />
+                </div>
+                <div class="form-group">
+                    <span class="label">Quyền:</span>
+                    @Html.DropDownList("quyen", quyen, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Tìm kiếm" />
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var wrap = document.getElementsByClassName('wrap')[0];
+
+    function DisplayWrap(type) {
+        wrap.style.display = 'flex';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+        if (type == 'l') {
+            document.getElementById('loaiSanPham').style.display = 'flex';
+        } else if (type == 's') {
+            document.getElementById('sanPham').style.display = 'flex';
+        } else {
+            document.getElementById('timKiem').style.display = 'flex';
+        }
+    }
+
+    function HideWrap() {
+        wrap.style.display = 'none';
+        document.getElementsByTagName('body')[0].style.overflow = 'visible';
+        document.getElementById('loaiSanPham').style.display = 'none';
+        document.getElementById('sanPham').style.display = 'none';
+        document.getElementById('timKiem').style.display = 'none';
+    }
+    </script>

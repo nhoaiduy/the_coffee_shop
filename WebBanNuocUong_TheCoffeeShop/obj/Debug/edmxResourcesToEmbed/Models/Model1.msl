@@ -160,5 +160,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThemNVQuanTri" FunctionName="thecoffeeshopModel.Store.sp_ThemNVQuanTri" />
+    <FunctionImportMapping FunctionImportName="sp_taoMaNV" FunctionName="thecoffeeshopModel.Store.sp_taoMaNV" />
   </EntityContainerMapping>
 </Mapping>

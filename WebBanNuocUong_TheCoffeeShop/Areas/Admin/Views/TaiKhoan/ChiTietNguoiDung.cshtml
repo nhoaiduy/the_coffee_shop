@@ -1,0 +1,56 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Chi tiết người dùng - "+ Model.USERID;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var acc = ViewBag.TAIKHOAN as WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN;
+}
+
+<link href="~/Content/adminTaiKhoan.css" rel="stylesheet" />
+
+<div class="main">
+    <div class="content" style="width: 50%; height: fit-content">
+        <h1>
+            Chi tiết người dùng - @Model.USERID
+        </h1>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <table class="info">
+                <tr>
+                    <td class="label">Họ tên:</td>
+                    <td class="data">@Model.HOTEN</td>
+                </tr>
+                <tr>
+                    <td class="label">Số điện thoại:</td>
+                    <td class="data">@Model.SDT</td>
+                </tr>
+                <tr>
+                    <td class="label">Địa chỉ:</td>
+                    <td class="data">@Model.DIACHI</td>
+                </tr>
+                <tr>
+                    <td class="label">Địa chỉ 2:</td>
+                    <td class="data">@Model.DIACHI2</td>
+                </tr>
+                <tr>
+                    <td class="label">Email:</td>
+                    <td class="data">@Model.EMAIL</td>
+                </tr>
+            </table>
+            <table class="info">
+                <tr>
+                    <td class="label">Tên đăng nhập:</td>
+                    <td class="data">@acc.USERNAME</td>
+                </tr>
+                <tr>
+                    <td class="label">Mật khẩu:</td>
+                    <td class="data">@acc.USERPASSWORD</td>
+                </tr>
+                <tr>
+                    <td class="label">Quyền:</td>
+                    <td class="data">@acc.PHANQUYEN</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
