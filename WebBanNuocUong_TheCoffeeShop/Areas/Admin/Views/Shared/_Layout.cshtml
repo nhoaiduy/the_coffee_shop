@@ -40,18 +40,17 @@
                         <a href="@Url.Action("Index", "Promotion")" class="navbar-menu__item__link">Khuyến mãi</a>
                     </li>
                     <li class="navbar-menu__item">
-                        <a href="#" class="navbar-menu__item__link">Người dùng</a>
+                        <a href="@Url.Action("DanhSachTaiKhoan", "TaiKhoan")" class="navbar-menu__item__link">Người dùng</a>
                     </li>
-                    <li class="navbar-menu__item">
-                        <a href="#" class="navbar-menu__item__link">Tài khoản</a>
-                    </li>
+                    @*<li class="navbar-menu__item">
+                        <a href="#" class="navbar-menu__item__link">Thanh toán</a>
+                    </li>*@
                     <li class="navbar-menu__item">
                         <a href="#" class="navbar-menu__item__link">Thống kê</a>
                     </li>
                 </ul>
             </div>
             <div class="navbar-account">
-                <img src="https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/307119121_1530264394084920_4041558140547054848_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lXcQPCMoEs4AX-FuSAR&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT_L5XuEz_cL7X_HK3QrNZkwTvpwSSCKRw4xcN6NQZmMnQ&oe=635BC4D2" alt="Alternate Text" class="navbar-account__img" />
                 <span class="navbar-account__name" onclick="DisplayDropList();">
                     @infoUser.HOTEN
                 </span>

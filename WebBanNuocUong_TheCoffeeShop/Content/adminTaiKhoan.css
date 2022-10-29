@@ -24,4 +24,12 @@
     display: none;
 }
 
+.label, .data{
+    font-size: 20px;
+    padding: 8px 16px;
+}
+
+.label{
+    color: var(--primary-color);
+}
 

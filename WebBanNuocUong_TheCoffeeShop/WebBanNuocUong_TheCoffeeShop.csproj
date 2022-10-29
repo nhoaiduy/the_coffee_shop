@@ -240,7 +240,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\DanhMucSanPham.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -256,6 +255,8 @@
     <Content Include="Areas\Admin\Views\DonHang\TimKiem.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\ChiTietDonHang.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DanhSachTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\ChiTietNguoiDung.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />

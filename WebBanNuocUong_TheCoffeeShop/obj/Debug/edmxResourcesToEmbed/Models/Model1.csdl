@@ -284,18 +284,16 @@
     <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
     <FunctionImport Name="sp_CapNhatNguoiDung">
       <Parameter Name="userid" Mode="In" Type="String" />
-      <Parameter Name="phanquyen" Mode="In" Type="String" />
-      <Parameter Name="hoten" Mode="InOut" Type="String" />
-      <Parameter Name="sdt" Mode="InOut" Type="String" />
-      <Parameter Name="diachi" Mode="InOut" Type="String" />
-      <Parameter Name="ngaysinh" Mode="InOut" Type="DateTime" />
-      <Parameter Name="email" Mode="InOut" Type="String" />
-      <Parameter Name="diachi2" Mode="InOut" Type="String" />
+      <Parameter Name="hoten" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="diachi" Mode="In" Type="String" />
+      <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="diachi2" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_DoiMatKhau">
       <Parameter Name="userid" Mode="In" Type="String" />
-      <Parameter Name="phanquyen" Mode="In" Type="String" />
-      <Parameter Name="userpassword" Mode="InOut" Type="String" />
+      <Parameter Name="userpassword" Mode="In" Type="String" />
       <Parameter Name="confirm_password" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="TINHTRANGs" EntityType="thecoffeeshopModel.TINHTRANG" />
@@ -303,6 +301,18 @@
       <End Role="TINHTRANG" EntitySet="TINHTRANGs" />
       <End Role="DONHANG" EntitySet="DONHANGs" />
     </AssociationSet>
+    <FunctionImport Name="sp_ThemNVQuanTri">
+      <Parameter Name="hoTen" Mode="In" Type="String" />
+      <Parameter Name="ngaySinh" Mode="In" Type="DateTime" />
+      <Parameter Name="diaChi" Mode="In" Type="String" />
+      <Parameter Name="diaChi2" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_taoMaNV">
+      <Parameter Name="dem" Mode="In" Type="Int32" />
+      <Parameter Name="ma" Mode="InOut" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_DanhSachSanPham_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />

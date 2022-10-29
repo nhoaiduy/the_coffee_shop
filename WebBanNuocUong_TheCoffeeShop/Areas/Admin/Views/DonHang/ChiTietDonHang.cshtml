@@ -30,7 +30,7 @@
             <div class="status-update">
                 @using (Html.BeginForm("SetStatus", "DonHang", FormMethod.Get))
                 {
-                    <select value="@Model.TINHTRANG" name="Status" class="btn-default">
+                    <select value="@Model.TINHTRANG" name="status" class="btn-default">
                     @foreach (var item in tinhTrangs)
                     {
                         <option value="@item.TINHTRANG1">@item.TINHTRANG1</option>
