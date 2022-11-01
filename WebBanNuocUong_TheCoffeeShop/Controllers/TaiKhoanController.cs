@@ -30,7 +30,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 else
                 {
                     Session["customer"] = isUser;
-                    return RedirectToAction("Index", "TrangChu");
+                    NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(isUser.USERID));
+                    ViewBag.HOTEN = nGUOIDUNG.HOTEN;
+                    return RedirectToAction("TrangChu", "TrangChu");
                 }
             }
             ViewBag.Fail = "Đăng nhập thất bại";
@@ -40,7 +42,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         public ActionResult DangXuat()
         {
             Session.Clear();
-            return RedirectToAction("Index", "TrangChu", new {area = ""});
+            return RedirectToAction("TrangChu", "TrangChu", new {area = ""});
         }
     }
 }

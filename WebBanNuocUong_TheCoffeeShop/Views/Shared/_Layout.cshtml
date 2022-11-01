@@ -28,37 +28,59 @@
             <div class="navbar-menu">
                 <ul class="navbar-menu__list" style="margin-left:50px;">
                     <li class="navbar-menu__item">
-                        <a href="@Url.Action("Index","TrangChu")" class="navbar-menu__item__link">Trang chủ</a>
+                        <a href="@Url.Action("TrangChu","TrangChu")" class="navbar-menu__item__link">Trang chủ</a>
                     </li>
                     <li class="navbar-menu__item">
-                        <a href="@Url.Action("Index","CusSanPham")" class="navbar-menu__item__link">Sản phẩm</a>
+                        <a href="@Url.Action("DanhMucSanPham","SanPham", new {area = ""})" class="navbar-menu__item__link">Sản phẩm</a>
                     </li>
                     <li class="navbar-menu__item">
-                        <a href="@Url.Action("Index","KhuyenMai")" class="navbar-menu__item__link">Khuyến mãi</a>
+                        <a href="@Url.Action("DanhSachKhuyenMai","KhuyenMai", new {area = ""})" class="navbar-menu__item__link">Khuyến mãi</a>
                     </li>
                 </ul>
             </div>
 
             <div class="navbar-menu_right">
                 <form action="#" class="navbar-menu-search" method="get">
-                    <input type="text" class="navbar-menu_boxsearch" placeholder="Tìm kiếm" name="searchString">
-                    <button class="navbar-menu_btn-search">
-                        <i class="fa fa-search"></i>
-                    </button>
+                    <span style="display:inline-flex;">
+                        <input type="text" class="navbar-menu_boxsearch" placeholder="Tìm kiếm" name="searchString">
+                        <button class="navbar-menu_btn-search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
                 </form>
                 <div class="">
-                    <a href="@Url.Action("TTCaNhan","QuanLy")" >
+                    <a href="@Url.Action("TTCaNhan","QuanLy")">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
                     </a>
                 </div>
-                <ul class="navbar-menu__list">
-                    <li class="navbar-menu__item1">
-                        <a href="#" class="navbar-menu__item1__link">Đăng ký</a>
-                    </li>
-                    <li class="navbar-menu__item1">
-                        <a href="@Url.Action("DangNhap", "TaiKhoan", new {area = ""})" class="navbar-menu__item1__link">Đăng nhập</a>
-                    </li>
-                </ul>
+                @{
+                    if (Session["customer"] != null)
+                    {
+                        WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities db = new WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities();
+                        var user = Session["customer"] as WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN;
+                        var infoUser = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+                        @*<span>@infoUser.HOTEN</span>*@
+                        <ul class="navbar-menu__list">
+                            <li class="navbar-menu__item1">
+                                @infoUser.HOTEN
+                            </li>
+                            <li class="navbar-menu__item1">
+                                <a href="~/TaiKhoan/DangXuat" class="navbar-menu__item1__link">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-menu__list">
+                            <li class="navbar-menu__item1">
+                                <a href="#" class="navbar-menu__item1__link">Đăng ký</a>
+                            </li>
+                            <li class="navbar-menu__item1">
+                                <a href="@Url.Action("DangNhap", "TaiKhoan", new {area = ""})" class="navbar-menu__item1__link">Đăng nhập</a>
+                            </li>
+                        </ul>
+                    }
+                }
             </div>
         </div>
     </div>

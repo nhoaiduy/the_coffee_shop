@@ -7,19 +7,15 @@
 <div class="main-b">
     <div class="content_left-b">
         <div class="categories_sidebar-p" style="box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
-            <ul class="categories_list-p">
+            <ul class="categories_list-p" style="width:180px;">
+
                 <li class="categories_item-p">
-                    <a href="@Url.Action("TTCaNhan","QuanLy")" class="categories_item_link-p">Thông tin cá nhân</a>
+                    <a href="@Url.Action("GioHangNoLogin","QuanLy")" class="categories_item_link-p">Giỏ hàng</a>
                 </li>
                 <li class="categories_item-p">
-                    <a href="@Url.Action("GioHang","QuanLy")" class="categories_item_link-p">Giỏ hàng</a>
+                    <a href="@Url.Action("TraCuuDonHang","QuanLy")" class="categories_item_link-p">Tra cứu đơn hàng</a>
                 </li>
-                <li class="categories_item-p">
-                    <a href="@Url.Action("DonHang","QuanLy")" class="categories_item_link-p">Đơn hàng</a>
-                </li>
-                <li class="categories_item-p">
-                    <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
-                </li>
+
             </ul>
         </div>
     </div>
@@ -45,23 +41,33 @@
                 <td></td>
             </tr>
         </table>
-        <div class="cart_bottom" style="display: flex; width: 100%; justify-content: space-between; margin-top: 30px;">
-            <div class="cart_bottom_left">
-                <span class="cart_bottom_info">
-                    Họ tên:
-                </span>
-                <span class="cart_bottom_info">
-                    SĐT:
-                </span>
-                <span class="cart_bottom_info">
-                    Địa chỉ 1:
-                </span>
-                <span class="cart_bottom_info">
-                    Thời gian giao hàng:
-                </span>
-            </div>
-            <div class="cart_bottom_center">
-                <div class="form-group" style="justify-content: left;">
+        <div class="cart_bottom" style="display: flex; width: 100%; justify-content: space-between; margin-top:30px;">
+            <div style="width: 70%;">
+                <div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                    <p style="width:130px">Họ tên:</p>
+                    <div class="col-md-10" style="margin-left:8px;">
+                        <div class="form-control form-control_nologin">
+                            <input />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                    <p style="width:130px">Địa chỉ:</p>
+                    <div class="col-md-10" style="margin-left:8px;">
+                        <div class="form-control form-control_nologin">
+                            <input />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="justify-content: left; padding: 0px 16px;">
+                    <p style="width:130px">SĐT:</p>
+                    <div class="col-md-10" style="margin-left:8px;">
+                        <div class="form-control form-control_nologin">
+                            <input />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="justify-content: left; padding: 0px 16px;">
                     <p style="width:130px">Chọn khuyến mãi:</p>
                     <div class="col-md-10" style="margin-left:8px;">
                         <div class="form-control">
@@ -70,28 +76,19 @@
                     </div>
                     <input type="submit" value="Áp dụng" class="choose btn-update-ci" style="width:120px;" />
                 </div>
-                <div class="form-group" style="justify-content: left;">
-                    <p style="width:130px">Chọn điểm tích lũy:</p>
-                    <div class="col-md-10" style="margin-left:8px;">
-                        <div class="form-control">
-                            <input />
-                        </div>
-                    </div>
-                    <input type="submit" value="Áp dụng" class="choose btn-update-ci" style="width:120px;" />
-                </div>
-
             </div>
+
             <div class="cart_bottom_right">
-                <span class="cart_bottom_info">
+                <span style="text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 18px; color: var(--primary-color);">
+                    Thời gian giao hàng:
+                </span>
+                <span style="text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 18px; color: var(--primary-color);">
                     Khuyến mãi:
                 </span>
-                <span class="cart_bottom_info">
-                    Điểm tích lũy:
-                </span>
-                <span class="cart_bottom_info">
+                <span style="text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 18px; color: var(--primary-color);">
                     Tạm tính:
                 </span>
-                <span class="cart_bottom_info">
+                <span style="text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 24px; font-weight:bold; color: var(--primary-color);">
                     Tổng tiền:
                 </span>
             </div>
@@ -103,4 +100,6 @@
         </div>
     </div>
 </div>
+
+
 

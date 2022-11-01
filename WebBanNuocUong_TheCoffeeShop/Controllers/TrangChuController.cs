@@ -11,7 +11,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
     {
         // GET: TrangChu
         thecoffeeshopEntities db = new thecoffeeshopEntities();
-        public ActionResult Index(string searchString, string categoryName)
+        public ActionResult TrangChu(string searchString, string categoryName)
         {
             var sanPhamList = db.sp_DanhSachSanPham(categoryName);
             List<SANPHAM> list = new List<SANPHAM>();

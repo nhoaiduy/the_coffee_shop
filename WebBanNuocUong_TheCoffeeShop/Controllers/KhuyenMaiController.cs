@@ -11,7 +11,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
         // GET: KhuyenMai
-        public ActionResult Index()
+        public ActionResult DanhSachKhuyenMai()
         {
             var khuyenMaiList = db.sp_XemKhuyenMai();
             List<KHUYENMAI> list = new List<KHUYENMAI>();

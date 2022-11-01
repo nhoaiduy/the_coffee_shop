@@ -12,6 +12,7 @@
 .content_right-b {
     width: 85%;
     margin: 64px 0;
+    padding: 0 0 16px 16px;
 }
 
 
@@ -38,4 +39,22 @@ th, td {
 }
 .chucnang{
     width: 80px;
+}
+.cart_bottom_left {
+    width: 25%;
+}
+
+.cart_bottom_center {
+    width: 45%;
+}
+
+.cart_bottom_right {
+    width: 30%;
+}
+
+.form-control_nologin {
+    width: 600px;
+}
+.cart_bottom_info {
+    text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 18px; color: var(--primary-color);
 }

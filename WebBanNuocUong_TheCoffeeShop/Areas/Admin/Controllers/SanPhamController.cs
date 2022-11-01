@@ -15,6 +15,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         // GET: Admin/SanPham
         public ActionResult DanhMucSanPham(string searchString, string categoryName)
         {
+            if (Session["admin"] == null)
+            {
+                return RedirectToAction("DangNhap", "TaiKhoan", new {area = "Admin"});
+            }
             var sanPhamList = db.sp_DanhSachSanPham(categoryName);
             List<SANPHAM> list = new List<SANPHAM>();
             foreach(var item in sanPhamList)
