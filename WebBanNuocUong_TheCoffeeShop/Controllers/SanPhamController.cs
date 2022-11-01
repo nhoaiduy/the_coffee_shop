@@ -7,12 +7,12 @@ using WebBanNuocUong_TheCoffeeShop.Models;
 
 namespace WebBanNuocUong_TheCoffeeShop.Controllers
 {
-    public class CusSanPhamController : Controller
+    public class SanPhamController : Controller
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
 
         // GET: CusSanPham
-        public ActionResult Index(string searchString, string categoryName)
+        public ActionResult DanhMucSanPham(string searchString, string categoryName)
         {
             var sanPhamList = db.sp_DanhSachSanPham(categoryName);
             List<SANPHAM> list = new List<SANPHAM>();
@@ -31,7 +31,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.LOAISP = db.LOAISANPHAMs.ToList();
             return View(list);
         }
-        public ActionResult CusChiTietSanPham(string productName)
+        public ActionResult ChiTietSanPham(string productName)
         {
             var data = db.sp_ChiTietSanPham(productName);
             SANPHAM sanPham = new SANPHAM();
@@ -43,6 +43,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 sanPham.GIASP = item.GIASP;
                 sanPham.SOLUONG = item.SOLUONG;
                 sanPham.MALOAISP = item.MALOAISP;
+                sanPham.MOTASP = item.MOTASP;
                 break;
             }
             return View(sanPham);

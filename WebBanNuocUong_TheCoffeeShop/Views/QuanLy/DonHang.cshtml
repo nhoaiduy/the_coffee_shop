@@ -1,7 +1,8 @@
-﻿
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
 @{
     ViewBag.Title = "Đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<WebBanNuocUong_TheCoffeeShop.Models.TINHTRANG> tinhTrangs = ViewBag.TINHTRANG;
 }
 
 <div class="main-b">
@@ -23,7 +24,67 @@
             </ul>
         </div>
     </div>
-    <div class="content_right-b">
+    <div class="content_right-b" style="background-color:white;">
         <h2 style="color: var(--primary-color);">Đơn hàng</h2>
+
+        <div class="top" style="justify-content: flex-start">
+            <span>
+                <a href="@Url.Action("DanhSachDonHang")" class="order-status">Tất cả</a>
+            </span>
+            @foreach (var item in tinhTrangs)
+            {
+                <span>
+                    <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})" class="order-status">@item.TINHTRANG1</a>
+                </span>
+            }
+            <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+        <div class="bottom">
+            <div class="categories__data">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Mã đơn hàng
+                        </th>
+                        <th>
+                            Thời gian đặt
+                        </th>
+                        <th>
+                            Tổng tiền
+                        </th>
+                        <th>
+                            Tình trạng đơn
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="order-item">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MADH)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NGAYLAP)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TONGITEN) VNĐ
+                            </td>
+                            <td>
+                                @item.TINHTRANG
+                            </td>
+                            <td>
+                                <a href="@Url.Action("ChiTietDonHang", new { @MADH = item.MADH})">Xem đơn hàng</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
