@@ -7,8 +7,8 @@
 
 <div class="main">
     <div class="product-detail">
-        <div class="product-detail__left">         
-            <img src="@Url.Content(Model.ANHKM)" alt="@Model.TENKM" title="@Model.TENKM" class="product-detail__left__img" />           
+        <div class="product-detail__left">
+            <img src="@Url.Content(Model.ANHKM)" alt="@Model.TENKM" title="@Model.TENKM" class="product-detail__left__img" />
         </div>
         <div class="product-detail__right">
             <div class="product-detail__element">
@@ -27,7 +27,7 @@
                     Điều kiện:
                 </span>
                 <span class="product-detail__element__title__data">
-                    Đơn hàng lớn hơn @Model.DIEUKIEN 
+                    Đơn hàng lớn hơn @Model.DIEUKIEN
                 </span>
             </div>
             <div class="product-detail__element">
@@ -73,7 +73,7 @@
         </span>
         <div id="sanPham">
             <h2>Cập nhật sản phẩm</h2>
-            @using (Html.BeginForm("ChinhSuaKhuyenMai", "Promotion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ChinhSuaKhuyenMai", "KhuyenMai", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -107,10 +107,7 @@
                     <span class="label">Ngày hết hạn:</span>
                     <input type="date" name="NGAYHETHAN" value="@Model.NGAYHETHAN.ToShortDateString()" />
                 </div>
-                @*<div class="form-group">
-                <span class="label">Loại sản phẩm:</span>
-                @Html.DropDownList("MALOAISP", null, htmlAttributes: new { @class = "form-control" })
-            </div>*@
+                
                 <div class="form-group">
                     <input type="submit" name="create-btn" class="create-btn active" value="Cập nhật" />
                 </div>
@@ -119,7 +116,7 @@
         </div>
         <div id="loaiSanPham">
             <h2>Xác nhận xóa khuyến mãi</h2>
-            @using (Html.BeginForm("XoaKhuyenMai", "Promotion", new { MAKM = Model.MAKM }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("XoaKhuyenMai", "KhuyenMai", new { MAKM = Model.MAKM }, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 <div class="form-group">

@@ -8,11 +8,11 @@ using WebBanNuocUong_TheCoffeeShop.Models;
 
 namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
 {
-    public class PromotionController : Controller
+    public class KhuyenMaiController : Controller
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
-        // GET: Admin/Promotion
-        public ActionResult Index()
+        // GET: Admin/KhuyenMai
+        public ActionResult DanhSachKhuyenMai()
         {
             var khuyenMaiList = db.sp_XemKhuyenMai();
             List<KHUYENMAI> list = new List<KHUYENMAI>();
@@ -33,7 +33,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         public ActionResult ChiTiet(string TenKM)
         {
             KHUYENMAI khuyenMai = db.KHUYENMAIs.FirstOrDefault(k => k.TENKM.Equals(TenKM));
-            /*KHUYENMAI km = new KHUYENMAI();*/
+            //KHUYENMAI km = new KHUYENMAI();
             //foreach (var item in khuyenMai)
             //{
             //    km.MAKM = item.MAKM;
@@ -49,7 +49,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             return View(khuyenMai);
         }
         [HttpPost]
-        public ActionResult ThemKhuyenMai([Bind(Include = "TENKM, ANHKM, DIEUKIEN, SOTIENGIAM, SOLUONG, MOTAKM, NGAYHETHAN,")] KHUYENMAI kHUYENMAI, HttpPostedFileBase image)
+        public ActionResult ThemKhuyenMai([Bind(Include = "TENKM, ANHKM, DIEUKIEN, SOTIENGIAM, SOLUONG, MOTAKM, NGAYHETHAN")] KHUYENMAI kHUYENMAI, HttpPostedFileBase image)
         {
             if (image != null && image.ContentLength > 0)
             {
@@ -64,13 +64,13 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             else kHUYENMAI.ANHKM = "https://thumbs.dreamstime.com/b/halloween-sale-21599574.jpg";
             if (ModelState.IsValid)
             {
-                var khuyenMais = db.KHUYENMAIs;
+                var khuyenMais = db.KHUYENMAIs.ToList();
 
                 if (khuyenMais.ToList().Count > 0)
                 {
-                    string temp = khuyenMais.ToList()[khuyenMais.ToList().Count - 1].MAKM;
+                    string temp = khuyenMais.ToList()[khuyenMais.ToList().Count - 1].MAKM;                     
                     string last = "";
-                    for (int i = 0; i < temp.Length; i++)
+                    for (int i = 2; i < temp.Length; i++)
                     {
                         last += temp[i]; // last = 001
                     }
@@ -90,17 +90,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 {
                     kHUYENMAI.MAKM = "KM001";
                 }
-                if (kHUYENMAI != null)
-                {
+                //if (kHUYENMAI == null)
+                //{
+                //    kHUYENMAI.MAKM = "KM003";
+                //}             
                     db.KHUYENMAIs.Add(kHUYENMAI);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
-                }                                
+                    return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new {Area = "Admin"});                                
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new { Area = "Admin" });
         }
         [HttpPost]
-        public ActionResult ChinhSuaKhuyenMai([Bind(Include = "MASP,TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG")] KHUYENMAI kHUYENMAI, HttpPostedFileBase image)
+        public ActionResult ChinhSuaKhuyenMai([Bind(Include = "MAKM,TENKM, ANHKM, MOTAKM, SOTIENGIAM, DIEUKIEN, SOLUONG, NGAYHETHAN")] KHUYENMAI kHUYENMAI, HttpPostedFileBase image)
         {
             KHUYENMAI kHUYENMAI1 = db.KHUYENMAIs.FirstOrDefault(s => s.MAKM.Equals(kHUYENMAI.MAKM));
             if (ModelState.IsValid)
@@ -114,7 +115,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                         string fileName = System.IO.Path.GetFileName(image.FileName);
                         string urlName = Server.MapPath("~/Image/" + fileName);
                         image.SaveAs(urlName);
-
                         kHUYENMAI.ANHKM = "~/Image/" + fileName;
                     }
                     if (kHUYENMAI.TENKM != null)
@@ -129,7 +129,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     {
                         kHUYENMAI1.SOLUONG = kHUYENMAI.SOLUONG;
                     }
-                    if (kHUYENMAI.DIEUKIEN != null)
+                    if (kHUYENMAI.DIEUKIEN.ToString() != null)
                     {
                         kHUYENMAI1.DIEUKIEN = kHUYENMAI.DIEUKIEN;
                     }
@@ -143,10 +143,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     }
                     db.Entry(kHUYENMAI1).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Details", new { @TenKM = kHUYENMAI1.TENKM });
+                    return RedirectToAction("ChiTiet","KhuyenMai", new { @TenKM = kHUYENMAI1.TENKM, area = "Admin" });
                 }
-            }           
-            return View("Details", new { @TenKM = kHUYENMAI.TENKM });
+            }
+            return RedirectToAction("ChiTiet", "KhuyenMai", new { @TenKM = kHUYENMAI1.TENKM, area = "Admin" });
         }
         [HttpPost]
         public ActionResult XoaKhuyenMai(string MAKM)
@@ -154,7 +154,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             KHUYENMAI kHUYENMAI = db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.ToString().Equals(MAKM));
             db.KHUYENMAIs.Remove(kHUYENMAI);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new { Area = "Admin" });
         }
     }
 }

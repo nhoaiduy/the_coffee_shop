@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.KHUYENMAI>
 
 @{
-    ViewBag.Title = "Khuyến Mãi";
+    ViewBag.Title = "Khuyến Mãi";    
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +12,7 @@
             <span class="circle-btn" onclick="DisplayWrap('a')"><i class="fa-regular fa-plus"></i></span>
         </div>
         <div class="categories__data">
-            <h2 class="wrap_list-title-c">Khuyến mãi</h2>
+            <h2 class="wrap_list-title-c">Danh Sách Khuyến Mãi</h2>
             <ul class="product__list">
                 @{
                     foreach (var item in Model)
@@ -20,9 +20,9 @@
                         <li class="product__item">
                             <a href="@Url.Action("ChiTiet", new { @TenKM = item.TENKM})" style="text-decoration: none;">
                                 @if (Url.Content(item.ANHKM) != null)
-                                 {
-                                     <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img" />
-                                 }                               
+                                {
+                                    <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img" />
+                                }
                                 <div class="product__item__name">@item.TENKM</div>
                                 <div class="product__item__price-c">@item.NGAYHETHAN.ToShortDateString()</div>
                             </a>
@@ -40,7 +40,7 @@
         </span>
         <div id="sanPham">
             <h2>Thêm khuyến mãi mới</h2>
-            @using (Html.BeginForm("ThemKhuyenMai", "Promotion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ThemKhuyenMai", "KhuyenMai", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -76,7 +76,6 @@
                 <div class="form-group">
                     <input type="submit" name="create-btn" class="create-btn active" value="Thêm" />
                 </div>
-
             }
         </div>
     </div>
@@ -86,7 +85,7 @@
 
     function DisplayWrap(type) {
         wrap.style.display = 'flex';
-        document.getElementsByTagName('body')[0].style.overflow = 'hidden';        
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
         if (type == 'a') {
             document.getElementById('sanPham').style.display = 'flex';
         } else {
@@ -100,7 +99,6 @@
         document.getElementById('loaiSanPham').style.display = 'none';
         document.getElementById('sanPham').style.display = 'none';
         document.getElementById('timKiem').style.display = 'none';
-
     }
 </script>
 
