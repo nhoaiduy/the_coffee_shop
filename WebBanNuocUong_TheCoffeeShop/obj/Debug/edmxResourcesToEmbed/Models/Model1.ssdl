@@ -16,8 +16,8 @@
     </Key>
     <Property Name="MADH" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="MAKM" Type="char" MaxLength="5" />
-    <Property Name="TINHTRANG" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="NGAYLAP" Type="datetime" Nullable="false" />
+    <Property Name="MATT" Type="int" Nullable="false" />
+    <Property Name="NGAYLAP" Type="datetime" />
     <Property Name="TENNGUOINHAN" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="SDT" Type="char" MaxLength="11" Nullable="false" />
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -42,7 +42,7 @@
     <Property Name="NGAYHETHAN" Type="datetime" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
     <Property Name="DIEUKIEN" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-    <Property Name="MOTAKM" Type="nvarchar(max)" />
+    <Property Name="MOTAKM" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="LOAIPTTT">
     <Key>
@@ -64,7 +64,7 @@
     </Key>
     <Property Name="USERID" Type="char" MaxLength="6" Nullable="false" />
     <Property Name="HOTEN" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="SDT" Type="char" MaxLength="11" Nullable="false" />
+    <Property Name="SDT" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="NGAYSINH" Type="date" Nullable="false" />
     <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
@@ -91,7 +91,8 @@
     <Property Name="ANHSP" Type="varchar(max)" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
     <Property Name="MALOAISP" Type="char" MaxLength="2" Nullable="false" />
-    <Property Name="MOTASP" Type="nvarchar(max)" />
+    <Property Name="ISENABLE" Type="bit" Nullable="false" />
+    <Property Name="MOTASP" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="TAIKHOAN">
     <Key>
@@ -101,12 +102,22 @@
     <Property Name="USERNAME" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="USERPASSWORD" Type="varchar(max)" Nullable="false" />
     <Property Name="PHANQUYEN" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ISENABLE" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="TINHTRANG">
     <Key>
-      <PropertyRef Name="TINHTRANG" />
+      <PropertyRef Name="MATT" />
     </Key>
+    <Property Name="MATT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TINHTRANG" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="YEUTHICH">
+    <Key>
+      <PropertyRef Name="USERID" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="USERID" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="MASP" Type="char" MaxLength="6" Nullable="false" />
   </EntityType>
   <Association Name="FK_CTDH_DH">
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
@@ -163,10 +174,10 @@
     <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TINHTRANG">
-        <PropertyRef Name="TINHTRANG" />
+        <PropertyRef Name="MATT" />
       </Principal>
       <Dependent Role="DONHANG">
-        <PropertyRef Name="TINHTRANG" />
+        <PropertyRef Name="MATT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -218,15 +229,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="sp_CapNhatNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userid" Type="char" Mode="In" />
-    <Parameter Name="hoten" Type="nvarchar" Mode="In" />
-    <Parameter Name="sdt" Type="char" Mode="In" />
-    <Parameter Name="diachi" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaysinh" Type="date" Mode="In" />
-    <Parameter Name="email" Type="varchar" Mode="In" />
-    <Parameter Name="diachi2" Type="nvarchar" Mode="In" />
-  </Function>
+  <Association Name="FK_YT_ND">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="USERID" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YT_SP">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="YEUTHICH" Type="Self.YEUTHICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="YEUTHICH">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="sp_ChiTietSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
   </Function>
@@ -236,11 +262,6 @@
   </Function>
   <Function Name="sp_DanhSachSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_DoiMatKhau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userid" Type="char" Mode="In" />
-    <Parameter Name="userpassword" Type="varchar(max)" Mode="In" />
-    <Parameter Name="confirm_password" Type="varchar(max)" Mode="In" />
   </Function>
   <Function Name="sp_taoMaNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="dem" Type="int" Mode="In" />
@@ -259,14 +280,10 @@
     <Parameter Name="sdt" Type="char" Mode="In" />
     <Parameter Name="email" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
-    <Parameter Name="gia_sp" Type="decimal" Mode="In" />
-    <Parameter Name="anh_sp" Type="varchar(max)" Mode="In" />
-    <Parameter Name="soluong" Type="int" Mode="In" />
-    <Parameter Name="ma_loai" Type="char" Mode="In" />
+  <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma" Type="char" Mode="In" />
+    <Parameter Name="sdt" Type="char" Mode="In" />
   </Function>
-  <Function Name="sp_XemKhuyenMai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="thecoffeeshopModelStoreContainer">
     <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
@@ -278,6 +295,7 @@
     <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TINHTRANG" EntityType="Self.TINHTRANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="YEUTHICH" EntityType="Self.YEUTHICH" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CTDH_DH" Association="Self.FK_CTDH_DH">
       <End Role="DONHANG" EntitySet="DONHANG" />
       <End Role="CTDONHANG" EntitySet="CTDONHANG" />
@@ -313,6 +331,14 @@
     <AssociationSet Name="FK_TK_ND" Association="Self.FK_TK_ND">
       <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
       <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YT_ND" Association="Self.FK_YT_ND">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YT_SP" Association="Self.FK_YT_SP">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="YEUTHICH" EntitySet="YEUTHICH" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

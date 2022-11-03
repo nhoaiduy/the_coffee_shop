@@ -4,26 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="87a92c9dd8eb417a8c9b5d94a511fc08" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="thecoffeeshopModel.CTDONHANG" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.DONHANG" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.KHUYENMAI" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.LOAIPTTT" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.LOAISANPHAM" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.NGUOIDUNG" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.PTTHANHTOAN" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.SANPHAM" Width="1.5" PointX="10.375" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.TAIKHOAN" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+      <Diagram DiagramId="d25524d6660745eda7603a2a667eb082" Name="Diagram1">
+        <EntityTypeShape EntityType="thecoffeeshopModel.CTDONHANG" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.DONHANG" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.KHUYENMAI" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.LOAIPTTT" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.LOAISANPHAM" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.NGUOIDUNG" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.PTTHANHTOAN" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.SANPHAM" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.TAIKHOAN" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="thecoffeeshopModel.TINHTRANG" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
         <AssociationConnector Association="thecoffeeshopModel.FK_CTDH_DH" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_CTDH_SP" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_DH_KM" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_DH_PTTT" ManuallyRouted="false" />
+        <AssociationConnector Association="thecoffeeshopModel.FK_DH_TT" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_PTTT_LOAIPTTT" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_SP_LOAISP" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_PTTT_ND" ManuallyRouted="false" />
         <AssociationConnector Association="thecoffeeshopModel.FK_TK_ND" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="thecoffeeshopModel.TINHTRANG" Width="1.5" PointX="5.375" PointY="0.875" />
-        <AssociationConnector Association="thecoffeeshopModel.FK_DH_TT" />
+        <AssociationConnector Association="thecoffeeshopModel.YEUTHICH" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
