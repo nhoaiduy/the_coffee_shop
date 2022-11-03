@@ -50,13 +50,13 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             return View(donHangs.ToList());
         }
 
-        public ActionResult SetStatus(string status, string MADH)
-        {
-            DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
-            dONHANG.TINHTRANG = status;
-            db.Entry(dONHANG).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("ChiTietDonHang", "DonHang", new { MADH = MADH });
-        }
+        //public ActionResult SetStatus(string status, string MADH)
+        //{
+        //    DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
+        //    dONHANG.TINHTRANG = status;
+        //    db.Entry(dONHANG).State = EntityState.Modified;
+        //    db.SaveChanges();
+        //    return RedirectToAction("ChiTietDonHang", "DonHang", new { MADH = MADH });
+        //}
     }
 }

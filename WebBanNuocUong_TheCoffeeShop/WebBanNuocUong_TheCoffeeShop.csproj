@@ -188,9 +188,6 @@
     <Compile Include="Models\sp_DanhSachSanPham_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_XemKhuyenMai_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TAIKHOAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -240,13 +237,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\DanhMucSanPham.cshtml" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\SanPham\ChiTiet.cshtml" />
     <Content Include="Areas\Admin\Views\SanPham\TimKiem.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\DanhSachDonHang.cshtml" />
@@ -255,6 +245,13 @@
     <Content Include="Areas\Admin\Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\DanhSachTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoan\ChiTietNguoiDung.cshtml" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />
