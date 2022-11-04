@@ -24,16 +24,16 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
                     return View(donHangs.ToList());
                 }
-                donHangs = donHangs.Where(d => d.TINHTRANG.Equals(tinhTrang)).ToList();
+                donHangs = donHangs.Where(d => d.TINHTRANG.TINHTRANG1.Equals(tinhTrang)).ToList();
             }
-            ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
+            ViewBag.TINHTRANG = db.TINHTRANGs.Select(t => t.TINHTRANG1).ToList();
             return View(donHangs.ToList());
         }
 
         public ActionResult ChiTietDonHang(string MADH)
         {
             DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
-            ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
+            ViewBag.MATT = new SelectList(db.TINHTRANGs.ToList(), "MATT", "TINHTRANG1", dONHANG.MATT );
             return View(dONHANG);
         }
 
@@ -50,13 +50,13 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             return View(donHangs.ToList());
         }
 
-        //public ActionResult SetStatus(string status, string MADH)
-        //{
-        //    DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
-        //    dONHANG.TINHTRANG = status;
-        //    db.Entry(dONHANG).State = EntityState.Modified;
-        //    db.SaveChanges();
-        //    return RedirectToAction("ChiTietDonHang", "DonHang", new { MADH = MADH });
-        //}
+        public ActionResult SetStatus(int MATT, string MADH)
+        {
+            DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
+            dONHANG.MATT = MATT;
+            db.Entry(dONHANG).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ChiTietDonHang", "DonHang", new { MADH = MADH });
+        }
     }
 }

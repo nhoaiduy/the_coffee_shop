@@ -106,6 +106,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 sanPham.MOTASP = item.MOTASP;
                 break;
             }
+            ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sanPham.MALOAISP);
             return View(sanPham);
         }
 
@@ -142,6 +143,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     if (sANPHAM.MOTASP != null)
                     {
                         sANPHAM1.MOTASP = sANPHAM.MOTASP;
+                    }
+                    if (sANPHAM.MALOAISP != null)
+                    {
+                        sANPHAM1.MALOAISP = sANPHAM.MALOAISP;
                     }
                     db.Entry(sANPHAM1).State = EntityState.Modified;
                     db.SaveChanges();

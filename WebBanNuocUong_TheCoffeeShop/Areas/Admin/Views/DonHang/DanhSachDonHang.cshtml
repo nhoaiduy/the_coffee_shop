@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Danh sách đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    List<WebBanNuocUong_TheCoffeeShop.Models.TINHTRANG> tinhTrangs = ViewBag.TINHTRANG;
+    List<string> tinhTrangs = ViewBag.TINHTRANG;
 }
 
 
@@ -15,9 +15,12 @@
             </span>
             @foreach (var item in tinhTrangs)
             {
-                <span>
-                    <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})" class="order-status">@item.TINHTRANG1</a>
-                </span>
+                if(!item.Equals("Chưa tạo"))
+                {
+                    <span>
+                        <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item})" class="order-status">@item</a>
+                    </span>
+                }
             }
             <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
@@ -56,7 +59,7 @@
                                 @Html.DisplayFor(modelItem => item.TONGITEN) VNĐ
                             </td>
                             <td>
-                                @item.TINHTRANG
+                                @item.TINHTRANG.TINHTRANG1
                             </td>
                             <td>
                                 <a href="@Url.Action("ChiTietDonHang", new { @MADH = item.MADH})">Xem đơn hàng</a>
