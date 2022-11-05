@@ -258,6 +258,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_ChinhSuaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_sp" Type="char" Mode="In" />
+          <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
+          <Parameter Name="gia_sp" Type="decimal" Mode="In" />
+          <Parameter Name="anh_sp" Type="varchar(max)" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ma_loai" Type="char" Mode="In" />
+        </Function>
         <Function Name="sp_ChiTietSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
         </Function>
@@ -265,29 +274,41 @@
           <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
           <Parameter Name="ma_loai" Type="char" Mode="InOut" />
         </Function>
+        <Function Name="sp_DanhSachCTDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_dh" Type="char" Mode="In" />
+        </Function>
         <Function Name="sp_DanhSachSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_taoMaNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="dem" Type="int" Mode="In" />
-          <Parameter Name="ma" Type="char" Mode="InOut" />
+        <Function Name="sp_HienThiDanhSachDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tinh_trang" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_HienThiDanhSachLoaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_TaoMaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma_loai" Type="char" Mode="In" />
           <Parameter Name="dem" Type="int" Mode="In" />
           <Parameter Name="ma" Type="char" Mode="InOut" />
         </Function>
-        <Function Name="sp_ThemNVQuanTri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
-          <Parameter Name="ngaySinh" Type="date" Mode="In" />
-          <Parameter Name="diaChi" Type="nvarchar" Mode="In" />
-          <Parameter Name="diaChi2" Type="nvarchar" Mode="In" />
-          <Parameter Name="sdt" Type="char" Mode="In" />
-          <Parameter Name="email" Type="varchar" Mode="In" />
+        <Function Name="sp_ThayDoiTrangThaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_sp" Type="char" Mode="In" />
         </Function>
-        <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ma" Type="char" Mode="In" />
-          <Parameter Name="sdt" Type="char" Mode="In" />
+        <Function Name="sp_ThemLoaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_loai" Type="char" Mode="In" />
+          <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
+          <Parameter Name="gia_sp" Type="decimal" Mode="In" />
+          <Parameter Name="anh_sp" Type="varchar(max)" Mode="In" />
+          <Parameter Name="soluong" Type="int" Mode="In" />
+          <Parameter Name="ma_loai" Type="char" Mode="In" />
+          <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_ThongTinDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_dh" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="search_string" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="thecoffeeshopModelStoreContainer">
           <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
@@ -677,6 +698,52 @@
             <Parameter Name="ma" Mode="In" Type="String" />
             <Parameter Name="sdt" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_CapNhatThongTinCaNhanNV">
+            <Parameter Name="ma_nd" Mode="In" Type="String" />
+            <Parameter Name="hoten" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="diachi" Mode="In" Type="String" />
+            <Parameter Name="ngaysinh" Mode="In" Type="DateTime" />
+            <Parameter Name="diachi2" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ChinhSuaSanPham">
+            <Parameter Name="ma_sp" Mode="In" Type="String" />
+            <Parameter Name="ten_sp" Mode="In" Type="String" />
+            <Parameter Name="gia_sp" Mode="In" Type="Decimal" />
+            <Parameter Name="anh_sp" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="mo_ta" Mode="In" Type="String" />
+            <Parameter Name="ma_loai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThayDoiTrangThaiSanPham">
+          <Parameter Name="ma_sp" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemLoaiSanPham">
+            <Parameter Name="ma_loai" Mode="In" Type="String" />
+            <Parameter Name="ten_loai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemSanPham">
+            <Parameter Name="ten_sp" Mode="In" Type="String" />
+            <Parameter Name="gia_sp" Mode="In" Type="Decimal" />
+            <Parameter Name="anh_sp" Mode="In" Type="String" />
+            <Parameter Name="soluong" Mode="In" Type="Int32" />
+            <Parameter Name="ma_loai" Mode="In" Type="String" />
+            <Parameter Name="mo_ta" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TimKiemSanPham" ReturnType="Collection(thecoffeeshopModel.sp_TimKiemSanPham_Result)">
+          <Parameter Name="search_string" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_HienThiDanhSachLoaiSanPham" ReturnType="Collection(thecoffeeshopModel.sp_HienThiDanhSachLoaiSanPham_Result)" />
+          <FunctionImport Name="sp_DanhSachCTDonHang" ReturnType="Collection(thecoffeeshopModel.sp_DanhSachCTDonHang_Result)">
+          <Parameter Name="ma_dh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_HienThiDanhSachDonHang" ReturnType="Collection(thecoffeeshopModel.sp_HienThiDanhSachDonHang_Result)">
+          <Parameter Name="tinh_trang" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThongTinDonHang" ReturnType="Collection(thecoffeeshopModel.sp_ThongTinDonHang_Result)">
+          <Parameter Name="ma_dh" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_ChiTietSanPham_Result">
           <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
@@ -697,6 +764,63 @@
           <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
           <Property Type="Boolean" Name="ISENABLE" Nullable="false" />
           <Property Type="String" Name="MOTASP" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_TimKiemSanPham_Result">
+          <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="TENSP" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="GIASP" Nullable="false" Precision="5" Scale="0" />
+          <Property Type="String" Name="ANHSP" Nullable="false" />
+          <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+          <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
+          <Property Type="Boolean" Name="ISENABLE" Nullable="false" />
+          <Property Type="String" Name="MOTASP" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_HienThiDanhSachLoaiSanPham_Result">
+          <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="TENLOAISP" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_DanhSachCTDonHang_Result">
+          <Property Type="Int32" Name="MACTDH" Nullable="false" />
+          <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+          <Property Type="Decimal" Name="THANHTIEN" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="sp_HienThiDanhSachDonHang_Result">
+          <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="MATT" Nullable="false" />
+          <Property Type="DateTime" Name="NGAYLAP" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TENNGUOINHAN" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DIACHI" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="THOIGIANGIAOHANG" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="DANHGIA" Nullable="true" />
+          <Property Type="String" Name="NHANXET" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="TAMTINH" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TRUDIEMTINHLUY" Nullable="true" />
+          <Property Type="Decimal" Name="SOTIENGIAMKM" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ThongTinDonHang_Result">
+          <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="MATT" Nullable="false" />
+          <Property Type="DateTime" Name="NGAYLAP" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TENNGUOINHAN" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DIACHI" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="THOIGIANGIAOHANG" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="DANHGIA" Nullable="true" />
+          <Property Type="String" Name="NHANXET" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="TAMTINH" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TRUDIEMTINHLUY" Nullable="true" />
+          <Property Type="Decimal" Name="SOTIENGIAMKM" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -861,10 +985,88 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_taoMaNV" FunctionName="thecoffeeshopModel.Store.sp_taoMaNV" />
           <FunctionImportMapping FunctionImportName="sp_TaoMaSanPham" FunctionName="thecoffeeshopModel.Store.sp_TaoMaSanPham" />
-          <FunctionImportMapping FunctionImportName="sp_ThemNVQuanTri" FunctionName="thecoffeeshopModel.Store.sp_ThemNVQuanTri" />
-          <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV" FunctionName="thecoffeeshopModel.Store.sp_ThemTaiKhoanNV" />
+          <FunctionImportMapping FunctionImportName="sp_ChinhSuaSanPham" FunctionName="thecoffeeshopModel.Store.sp_ChinhSuaSanPham" />
+          <FunctionImportMapping FunctionImportName="sp_ThayDoiTrangThaiSanPham" FunctionName="thecoffeeshopModel.Store.sp_ThayDoiTrangThaiSanPham" />
+          <FunctionImportMapping FunctionImportName="sp_ThemLoaiSanPham" FunctionName="thecoffeeshopModel.Store.sp_ThemLoaiSanPham" />
+          <FunctionImportMapping FunctionImportName="sp_ThemSanPham" FunctionName="thecoffeeshopModel.Store.sp_ThemSanPham" />
+          <FunctionImportMapping FunctionImportName="sp_TimKiemSanPham" FunctionName="thecoffeeshopModel.Store.sp_TimKiemSanPham">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_TimKiemSanPham_Result">
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="GIASP" ColumnName="GIASP" />
+                <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+                <ScalarProperty Name="ISENABLE" ColumnName="ISENABLE" />
+                <ScalarProperty Name="MOTASP" ColumnName="MOTASP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_HienThiDanhSachLoaiSanPham" FunctionName="thecoffeeshopModel.Store.sp_HienThiDanhSachLoaiSanPham">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_HienThiDanhSachLoaiSanPham_Result">
+                <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+                <ScalarProperty Name="TENLOAISP" ColumnName="TENLOAISP" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_DanhSachCTDonHang" FunctionName="thecoffeeshopModel.Store.sp_DanhSachCTDonHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_DanhSachCTDonHang_Result">
+                <ScalarProperty Name="MACTDH" ColumnName="MACTDH" />
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="MASP" ColumnName="MASP" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="THANHTIEN" ColumnName="THANHTIEN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_HienThiDanhSachDonHang" FunctionName="thecoffeeshopModel.Store.sp_HienThiDanhSachDonHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_HienThiDanhSachDonHang_Result">
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="TENNGUOINHAN" ColumnName="TENNGUOINHAN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="THOIGIANGIAOHANG" ColumnName="THOIGIANGIAOHANG" />
+                <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+                <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+                <ScalarProperty Name="TAMTINH" ColumnName="TAMTINH" />
+                <ScalarProperty Name="TRUDIEMTINHLUY" ColumnName="TRUDIEMTINHLUY" />
+                <ScalarProperty Name="SOTIENGIAMKM" ColumnName="SOTIENGIAMKM" />
+                <ScalarProperty Name="TONGITEN" ColumnName="TONGITEN" />
+                <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+                <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ThongTinDonHang" FunctionName="thecoffeeshopModel.Store.sp_ThongTinDonHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ThongTinDonHang_Result">
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="TENNGUOINHAN" ColumnName="TENNGUOINHAN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="THOIGIANGIAOHANG" ColumnName="THOIGIANGIAOHANG" />
+                <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+                <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+                <ScalarProperty Name="TAMTINH" ColumnName="TAMTINH" />
+                <ScalarProperty Name="TRUDIEMTINHLUY" ColumnName="TRUDIEMTINHLUY" />
+                <ScalarProperty Name="SOTIENGIAMKM" ColumnName="SOTIENGIAMKM" />
+                <ScalarProperty Name="TONGITEN" ColumnName="TONGITEN" />
+                <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+                <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

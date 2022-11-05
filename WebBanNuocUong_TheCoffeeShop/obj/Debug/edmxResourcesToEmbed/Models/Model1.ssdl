@@ -253,6 +253,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="sp_ChinhSuaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_sp" Type="char" Mode="In" />
+    <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
+    <Parameter Name="gia_sp" Type="decimal" Mode="In" />
+    <Parameter Name="anh_sp" Type="varchar(max)" Mode="In" />
+    <Parameter Name="soluong" Type="int" Mode="In" />
+    <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ma_loai" Type="char" Mode="In" />
+  </Function>
   <Function Name="sp_ChiTietSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
   </Function>
@@ -260,29 +269,41 @@
     <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
     <Parameter Name="ma_loai" Type="char" Mode="InOut" />
   </Function>
+  <Function Name="sp_DanhSachCTDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_dh" Type="char" Mode="In" />
+  </Function>
   <Function Name="sp_DanhSachSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="sp_taoMaNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="dem" Type="int" Mode="In" />
-    <Parameter Name="ma" Type="char" Mode="InOut" />
+  <Function Name="sp_HienThiDanhSachDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tinh_trang" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_HienThiDanhSachLoaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_TaoMaSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ma_loai" Type="char" Mode="In" />
     <Parameter Name="dem" Type="int" Mode="In" />
     <Parameter Name="ma" Type="char" Mode="InOut" />
   </Function>
-  <Function Name="sp_ThemNVQuanTri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
-    <Parameter Name="ngaySinh" Type="date" Mode="In" />
-    <Parameter Name="diaChi" Type="nvarchar" Mode="In" />
-    <Parameter Name="diaChi2" Type="nvarchar" Mode="In" />
-    <Parameter Name="sdt" Type="char" Mode="In" />
-    <Parameter Name="email" Type="varchar" Mode="In" />
+  <Function Name="sp_ThayDoiTrangThaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_sp" Type="char" Mode="In" />
   </Function>
-  <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ma" Type="char" Mode="In" />
-    <Parameter Name="sdt" Type="char" Mode="In" />
+  <Function Name="sp_ThemLoaiSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_loai" Type="char" Mode="In" />
+    <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
+    <Parameter Name="gia_sp" Type="decimal" Mode="In" />
+    <Parameter Name="anh_sp" Type="varchar(max)" Mode="In" />
+    <Parameter Name="soluong" Type="int" Mode="In" />
+    <Parameter Name="ma_loai" Type="char" Mode="In" />
+    <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThongTinDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_dh" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="search_string" Type="nvarchar" Mode="In" />
   </Function>
   <EntityContainer Name="thecoffeeshopModelStoreContainer">
     <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
