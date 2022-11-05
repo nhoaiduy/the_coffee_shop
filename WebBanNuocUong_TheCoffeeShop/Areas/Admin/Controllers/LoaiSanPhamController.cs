@@ -16,8 +16,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LOAISANPHAMs.Add(lOAISANPHAM);
-                db.SaveChanges();
+                db.sp_ThemLoaiSanPham(lOAISANPHAM.MALOAISP, lOAISANPHAM.TENLOAISP);
                 return RedirectToAction("DanhMucSanPham", "SanPham");
             }
             return RedirectToAction("DanhMucSanPham", "SanPham");

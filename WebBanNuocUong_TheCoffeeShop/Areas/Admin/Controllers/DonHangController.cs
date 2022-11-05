@@ -16,14 +16,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         // GET: Admin/DonHang
         public ActionResult DanhSachDonHang(string tinhTrang)
         {
-            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).ToList();
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.MATT >1).ToList();
             if (!string.IsNullOrEmpty(tinhTrang))
             {
-                if(tinhTrang.Equals("Tất cả"))
-                {
-                    ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
-                    return View(donHangs.ToList());
-                }
                 donHangs = donHangs.Where(d => d.TINHTRANG.TINHTRANG1.Equals(tinhTrang)).ToList();
             }
             ViewBag.TINHTRANG = db.TINHTRANGs.Select(t => t.TINHTRANG1).ToList();

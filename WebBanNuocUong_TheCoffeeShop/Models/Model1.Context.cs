@@ -128,5 +128,163 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV", maParameter, sdtParameter);
         }
+    
+        public virtual int sp_CapNhatThongTinCaNhanNV(string ma_nd, string hoten, string sdt, string diachi, Nullable<System.DateTime> ngaysinh, string diachi2, string email)
+        {
+            var ma_ndParameter = ma_nd != null ?
+                new ObjectParameter("ma_nd", ma_nd) :
+                new ObjectParameter("ma_nd", typeof(string));
+    
+            var hotenParameter = hoten != null ?
+                new ObjectParameter("hoten", hoten) :
+                new ObjectParameter("hoten", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var diachiParameter = diachi != null ?
+                new ObjectParameter("diachi", diachi) :
+                new ObjectParameter("diachi", typeof(string));
+    
+            var ngaysinhParameter = ngaysinh.HasValue ?
+                new ObjectParameter("ngaysinh", ngaysinh) :
+                new ObjectParameter("ngaysinh", typeof(System.DateTime));
+    
+            var diachi2Parameter = diachi2 != null ?
+                new ObjectParameter("diachi2", diachi2) :
+                new ObjectParameter("diachi2", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CapNhatThongTinCaNhanNV", ma_ndParameter, hotenParameter, sdtParameter, diachiParameter, ngaysinhParameter, diachi2Parameter, emailParameter);
+        }
+    
+        public virtual int sp_ChinhSuaSanPham(string ma_sp, string ten_sp, Nullable<decimal> gia_sp, string anh_sp, Nullable<int> soluong, string mo_ta, string ma_loai)
+        {
+            var ma_spParameter = ma_sp != null ?
+                new ObjectParameter("ma_sp", ma_sp) :
+                new ObjectParameter("ma_sp", typeof(string));
+    
+            var ten_spParameter = ten_sp != null ?
+                new ObjectParameter("ten_sp", ten_sp) :
+                new ObjectParameter("ten_sp", typeof(string));
+    
+            var gia_spParameter = gia_sp.HasValue ?
+                new ObjectParameter("gia_sp", gia_sp) :
+                new ObjectParameter("gia_sp", typeof(decimal));
+    
+            var anh_spParameter = anh_sp != null ?
+                new ObjectParameter("anh_sp", anh_sp) :
+                new ObjectParameter("anh_sp", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var mo_taParameter = mo_ta != null ?
+                new ObjectParameter("mo_ta", mo_ta) :
+                new ObjectParameter("mo_ta", typeof(string));
+    
+            var ma_loaiParameter = ma_loai != null ?
+                new ObjectParameter("ma_loai", ma_loai) :
+                new ObjectParameter("ma_loai", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ChinhSuaSanPham", ma_spParameter, ten_spParameter, gia_spParameter, anh_spParameter, soluongParameter, mo_taParameter, ma_loaiParameter);
+        }
+    
+        public virtual int sp_ThayDoiTrangThaiSanPham(string ma_sp)
+        {
+            var ma_spParameter = ma_sp != null ?
+                new ObjectParameter("ma_sp", ma_sp) :
+                new ObjectParameter("ma_sp", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThayDoiTrangThaiSanPham", ma_spParameter);
+        }
+    
+        public virtual int sp_ThemLoaiSanPham(string ma_loai, string ten_loai)
+        {
+            var ma_loaiParameter = ma_loai != null ?
+                new ObjectParameter("ma_loai", ma_loai) :
+                new ObjectParameter("ma_loai", typeof(string));
+    
+            var ten_loaiParameter = ten_loai != null ?
+                new ObjectParameter("ten_loai", ten_loai) :
+                new ObjectParameter("ten_loai", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemLoaiSanPham", ma_loaiParameter, ten_loaiParameter);
+        }
+    
+        public virtual int sp_ThemSanPham(string ten_sp, Nullable<decimal> gia_sp, string anh_sp, Nullable<int> soluong, string ma_loai, string mo_ta)
+        {
+            var ten_spParameter = ten_sp != null ?
+                new ObjectParameter("ten_sp", ten_sp) :
+                new ObjectParameter("ten_sp", typeof(string));
+    
+            var gia_spParameter = gia_sp.HasValue ?
+                new ObjectParameter("gia_sp", gia_sp) :
+                new ObjectParameter("gia_sp", typeof(decimal));
+    
+            var anh_spParameter = anh_sp != null ?
+                new ObjectParameter("anh_sp", anh_sp) :
+                new ObjectParameter("anh_sp", typeof(string));
+    
+            var soluongParameter = soluong.HasValue ?
+                new ObjectParameter("soluong", soluong) :
+                new ObjectParameter("soluong", typeof(int));
+    
+            var ma_loaiParameter = ma_loai != null ?
+                new ObjectParameter("ma_loai", ma_loai) :
+                new ObjectParameter("ma_loai", typeof(string));
+    
+            var mo_taParameter = mo_ta != null ?
+                new ObjectParameter("mo_ta", mo_ta) :
+                new ObjectParameter("mo_ta", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemSanPham", ten_spParameter, gia_spParameter, anh_spParameter, soluongParameter, ma_loaiParameter, mo_taParameter);
+        }
+    
+        public virtual ObjectResult<sp_TimKiemSanPham_Result> sp_TimKiemSanPham(string search_string)
+        {
+            var search_stringParameter = search_string != null ?
+                new ObjectParameter("search_string", search_string) :
+                new ObjectParameter("search_string", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_TimKiemSanPham_Result>("sp_TimKiemSanPham", search_stringParameter);
+        }
+    
+        public virtual ObjectResult<sp_HienThiDanhSachLoaiSanPham_Result> sp_HienThiDanhSachLoaiSanPham()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_HienThiDanhSachLoaiSanPham_Result>("sp_HienThiDanhSachLoaiSanPham");
+        }
+    
+        public virtual ObjectResult<sp_DanhSachCTDonHang_Result> sp_DanhSachCTDonHang(string ma_dh)
+        {
+            var ma_dhParameter = ma_dh != null ?
+                new ObjectParameter("ma_dh", ma_dh) :
+                new ObjectParameter("ma_dh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_DanhSachCTDonHang_Result>("sp_DanhSachCTDonHang", ma_dhParameter);
+        }
+    
+        public virtual ObjectResult<sp_HienThiDanhSachDonHang_Result> sp_HienThiDanhSachDonHang(string tinh_trang)
+        {
+            var tinh_trangParameter = tinh_trang != null ?
+                new ObjectParameter("tinh_trang", tinh_trang) :
+                new ObjectParameter("tinh_trang", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_HienThiDanhSachDonHang_Result>("sp_HienThiDanhSachDonHang", tinh_trangParameter);
+        }
+    
+        public virtual ObjectResult<sp_ThongTinDonHang_Result> sp_ThongTinDonHang(string ma_dh)
+        {
+            var ma_dhParameter = ma_dh != null ?
+                new ObjectParameter("ma_dh", ma_dh) :
+                new ObjectParameter("ma_dh", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongTinDonHang_Result>("sp_ThongTinDonHang", ma_dhParameter);
+        }
     }
 }

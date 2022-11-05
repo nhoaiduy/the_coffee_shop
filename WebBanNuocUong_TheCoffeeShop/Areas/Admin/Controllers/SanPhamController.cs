@@ -33,7 +33,16 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 list.Add(sanPham);
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP");
-            ViewBag.LOAISP = db.LOAISANPHAMs.ToList();
+            var temp = db.sp_HienThiDanhSachLoaiSanPham();
+            List<LOAISANPHAM> lOAISANPHAMs = new List<LOAISANPHAM>();
+            foreach (var item in temp)
+            {
+                LOAISANPHAM lOAISANPHAM = new LOAISANPHAM();
+                lOAISANPHAM.MALOAISP = item.MALOAISP;
+                lOAISANPHAM.TENLOAISP = item.TENLOAISP;
+                lOAISANPHAMs.Add(lOAISANPHAM);
+            }
+            ViewBag.LOAISP = lOAISANPHAMs;
             return View(list);
         }
         [HttpPost]
