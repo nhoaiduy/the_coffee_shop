@@ -58,17 +58,17 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 string fileName = System.IO.Path.GetFileName(image.FileName);
                 string urlName = Server.MapPath("~/Image/" + fileName);
                 image.SaveAs(urlName);
-
                 kHUYENMAI.ANHKM = "~/Image/" + fileName;
             }
-            else kHUYENMAI.ANHKM = "https://thumbs.dreamstime.com/b/halloween-sale-21599574.jpg";
+            //else kHUYENMAI.ANHKM = "https://thumbs.dreamstime.com/b/halloween-sale-21599574.jpg";
             if (ModelState.IsValid)
             {
                 var khuyenMais = db.KHUYENMAIs.ToList();
 
                 if (khuyenMais.ToList().Count > 0)
                 {
-                    string temp = khuyenMais.ToList()[khuyenMais.ToList().Count - 1].MAKM;                     
+                    string temp = khuyenMais.ToList()[khuyenMais.ToList().Count - 1].MAKM;  
+                    ViewBag.A = temp;
                     string last = "";
                     for (int i = 2; i < temp.Length; i++)
                     {
@@ -90,10 +90,15 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 {
                     kHUYENMAI.MAKM = "KM001";
                 }
-                //if (kHUYENMAI == null)
-                //{
-                //    kHUYENMAI.MAKM = "KM003";
-                //}             
+                
+                    kHUYENMAI.MAKM = "KM003";
+                    kHUYENMAI.ANHKM = "https://thumbs.dreamstime.com/b/halloween-sale-21599574.jpg";
+                    kHUYENMAI.TENKM = "A";
+                    kHUYENMAI.NGAYHETHAN = DateTime.Today;
+                    kHUYENMAI.SOLUONG = 1;
+                    kHUYENMAI.DIEUKIEN = 2;
+                    kHUYENMAI.MOTAKM = "A";
+                    kHUYENMAI.SOTIENGIAM = 5000;                
                     db.KHUYENMAIs.Add(kHUYENMAI);
                     db.SaveChanges();
                     return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new {Area = "Admin"});                                
