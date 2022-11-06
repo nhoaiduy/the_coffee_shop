@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "GioHang";
+    ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var cart = new List<Tuple<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM, int>>();
     var cart1 = new List<WebBanNuocUong_TheCoffeeShop.Models.CTDONHANG>();
@@ -100,15 +100,22 @@
 
             <div class="cart_bottom_right">
                 <span style="text-align: right; display: flex; flex-direction: column; margin: 16px 0; font-size: 24px; font-weight:bold; color: var(--primary-color);">
-                    @{ 
+                    @{
                         decimal sum = 0;
                         if (Session["customer"] == null)
                         {
-                            sum= cart.Sum(d => d.Item1.GIASP * d.Item2);
-                        }       
+                            if (cart != null)
+                            {
+                                sum = cart.Sum(d => d.Item1.GIASP * d.Item2);
+                            }
+                        }
                         else
                         {
-                            sum = cart1.Sum(d => d.THANHTIEN);
+                            if (cart1 != null)
+                            {
+                                sum = cart1.Sum(d => d.THANHTIEN);
+                            }
+
                         }
                     }
                     Tổng tiền: @sum VNĐ
@@ -117,7 +124,7 @@
 
         </div>
         <div style="display: flex; width: 100%; justify-content:right; margin-top:30px;">
-            <a href="#"style="padding: 8px 16px; background-color: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; margin-right: 16px">Tiếp tục</a>
+            <a href="@Url.Action("DatHang", "DatHang")"style="padding: 8px 16px; background-color: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; margin-right: 16px">Tiếp tục</a>
         </div>
     </div>
 </div>
