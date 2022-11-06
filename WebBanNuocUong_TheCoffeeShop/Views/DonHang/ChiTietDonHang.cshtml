@@ -1,9 +1,8 @@
 ﻿@model WebBanNuocUong_TheCoffeeShop.Models.DONHANG
 
 @{
-    ViewBag.Title = "Chi tiết - "+Model.MADH;
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    List<WebBanNuocUong_TheCoffeeShop.Models.TINHTRANG> tinhTrangs = ViewBag.TINHTRANG;
+    ViewBag.Title = "Chi tiết đơn hàng - " + Model.MADH ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
     int i = 1;
 }
 
@@ -28,12 +27,7 @@
                 </table>
             </div>
             <div class="status-update">
-                @using (Html.BeginForm("SetStatus", "DonHang", FormMethod.Get))
-                {
-                    @Html.DropDownList("MATT", null, htmlAttributes: new { @class = "form-control" })
-                    <input type="submit" value="Cập nhật" class="active create-btn" />
-                    <input type="text" name="MADH" value="@Model.MADH" style="display: none;" />
-                }
+                <h2>@Model.TINHTRANG.TINHTRANG1</h2>
             </div>
         </div>
         <div class="categories__data">
@@ -67,7 +61,7 @@
                             @i
                             @{
                                 i++;
-                            }
+                            }                      i
                         </td>
 
                         <td class="name">
@@ -90,7 +84,7 @@
             </table>
         </div>
         <hr />
-        <div class="total" style="display: flex; justify-content: flex-end">
+        <div class="total" style="width: 100%; display: flex; justify-content: flex-end">
             <table>
                 <tr>
                     <td>Tạm tính:</td>

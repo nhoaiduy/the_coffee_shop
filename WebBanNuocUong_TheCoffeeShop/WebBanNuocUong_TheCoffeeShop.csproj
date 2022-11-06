@@ -135,6 +135,8 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Data\LoginModel.cs" />
+    <Compile Include="Controllers\DatHangController.cs" />
+    <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\KhuyenMaiController.cs" />
@@ -305,6 +307,8 @@
     <Content Include="Views\QuanLy\GioHangMoi.cshtml" />
     <Content Include="Views\QuanLy\TraCuuDonHang.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
+    <Content Include="Views\DatHang\DatHang.cshtml" />
+    <Content Include="Views\DonHang\ChiTietDonHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
