@@ -233,6 +233,7 @@
     <Content Include="Content\cusProduct.css" />
     <Content Include="Content\customerInfo.css" />
     <Content Include="Content\customerLayout.css" />
+    <Content Include="Content\specialStyle.css" />
     <Content Include="Content\taiKhoan.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -298,13 +299,11 @@
     <Content Include="Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
     <Content Include="Views\SanPham\DanhMucSanPham.cshtml" />
     <Content Include="Views\TrangChu\GetBanner.cshtml" />
-    <Content Include="Views\QuanLy\TTCaNhan.cshtml" />
-    <Content Include="Views\QuanLy\GioHang.cshtml" />
-    <Content Include="Views\QuanLy\DonHang.cshtml" />
+    <Content Include="Views\QuanLy\ThongTinCaNhan.cshtml" />
+    <Content Include="Views\QuanLy\DanhSachDonHang.cshtml" />
     <Content Include="Views\QuanLy\DoiMatKhau.cshtml" />
     <Content Include="Views\SanPham\ChiTietSanPham.cshtml" />
     <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
-    <Content Include="Views\QuanLy\GioHangMoi.cshtml" />
     <Content Include="Views\QuanLy\TraCuuDonHang.cshtml" />
     <Content Include="Views\GioHang\GioHang.cshtml" />
     <Content Include="Views\DatHang\DatHang.cshtml" />
@@ -314,7 +313,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\LoaiSanPham\" />
     <Folder Include="Views\LoaiSanPham\" />
-    <Folder Include="Views\QuanLyThongTin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

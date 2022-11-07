@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using WebBanNuocUong_TheCoffeeShop.Models;
 
@@ -38,6 +39,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         [HttpPost]
         public ActionResult DatHang(string hoTen, string sdt, string diaChi, string MAKM)
         {
+            if (string.IsNullOrEmpty(hoTen) || string.IsNullOrEmpty(diaChi) || string.IsNullOrEmpty(hoTen)) 
+            {
+                return View();
+            }
             DONHANG dONHANG = new DONHANG();
             string day, month, year;
             DateTime date = DateTime.Now;
@@ -85,8 +90,11 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             dONHANG.THOIGIANGIAOHANG = date.AddMinutes(30);
             if (!string.IsNullOrEmpty(MAKM))
             {
-                dONHANG.MAKM = MAKM;
-                giam = db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.Equals(MAKM)).SOTIENGIAM;
+                if(db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.Equals(MAKM)) != null)
+                {
+                    dONHANG.MAKM = MAKM;
+                    giam = db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.Equals(MAKM)).SOTIENGIAM;
+                }
             }
             dONHANG.MATT = 2;
             dONHANG.NGAYLAP = date;

@@ -40,8 +40,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(user.USERID + "0000"));
                     if(dONHANG == null)
                     {
-                        dONHANG.MAKM = user.USERID + "0000";
-                        dONHANG.MATT = 0;
+                        dONHANG = new DONHANG();
+                        dONHANG.MADH = user.USERID + "0000";
+                        dONHANG.MATT = 1;
                         dONHANG.TENNGUOINHAN = user.NGUOIDUNG.HOTEN;
                         dONHANG.SDT = user.NGUOIDUNG.SDT;
                         dONHANG.DIACHI = user.NGUOIDUNG.DIACHI;

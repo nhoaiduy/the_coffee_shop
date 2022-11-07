@@ -62,7 +62,7 @@
                         @*<span>@infoUser.HOTEN</span>*@
                         <ul class="navbar-menu__list">
                             <li class="navbar-menu__item1">
-                                @infoUser.HOTEN
+                                <a href="@Url.Action("ThongTinCaNhan", "QuanLy", new {area=""})" class="navbar-menu__item1__link">@infoUser.HOTEN </a>
                             </li>
                             <li class="navbar-menu__item1">
                                 <a href="~/TaiKhoan/DangXuat" class="navbar-menu__item1__link">Đăng xuất</a>

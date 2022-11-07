@@ -10,13 +10,10 @@
         <div class="categories_sidebar-p" style="box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
             <ul class="categories_list-p">
                 <li class="categories_item-p">
-                    <a href="@Url.Action("TTCaNhan","QuanLy")" class="categories_item_link-p">Thông tin cá nhân</a>
+                    <a href="@Url.Action("ThongTinCaNhan","QuanLy")" class="categories_item_link-p">Thông tin cá nhân</a>
                 </li>
                 <li class="categories_item-p">
-                    <a href="@Url.Action("GioHang","QuanLy")" class="categories_item_link-p">Giỏ hàng</a>
-                </li>
-                <li class="categories_item-p">
-                    <a href="@Url.Action("DonHang","QuanLy")" class="categories_item_link-p">Đơn hàng</a>
+                    <a href="@Url.Action("DanhSachDonHang","QuanLy")" class="categories_item_link-p">Đơn hàng</a>
                 </li>
                 <li class="categories_item-p">
                     <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
@@ -33,9 +30,12 @@
             </span>
             @foreach (var item in tinhTrangs)
             {
-                <span>
-                    <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})" class="order-status">@item.TINHTRANG1</a>
-                </span>
+                if (item.MATT > 1)
+                {
+                    <span>
+                        <a href="@Url.Action("DanhSachDonHang", new {@tinhTrang = item.TINHTRANG1})" class="order-status">@item.TINHTRANG1</a>
+                    </span>
+                }
             }
             <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
@@ -74,7 +74,7 @@
                                 @Html.DisplayFor(modelItem => item.TONGITEN) VNĐ
                             </td>
                             <td>
-                                @item.TINHTRANG
+                                @item.TINHTRANG.TINHTRANG1
                             </td>
                             <td>
                                 <a href="@Url.Action("ChiTietDonHang", new { @MADH = item.MADH})">Xem đơn hàng</a>
