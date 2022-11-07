@@ -11,23 +11,23 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
         // GET: KhuyenMai
-        //public ActionResult DanhSachKhuyenMai()
-        //{
-        //    var khuyenMaiList = db.sp_XemKhuyenMai();
-        //    List<KHUYENMAI> list = new List<KHUYENMAI>();
-        //    foreach(var item in khuyenMaiList)
-        //    {
-        //        KHUYENMAI khuyenMai=new KHUYENMAI();
-        //        khuyenMai.MAKM = item.MAKM;
-        //        khuyenMai.TENKM=item.TENKM;
-        //        khuyenMai.SOTIENGIAM = item.SOTIENGIAM;
-        //        khuyenMai.ANHKM = item.ANHKM;
-        //        khuyenMai.NGAYHETHAN=item.NGAYHETHAN;
-        //        khuyenMai.SOLUONG = item.SOLUONG;
-        //        khuyenMai.DIEUKIEN = item.DIEUKIEN;
-        //        list.Add(khuyenMai);
-        //    }
-        //    return View(list);
-        //}
+        public ActionResult DanhSachKhuyenMai()
+        {
+            var khuyenMaiList = db.KHUYENMAIs.ToList();
+            List<KHUYENMAI> list = new List<KHUYENMAI>();
+            foreach (var item in khuyenMaiList)
+            {
+                KHUYENMAI khuyenMai = new KHUYENMAI();
+                khuyenMai.MAKM = item.MAKM;
+                khuyenMai.TENKM = item.TENKM;
+                khuyenMai.SOTIENGIAM = item.SOTIENGIAM;
+                khuyenMai.ANHKM = item.ANHKM;
+                khuyenMai.NGAYHETHAN = item.NGAYHETHAN;
+                khuyenMai.SOLUONG = item.SOLUONG;
+                khuyenMai.DIEUKIEN = item.DIEUKIEN;
+                list.Add(khuyenMai);
+            }
+            return View(list);
+        }
     }
 }
