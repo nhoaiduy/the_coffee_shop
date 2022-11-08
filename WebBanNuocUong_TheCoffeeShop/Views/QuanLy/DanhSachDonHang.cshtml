@@ -77,7 +77,7 @@
                                 @item.TINHTRANG.TINHTRANG1
                             </td>
                             <td>
-                                <a href="@Url.Action("ChiTietDonHang", new { @MADH = item.MADH})">Xem đơn hàng</a>
+                                <a href="@Url.Action("ChiTietDonHang", "DonHang", new {area = "", @MADH = item.MADH})">Xem đơn hàng</a>
                             </td>
                         </tr>
                     }

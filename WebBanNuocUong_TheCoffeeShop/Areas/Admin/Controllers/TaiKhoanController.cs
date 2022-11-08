@@ -99,9 +99,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 {
                     nGUOIDUNG1.EMAIL = nGUOIDUNG.EMAIL;
                 }
+                nGUOIDUNG1.DIACHI2 = nGUOIDUNG.DIACHI2;
                 db.Entry(nGUOIDUNG1).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("DanhMucSanPham", "SanPham", new { area = "Admin" });
+                return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new { area = "Admin" });
             }
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new {area = "Admin"});

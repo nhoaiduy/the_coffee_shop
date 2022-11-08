@@ -135,7 +135,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                         string urlName = Server.MapPath("~/Image/" + fileName);
                         image.SaveAs(urlName);
 
-                        sANPHAM.ANHSP = "~/Image/" + fileName;
+                        sANPHAM1.ANHSP = "~/Image/" + fileName;
                     }
                     if (sANPHAM.TENSP != null)
                     {

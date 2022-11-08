@@ -49,9 +49,22 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         {
             DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
             dONHANG.MATT = MATT;
+            if (MATT == 8)
+            {
+                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.HOTEN.Equals(dONHANG.TENNGUOINHAN)&&n.SDT.Equals(dONHANG.SDT) && n.DIACHI.Equals(dONHANG.DIACHI));
+                nGUOIDUNG.DIEMTICHLUY -= (int)(dONHANG.TONGITEN / 1000);
+                db.Entry(nGUOIDUNG).State = System.Data.Entity.EntityState.Modified;
+                List<CTDONHANG> cTDONHANGs = db.CTDONHANGs.Where(c => c.MADH.Equals(MADH)).ToList();
+                foreach (var item in cTDONHANGs)
+                {
+                    SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.MASP));
+                    sANPHAM.SOLUONG += item.SOLUONG;
+                    db.Entry(sANPHAM).State = System.Data.Entity.EntityState.Modified;
+                }
+            }
             db.Entry(dONHANG).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("ChiTietDonHang", "DonHang", new { MADH = MADH });
+            return RedirectToAction("ChiTietDonHang", "DonHang", new { area = "Admin", MADH = MADH });
         }
     }
 }

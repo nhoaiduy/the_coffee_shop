@@ -9,7 +9,7 @@
 <div class="main">
     <div class="content">
         <h1>Chi tiết đơn hàng - @Model.MADH</h1>
-        <div style="display: flex; justify-content: space-between">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
             <div class="customer-info">
                 <table>
                     <tr>
@@ -27,8 +27,16 @@
                 </table>
             </div>
             <div class="status-update">
-                <h2>@Model.TINHTRANG.TINHTRANG1</h2>
+                <h2 style="text-align: center;">@Model.TINHTRANG.TINHTRANG1</h2>
             </div>
+            @{
+                if (Model.MATT < 5)
+                {
+                    <div class="status-update" style="padding: 24px">
+                        <a href="@Url.Action("HuyDon", "DonHang", new {area ="", MADH = Model.MADH})" style="background-color: var(--primary-color); margin: 16px; color: #fff;padding: 8px 16px; text-decoration: none">Hủy đơn</a>
+                    </div>
+                }
+            }
         </div>
         <div class="categories__data">
             <table class="table">

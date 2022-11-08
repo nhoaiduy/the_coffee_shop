@@ -115,7 +115,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     cTDONHANG.SOLUONG = item.Item2;
                     cTDONHANG.MADH = dONHANG.MADH;
                     cTDONHANG.THANHTIEN = item.Item1.GIASP * item.Item2;
+                    SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.Item1.MASP));
+                    sANPHAM.SOLUONG -= item.Item2;
                     db.CTDONHANGs.Add(cTDONHANG);
+                    db.Entry(sANPHAM).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
                 Session["cart"] = null;
@@ -128,10 +131,16 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 dONHANG.TAMTINH = sum;
                 dONHANG.TONGITEN = sum - giam;
                 db.DONHANGs.Add(dONHANG);
+                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
+                nGUOIDUNG.DIEMTICHLUY +=(int)(dONHANG.TONGITEN / 1000);
+                db.Entry(nGUOIDUNG).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 foreach (var item in cart)
                 {
                     item.MADH = dONHANG.MADH;
+                    SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.MASP));
+                    sANPHAM.SOLUONG -= item.SOLUONG;
+                    db.Entry(sANPHAM).State = System.Data.Entity.EntityState.Modified;
                     db.Entry(item).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }

@@ -55,7 +55,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         }
         public ActionResult DanhSachDonHang(string tinhTrang)
         {
-            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).ToList();
+            var user = Session["customer"] as TAIKHOAN;
+            NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT) && d.DIACHI.Equals(nGUOIDUNG.DIACHI) && d.TENNGUOINHAN.Equals(nGUOIDUNG.HOTEN)).ToList();
             if (!string.IsNullOrEmpty(tinhTrang))
             {
                 if (tinhTrang.Equals("Tất cả"))
