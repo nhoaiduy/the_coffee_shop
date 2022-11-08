@@ -12,8 +12,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
         // GET: Admin/KhuyenMai
-        public ActionResult DanhSachKhuyenMai()
+        public ActionResult DanhSachKhuyenMai(string searchString)
         {
+            var khuyenMais = from k in db.KHUYENMAIs.ToList() select k;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                khuyenMais = khuyenMais.Where(k => k.TENKM.ToLower().Contains(searchString.ToLower()));
+                return View(khuyenMais);
+            }
             var khuyenMaiList = db.sp_XemKhuyenMai();
             List<KHUYENMAI> list = new List<KHUYENMAI>();
             foreach (var item in khuyenMaiList)
@@ -68,13 +74,13 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 if (khuyenMais.ToList().Count > 0)
                 {
                     string temp = khuyenMais.ToList()[khuyenMais.ToList().Count - 1].MAKM;  
-                    ViewBag.A = temp;
                     string last = "";
                     for (int i = 2; i < temp.Length; i++)
                     {
                         last += temp[i]; // last = 001
                     }
                     int num = int.Parse(last);
+                    last = "KM";
                     int zero = 0;
                     if (num < 10) zero = 2;
                     else if (num < 100) zero = 1;
@@ -84,24 +90,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                         last += 0;
                     }
                     last += (num + 1);
-                    kHUYENMAI.MAKM = "KM" + last;
+                    kHUYENMAI.MAKM = last;
                 }
                 else
                 {
                     kHUYENMAI.MAKM = "KM001";
-                }
-                
-                    kHUYENMAI.MAKM = "KM003";
-                    kHUYENMAI.ANHKM = "https://thumbs.dreamstime.com/b/halloween-sale-21599574.jpg";
-                    kHUYENMAI.TENKM = "A";
-                    kHUYENMAI.NGAYHETHAN = DateTime.Today;
-                    kHUYENMAI.SOLUONG = 1;
-                    kHUYENMAI.DIEUKIEN = 2;
-                    kHUYENMAI.MOTAKM = "A";
-                    kHUYENMAI.SOTIENGIAM = 5000;                
+                }                
+                if (kHUYENMAI != null)
+                {
                     db.KHUYENMAIs.Add(kHUYENMAI);
                     db.SaveChanges();
-                    return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new {Area = "Admin"});                                
+                    return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new { Area = "Admin" });
+                }                                              
             }
             return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new { Area = "Admin" });
         }
@@ -120,7 +120,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                         string fileName = System.IO.Path.GetFileName(image.FileName);
                         string urlName = Server.MapPath("~/Image/" + fileName);
                         image.SaveAs(urlName);
-                        kHUYENMAI.ANHKM = "~/Image/" + fileName;
+                        kHUYENMAI1.ANHKM = "~/Image/" + fileName;
                     }
                     if (kHUYENMAI.TENKM != null)
                     {
@@ -161,5 +161,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("DanhSachKhuyenMai", "KhuyenMai", new { Area = "Admin" });
         }
+
+        
     }
 }

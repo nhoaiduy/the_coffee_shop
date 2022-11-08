@@ -6,9 +6,9 @@
 }
 
 <div class="main">
-    <div class="product-detail">
+    <div class="product-detail" style="width: 75%">
         <div class="product-detail__left">
-            <img src="@Url.Content(Model.ANHKM)" alt="@Model.TENKM" title="@Model.TENKM" class="product-detail__left__img" />
+            <img src="@Url.Content(Model.ANHKM)" alt="@Model.TENKM" title="@Model.TENKM" class="product-detail__left__img" style="height:80%;"/>
         </div>
         <div class="product-detail__right">
             <div class="product-detail__element">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="form-group">
                     <span class="label">Ảnh khuyến mãi:</span>
-                    <input type="file" name="ANHKM" value="@Model.ANHKM" />
+                    <input type="file" name="image" value="@Model.ANHKM" />
                 </div>
                 <div class="form-group">
                     <span class="label">Số tiền giảm:</span>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="form-group">
                     <span class="label">Ngày hết hạn:</span>
-                    <input type="date" name="NGAYHETHAN" value="@Model.NGAYHETHAN.ToShortDateString()" />
+                    <input type="date" name="NGAYHETHAN" value="@Model.NGAYHETHAN.ToString("yyyy-MM-dd")" />
                 </div>
                 
                 <div class="form-group">
@@ -143,7 +143,6 @@
             document.getElementById('sanPham').style.display = 'flex';
         }
     }
-
     function HideWrap() {
         wrap.style.display = 'none';
         document.getElementsByTagName('body')[0].style.overflow = 'visible';

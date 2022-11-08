@@ -55,7 +55,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 string fileName = System.IO.Path.GetFileName(image.FileName);
                 string urlName = Server.MapPath("~/Image/" + fileName);
                 image.SaveAs(urlName);
-
                 sANPHAM.ANHSP = "~/Image/" + fileName;
             }
             if (ModelState.IsValid)
