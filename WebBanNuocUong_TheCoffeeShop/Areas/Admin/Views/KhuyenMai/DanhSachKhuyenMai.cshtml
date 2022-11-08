@@ -9,10 +9,10 @@
     <div class="content">
         <div class="top">
             <span class="circle-btn" onclick="DisplayWrap('s')"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <span class="circle-btn" onclick="DisplayWrap('a')"><i class="fa-regular fa-plus"></i></span>
+            <span class="circle-btn" onclick="DisplayWrap('t')"><i class="fa-regular fa-plus"></i></span>
         </div>
         <div class="categories__data">
-            <h2 class="wrap_list-title-c">Danh Sách Khuyến Mãi</h2>
+            <h2 class="wrap_list-title" style="color: var(--primary-color)">Danh Sách Khuyến Mãi</h2>
             <ul class="product__list">
                 @{
                     foreach (var item in Model)
@@ -38,7 +38,7 @@
         <span class="close-btn" onclick="HideWrap()">
             <i class="fa-solid fa-xmark"></i>
         </span>
-        <div id="khuyenMai">
+        <div id="khuyenMai" style="display:none;">
             <h2>Thêm khuyến mãi mới</h2>
             @using (Html.BeginForm("ThemKhuyenMai", "KhuyenMai", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
@@ -47,7 +47,7 @@
 
                 <div class="form-group">
                     <span class="label">Tên khuyến mãi:</span>
-                    <input type="text" name="TENKM" value="" placeholder="Tên khuyến mãi" />
+                    <input type="text" name="image" value="" placeholder="Tên khuyến mãi" />
                 </div>
                 <div class="form-group">
                     <span class="label">Ảnh khuyến mãi:</span>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <span class="label">Điều kiện:</span>
-                    <input type="text" name="DIEUKIEN" value="" />
+                    <input type="number" name="DIEUKIEN" value="" />
                 </div>
                 <div class="form-group">
                     <span class="label">Số tiền giảm:</span>
@@ -78,25 +78,40 @@
                 </div>
             }
         </div>
+        
+        <div id="timKiem">
+            <h2>Tìm kiếm khuyến mãi</h2>
+            @using (Html.BeginForm("DanhSachKhuyenMai", "KhuyenMai", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <span class="label">Tên khuyến mãi</span>
+                    @Html.TextBox("SearchString")
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="create-btn" class="create-btn active" value="Tìm kiếm" />
+                </div>
+
+            }
+        </div>
     </div>
 </div>
 <script>
     var wrap = document.getElementsByClassName('wrap')[0];
-
     function DisplayWrap(type) {
         wrap.style.display = 'flex';
-        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-        if (type == 'a') {
-            document.getElementById('khuyenMai').style.display = 'flex';
-        } else {
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';                  
+         if (type == 't') {
+            document.getElementById('khuyenMai').style.display = 'block';
+        } else if (type == 's'){
             document.getElementById('timKiem').style.display = 'flex';
         }
     }
 
     function HideWrap() {
         wrap.style.display = 'none';
-        document.getElementsByTagName('body')[0].style.overflow = 'visible';
-        document.getElementById('loaiSanPham').style.display = 'none';
+        document.getElementsByTagName('body')[0].style.overflow = 'visible';      
         document.getElementById('khuyenMai').style.display = 'none';
         document.getElementById('timKiem').style.display = 'none';
     }
