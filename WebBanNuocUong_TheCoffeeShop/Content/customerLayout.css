@@ -58,6 +58,9 @@
     background: none;
     color:white;
 }
+.margin_form{
+    margin: 0 50px 0 0;
+}
 
 /*Footer*/
 .footer-list {

@@ -40,14 +40,18 @@
             </div>
 
             <div class="navbar-menu_right">
-                <form action="#" class="navbar-menu-search" method="get">
-                    <span style="display:inline-flex;">
-                        <input type="text" class="navbar-menu_boxsearch" placeholder="Tìm kiếm" name="searchString">
-                        <button class="navbar-menu_btn-search">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </form>
+                @using (Html.BeginForm("TimKiem", "TimKiem", FormMethod.Get, new { @class = "margin_form" }))
+                {
+                    <form action="#" class="navbar-menu-search" method="get">
+                        <span style="display:inline-flex;">
+                            <input id="SearchString" name="SearchString" type="text" class="navbar-menu_boxsearch" placeholder="Tìm kiếm" name="searchString">
+                            <button class="navbar-menu_btn-search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </form>
+                }
+
                 <div class="">
                     <a href="@Url.Action("GioHang","GioHang")">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
@@ -73,7 +77,7 @@
                     {
                         <ul class="navbar-menu__list">
                             <li class="navbar-menu__item1">
-                                <a href="#" class="navbar-menu__item1__link">Đăng ký</a>
+                                <a href="@Url.Action("DangKy", "TaiKhoan", new {area = ""})" class="navbar-menu__item1__link">Đăng ký</a>
                             </li>
                             <li class="navbar-menu__item1">
                                 <a href="@Url.Action("DangNhap", "TaiKhoan", new {area = ""})" class="navbar-menu__item1__link">Đăng nhập</a>
