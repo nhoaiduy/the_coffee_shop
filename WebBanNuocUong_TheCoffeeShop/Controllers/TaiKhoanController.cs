@@ -44,5 +44,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             Session.Clear();
             return RedirectToAction("TrangChu", "TrangChu", new {area = ""});
         }
+        public ActionResult DangKy()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GhiNhanDangKy(string username, string password)
+        {
+            var t = db.TAIKHOANs;
+            var user = t.FirstOrDefault(u => u.USERNAME.Equals(username.Trim()) && u.PHANQUYEN.Equals("KH"));
+            
+
+            return RedirectToAction("DangKy", "TaiKhoan", new { area = "" });
+        }
     }
 }
