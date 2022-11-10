@@ -17,7 +17,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         {
             if (Session["admin"] == null)
             {
-                return RedirectToAction("DangNhap", "TaiKhoan", new {area = "Admin"});
+                return RedirectToAction("DangNhap", "TaiKhoan", new {area = ""});
             }
             var sanPhamList = db.sp_DanhSachSanPham(categoryName);
             List<SANPHAM> list = new List<SANPHAM>();
@@ -30,6 +30,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 sanPham.GIASP = item.GIASP;
                 sanPham.SOLUONG = item.SOLUONG;
                 sanPham.MALOAISP = item.MALOAISP;
+                sanPham.ISENABLE = item.ISENABLE;
                 list.Add(sanPham);
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP");
@@ -113,6 +114,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 sanPham.SOLUONG = item.SOLUONG;
                 sanPham.MALOAISP = item.MALOAISP;
                 sanPham.MOTASP = item.MOTASP;
+                sanPham.ISENABLE = item.ISENABLE;
                 break;
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sanPham.MALOAISP);
@@ -120,7 +122,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChinhSuaSanPham([Bind(Include = "MASP,TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG")] SANPHAM sANPHAM, HttpPostedFileBase image)
+        public ActionResult ChinhSuaSanPham([Bind(Include = "MASP,TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG, ISENABLE")] SANPHAM sANPHAM, HttpPostedFileBase image)
         {
             SANPHAM sANPHAM1 = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(sANPHAM.MASP));
             if (ModelState.IsValid)
@@ -157,13 +159,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     {
                         sANPHAM1.MALOAISP = sANPHAM.MALOAISP;
                     }
+                    sANPHAM1.ISENABLE = sANPHAM.ISENABLE;
                     db.Entry(sANPHAM1).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ChiTiet", new { @productName = sANPHAM1.TENSP });
                 }
             }
             //ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sANPHAM.MALOAISP);
-            return View("ChiTiet", new { @productName = sANPHAM.TENSP });
+            return RedirectToAction("ChiTiet", new { @productName = sANPHAM.TENSP });
         }
 
         [HttpPost]

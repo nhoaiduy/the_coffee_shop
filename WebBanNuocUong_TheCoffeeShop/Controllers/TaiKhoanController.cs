@@ -22,17 +22,20 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             var isUser = db.TAIKHOANs.FirstOrDefault(u => u.USERNAME.Equals(username.Trim()) && u.USERPASSWORD.Equals(password.Trim()));
             if (isUser != null)
             {
-                if (isUser.PHANQUYEN.Equals("AD"))
+                if (isUser.ISENABLE)
                 {
-                    Session["admin"] = isUser;
-                    return RedirectToAction("DanhMucSanPham", "SanPham", new {area = "Admin"});
-                }
-                else
-                {
-                    Session["customer"] = isUser;
-                    NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(isUser.USERID));
-                    ViewBag.HOTEN = nGUOIDUNG.HOTEN;
-                    return RedirectToAction("TrangChu", "TrangChu");
+                    if (isUser.PHANQUYEN.Equals("AD"))
+                    {
+                        Session["admin"] = isUser;
+                        return RedirectToAction("DanhMucSanPham", "SanPham", new { area = "Admin" });
+                    }
+                    else
+                    {
+                        Session["customer"] = isUser;
+                        NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(isUser.USERID));
+                        ViewBag.HOTEN = nGUOIDUNG.HOTEN;
+                        return RedirectToAction("TrangChu", "TrangChu");
+                    }
                 }
             }
             ViewBag.Fail = "Đăng nhập thất bại";
