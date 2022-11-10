@@ -251,6 +251,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\banner.js" />
+    <Content Include="Scripts\boolFocus.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
@@ -311,6 +312,7 @@
     <Content Include="Views\DonHang\ChiTietDonHang.cshtml" />
     <Content Include="Views\TimKiem\TimKiem.cshtml" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
+    <Content Include="Views\QuanLy\DoiTenDangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

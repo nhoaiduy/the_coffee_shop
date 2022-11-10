@@ -1,6 +1,6 @@
 ﻿@model WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN
 @{
-    ViewBag.Title = "Đổi mật khẩu";
+    ViewBag.Title = "Đổi tên đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (!string.IsNullOrEmpty(ViewBag.Fail))
     {
@@ -34,49 +34,33 @@
             <div class="form-horizontal_info-ci">
                 <h2 style="text-align: center; color: var(--primary-color);">Đổi Mật Khẩu</h2>
 
-                @using (Html.BeginForm("ChinhSuaMatKhau", "QuanLy", new { area = "" }, FormMethod.Post))
+                @using (Html.BeginForm("GhiNhanDoiTenDangNhap", "QuanLy", new { area = "" }, FormMethod.Post))
                 {
                     <div class="form-group form-group-ci">
                         Tên đăng nhập
                         <div class="col-md-10">
                             <div class="form-control">
-                                <input type="text" style="pointer-events:none;" name="USERNAME" value="@Model.USERNAME" />
+                                <input type="text" name="USERNAME" id="username" value="@Model.USERNAME" />
                             </div>
                         </div>
                     </div>
-                <div class="form-group form-group-ci">
-                    Mật khẩu hiện tại
-                    <div class="col-md-10">
-                        <div class="form-control">
-                            <input type="password" name="mkhientai" id="mkhientai" value="" />
+                    <div class="form-group form-group-ci">
+                        Mật khẩu hiện tại
+                        <div class="col-md-10">
+                            <div class="form-control">
+                                <input type="password" name="mkhientai" id="mkhientai" value="" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group form-group-ci">
-                    Mật khẩu mới
-                    <div class="col-md-10">
-                        <div class="form-control">
-                            <input type="password" name="mkmoi" id="mkmoi" value="" />
+                    <div class="form-group form-group-ci" style="justify-content:center; margin-top: 30px;">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cập nhật" class="btn-default choose btn-update-ci" />
                         </div>
                     </div>
-                </div>
-
-                <div class="form-group form-group-ci">
-                    Xác nhận mật khẩu
-                    <div class="col-md-10">
-                        <div class="form-control">
-                            <input type="password" name="mkmoicf" id="mkmoicf" value="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group form-group-ci" style="justify-content:center; margin-top: 30px;">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Cập nhật" class="btn-default choose btn-update-ci" />
-                    </div>
-                </div>
                 }
             </div>
         </div>
     </div>
 </div>
+
 

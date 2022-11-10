@@ -112,6 +112,45 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("DoiMatKhau", "QuanLy", new { area = "" });
         }
+        public ActionResult DoiTenDangNhap()
+        {
+            var user = Session["customer"] as TAIKHOAN;
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
+
+            return View(tAIKHOAN);
+        }
+        [HttpPost]
+        public ActionResult GhiNhanDoiTenDangNhap(string username, string mkhientai)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = Session["customer"] as TAIKHOAN;
+                TAIKHOAN tAIKHOAN1 = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+                if (!String.IsNullOrEmpty(username)&&!String.IsNullOrEmpty(mkhientai))
+                {
+                    if (mkhientai == tAIKHOAN1.USERPASSWORD)
+                    {
+                        var temp = db.TAIKHOANs.FirstOrDefault(u => u.USERNAME.ToLower().Trim().Equals(username.Trim()));
+                        if(temp != null)
+                        {
+                            return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+                        }
+                        else
+                        {
+                            tAIKHOAN1.USERNAME = username;
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Fail = "Kiểm tra lại thông tin";
+                        return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+                    }
+                }
+            }
+            ViewBag.Fail = "Thông tin không được để trống";
+            return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+        }
         /*Dành cho khách vãng lai*/
         public ActionResult TraCuuDonHang()
         {
