@@ -3,7 +3,11 @@
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    .errorClass {
+        border: 2px solid #FF0000;
+    }
+</style>
 <div class="main">
     <div class="content">
         <h2 style="text-align: center; color: var(--primary-color);">ĐĂNG KÝ TÀI KHOẢN</h2>
@@ -15,16 +19,16 @@
                     Họ tên
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="ten" name="" value="" />
+                            <input type="text" id="ten" name="HOTEN" value="" onblur="TenEvent()" />
                         </div>
                     </div>
-
+                    
                 </div>
                 <div class="form-group form-group-ci">
                     SĐT
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="sdt" name="" value="" />
+                            <input type="text" id="sdt" name="SDT" value="" onblur="SdtEvent()"/>
                         </div>
                     </div>
                 </div>
@@ -34,7 +38,7 @@
                     Ngày sinh
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="ngaysinh" name="" value="" />
+                            <input type="date" id="ngaysinh" name="NGAYSINH" value="" />
                         </div>
                     </div>
 
@@ -43,7 +47,7 @@
                     Địa chỉ
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="diachi" name="" value="" />
+                            <input type="text" id="diachi" name="DIACHI" value="" onblur="DiaChiEvent()" />
                         </div>
                     </div>
                 </div>
@@ -53,7 +57,7 @@
                     Email
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="email" name="" value="" />
+                            <input type="text" id="email" name="EMAIL" value="" onblur="EmailEvent()" />
                         </div>
                     </div>
 
@@ -62,7 +66,7 @@
                     Địa chỉ 2
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="diachi2" name="" value="" />
+                            <input type="text" id="diachi2" name="DIACHI2" value="" onblur="DiaChi2Event()" />
                         </div>
                     </div>
                 </div>
@@ -73,7 +77,7 @@
                     Tên đăng nhập
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="username" name="" value="" />
+                            <input type="text" id="username" name="USERNAME" value="" onblur="UsernameEvent()" />
                         </div>
                     </div>
 
@@ -82,14 +86,14 @@
                     Mật khẩu
                     <div class="col-md-10">
                         <div class="form-control">
-                            <input type="text" id="password" name="" value="" />
+                            <input type="text" id="password" name="USERPASSWORD" value="" onblur="PasswordEvent()"/>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="form-group form-group-ci" style="justify-content:center; margin-top: 30px;">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" name="" class="btn-default btn-color" value="Đăng ký" style="cursor:pointer;" />
+                    <input type="submit" name="" class="btn-default btn-color" value="Đăng ký" style="cursor:pointer;" onclick="KiemTraTrong()" />
                 </div>
             </div>
 
@@ -98,14 +102,4 @@
     </div>
 </div>
 
-@*<script>
-
-        $(document).ready(function () {
-            $("#ten").blur(function () {
-                var ten = document.getElementById("ten").value;
-                if (ten.length == 0) {
-                    alert("Thông tin không để trống!");
-                }
-            });
-        });
-</script>*@
+<script src="~/Scripts/boolFocus.js"></script>
