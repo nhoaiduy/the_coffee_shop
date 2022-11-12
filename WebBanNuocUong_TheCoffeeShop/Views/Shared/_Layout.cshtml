@@ -53,10 +53,33 @@
                 }
 
                 <div class="">
-                    <a href="@Url.Action("GioHang","GioHang")">
+                    <a href="#" onclick="DisplayDropList();">
                         <i class="fa-solid fa-cart-shopping" style="color:white;"></i>
                     </a>
+                    <div class="navbar-account__drop-list" id="navbar-account__drop-list">
+                        <div class="navbar-account__drop-list__close" onclick="HideDropList()">&#x2715</div>
+                        <ul class="navbar-account__drop-list__list">
+                            <li class="navbar-account__drop-list__item">
+                                <a href="@Url.Action("GioHang","GioHang")" class="navbar-account__drop-list__item__link">Giỏ hàng</a>
+                            </li>
+                            <li class="navbar-account__drop-list__item">
+                                <a href="@Url.Action("TraCuuDonHang","QuanLy")" class="navbar-account__drop-list__item__link">Tìm kiếm đơn hàng</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <script type="text/javascript">
+
+                    function DisplayDropList() {
+                        var dropList = document.getElementById('navbar-account__drop-list');
+                        dropList.style.display = 'flex';
+                    }
+
+                    function HideDropList() {
+                        var dropList = document.getElementById('navbar-account__drop-list');
+                        dropList.style.display = 'none';
+                    }
+                </script>
                 @{
                     if (Session["customer"] != null)
                     {

@@ -1,21 +1,88 @@
-﻿@{
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
+@{
     ViewBag.Title = "Tra cứu đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int c = 0;
+    foreach (var item in Model)
+    {
+        c++;
+    }
 }
-<div class="main-b">
-    <div class="content_left-b">
-        <div class="categories_sidebar-p" style="box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
-            <ul class="categories_list-p" style="width:180px;">
-                <li class="categories_item-p">
-                    <a href="@Url.Action("TraCuuDonHang","QuanLy")" class="categories_item_link-p">Tra cứu đơn hàng</a>
-                </li>
+<style>
+    .margin_input_search_orders {
+        margin: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-            </ul>
+    .input_search_orders {
+        width: 400px;
+        padding: 6px 8px;
+        font-size: 16px;
+    }
+    .form-horizontal_info-ci {
+        width: 90%;
+        height: 500px;
+    }
+</style>
+
+<div class="info_container-ci" style="margin:32px 0;">
+    <div class="form-horizontal_info-ci">
+        @using (Html.BeginForm("TraCuuDonHang", "QuanLy", FormMethod.Get, new { @class = "" }))
+        {
+            <h2 style="text-align: center; color: var(--primary-color);">Tra cứu đơn hàng</h2>
+            <div class="margin_input_search_orders">
+                <input class="input_search_orders" id="searchMaDH" name="searchMaDH" />
+                <input type="submit" value="Tìm kiếm" class="btn btn-default btn-color"/>
+            </div>            
+        }
+        <div class="categories__data">
+            <table>
+                <tr class="table">
+                    <th>
+                        Mã đơn hàng
+                    </th>
+                    <th>
+                        Thời gian đặt
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th>
+                        Tình trạng đơn
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+
+                    <tr class="order-item">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MADH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYLAP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TONGITEN) VNĐ
+                        </td>
+                        <td>
+                            @item.TINHTRANG.TINHTRANG1
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChiTietDonHang", "DonHang", new {area = "", @MADH = item.MADH})">Xem đơn hàng</a>
+                        </td>
+                    </tr>
+                }
+            </table>
         </div>
+        
     </div>
-    <div class="content_right-b" style="background-color:white;">
+    
 
-    </div>
 </div>
 
 
