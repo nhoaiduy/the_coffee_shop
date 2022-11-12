@@ -152,9 +152,20 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
         }
         /*Dành cho khách vãng lai*/
-        public ActionResult TraCuuDonHang()
+        //public ActionResult TraCuuDonHang()
+        //{
+        //    return View();
+        //}
+        public ActionResult TraCuuDonHang(string searchMaDH)
         {
-            return View();
+            var donHang = from d in db.DONHANGs select d;
+            if (!String.IsNullOrEmpty(searchMaDH))
+            {
+                donHang = donHang.Where(d => d.MADH.ToLower().Equals(searchMaDH.ToLower().Trim()));
+                return View(donHang.ToList());
+            }
+            return View(new List<DONHANG>());
         }
+
     }
 }
