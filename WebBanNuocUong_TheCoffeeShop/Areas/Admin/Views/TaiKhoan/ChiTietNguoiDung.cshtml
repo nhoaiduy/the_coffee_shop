@@ -9,7 +9,7 @@
 <link href="~/Content/adminTaiKhoan.css" rel="stylesheet" />
 
 <div class="main">
-    <div class="content" style="width: 50%; height: fit-content">
+    <div class="content" style="width: 70%; height: fit-content">
         <h1>
             Chi tiết người dùng - @Model.USERID
         </h1>
@@ -49,6 +49,37 @@
                     <td class="label">Quyền:</td>
                     <td class="data">@acc.PHANQUYEN</td>
                 </tr>
+                @{
+                    if (acc.PHANQUYEN == "KH")
+                    {
+                        <tr>
+                            <td class="label">Trạng thái:</td>
+                            <td class="data">
+                                @{
+                                    if (acc.ISENABLE)
+                                    {
+                                        <span>
+                                            Đang hoạt động
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span style="width: 100%">
+                                            Ngừng hoạt động
+                                        </span>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label"></td>
+                            <td class="data">
+                                <a href="@Url.Action("ThayDoiTrangThai", "TaiKhoan", new {area = "Admin", USERID = Model.USERID})" style="padding: 8px 16px; text-decoration: none; background-color: var(--primary-color); color: #fff">Thay đổi trạng thái</a>
+                            </td>
+                        </tr>
+                    }
+                }
+
             </table>
         </div>
     </div>
