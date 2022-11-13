@@ -151,6 +151,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
         }
+        
+        public ActionResult XoaTaiKhoan()
+        {
+            var user = Session["customer"] as TAIKHOAN;
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+            tAIKHOAN.ISENABLE = !tAIKHOAN.ISENABLE;
+            db.Entry(tAIKHOAN).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            Session.Clear();
+            return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
+        }
+        
         /*Dành cho khách vãng lai*/
         //public ActionResult TraCuuDonHang()
         //{
