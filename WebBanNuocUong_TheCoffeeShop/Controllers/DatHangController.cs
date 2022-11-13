@@ -103,6 +103,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             if (Session["customer"] == null)
             {
                 List<Tuple<SANPHAM, int>> cart = (List<Tuple<SANPHAM, int>>)Session["cart"];
+                foreach(var item in cart)
+                {
+                    SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.Item1.MASP));
+                    if(sANPHAM.SOLUONG < item.Item2)
+                    {
+                        return View();
+                    }
+                }
                 decimal sum = cart.Sum(d => d.Item1.GIASP * d.Item2);
                 dONHANG.TAMTINH = sum;
                 dONHANG.TONGITEN = sum - giam;
@@ -117,6 +125,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     cTDONHANG.THANHTIEN = item.Item1.GIASP * item.Item2;
                     SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.Item1.MASP));
                     sANPHAM.SOLUONG -= item.Item2;
+                    if (sANPHAM.SOLUONG == 0)
+                    {
+                        sANPHAM.ISENABLE = false;
+                    }
                     db.CTDONHANGs.Add(cTDONHANG);
                     db.Entry(sANPHAM).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
@@ -127,6 +139,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             {
                 var user = Session["customer"] as TAIKHOAN;
                 List<CTDONHANG> cart = db.CTDONHANGs.Where(d => d.MADH.Equals(user.USERID + "0000")).ToList();
+                foreach (var item in cart)
+                {
+                    SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.MASP));
+                    if (sANPHAM.SOLUONG < item.SOLUONG)
+                    {
+                        return View();
+                    }
+                }
                 decimal sum = cart.Sum(d => d.THANHTIEN);
                 dONHANG.TAMTINH = sum;
                 dONHANG.TONGITEN = sum - giam;
@@ -140,6 +160,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     item.MADH = dONHANG.MADH;
                     SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.MASP));
                     sANPHAM.SOLUONG -= item.SOLUONG;
+                    if (sANPHAM.SOLUONG == 0)
+                    {
+                        sANPHAM.ISENABLE = false;
+                    }
                     db.Entry(sANPHAM).State = System.Data.Entity.EntityState.Modified;
                     db.Entry(item).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();

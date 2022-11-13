@@ -13,12 +13,9 @@
         <div class="product-detail__right">
             <div class="product-detail__element">
                 <h1 class="product-detail__element__heading">@Model.TENSP</h1>
-                <span class="product-detail__element__btn-wrap">
-                    <span class="circle-btn"  onclick="DisplayWrap('s')" title="Chỉnh sửa">
+                <span class="product-detail__element__btn-wrap" style="width: 12%">
+                    <span class="circle-btn" onclick="DisplayWrap('s')" title="Chỉnh sửa">
                         <i class="fa-regular fa-pen-to-square"></i>
-                    </span>
-                    <span class="circle-btn"  onclick="DisplayWrap('l')" title="Xóa">
-                        <i class="fa-solid fa-trash"></i>
                     </span>
                 </span>
             </div>
@@ -38,6 +35,21 @@
                     @Model.SOLUONG Ly
                 </span>
             </div>
+            <table class="info" style="width: 100%">
+                <tr class="product-detail__element">
+                    <td class="product-detail__element__title">Trạng thái:</td>
+                    @{
+                        if (Model.ISENABLE)
+                        {
+                            <td class="product-detail__element__title__data">ENABLE</td>
+                        }
+                        else
+                        {
+                            <td class="product-detail__element__title__data">DISABLE</td>
+                        }
+                    }
+                </tr>
+            </table>
             <div class="product-detail__element column" style="flex-direction: column; align-items: start">
                 <span class="product-detail__element__title">
                     Mô tả:
@@ -46,6 +58,7 @@
                     @Model.MOTASP
                 </span>
             </div>
+
         </div>
     </div>
 </div>
@@ -57,7 +70,7 @@
         </span>
         <div id="sanPham">
             <h2>Cập nhật sản phẩm</h2>
-            @using (Html.BeginForm("ChinhSuaSanPham", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ChinhSuaSanPham", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data", area = "Admin" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -84,6 +97,10 @@
                     <input type="text" name="MOTASP" value="@Model.MOTASP" />
                 </div>
                 <div class="form-group">
+                    <span class="label">Trạng thái sản phẩm:</span>
+                    @Html.CheckBoxFor(m => m.ISENABLE)
+                </div>
+                <div class="form-group">
                     <span class="label">Loại sản phẩm:</span>
                     @Html.DropDownList("MALOAISP", null, htmlAttributes: new { @class = "form-control", value = Model.MALOAISP })
                 </div>
@@ -91,20 +108,6 @@
                     <input type="submit" name="create-btn" class="create-btn active" value="Cập nhật" />
                 </div>
 
-            }
-        </div>
-        <div id="loaiSanPham">
-            <h2>Xác nhận xóa sản phẩm</h2>
-            @using (Html.BeginForm("XoaSanPham", "SanPham",new { MASP = Model.MASP}, FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-group">
-                    <p>Bạn có muốn xóa @Model.TENSP</p>
-                </div>
-                <div class="form-group" style="display: flex; justify-content:space-evenly">
-                    <input type="button" name="create-btn" style="margin: 0; width: 40%;" onclick="HideWrap()" class="create-btn" value="Hủy" />
-                    <input type="submit" name="create-btn" style="margin: 0; width: 40%;" class="create-btn active" value="Xóa" />
-                </div>
             }
         </div>
     </div>

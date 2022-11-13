@@ -16,6 +16,15 @@
     color: white !important;
 }
 
+.disable {
+    position: absolute;
+    top: 32px;
+    left: 16px;
+    color: red;
+    transform: rotate(-45deg);
+    border: 2px solid red;
+}
+
 .column{
     flex-direction: column;
     align-items: start;
