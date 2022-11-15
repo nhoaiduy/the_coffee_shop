@@ -20,7 +20,7 @@
             foreach (var item in Model)
             {
                 <li class="product__item-c">
-                    <a href="@Url.Action("ChiTietKhuyenMai", new { @TenKM = item.TENKM})" style="text-decoration: none;">
+                    <a href="#" style="text-decoration: none;">
                         <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img" />
                         <div class="product__item__title-c hidden_text">@item.TENKM</div>
                         <div class="product__item__price-c">@item.NGAYHETHAN.ToString("dd/MM/yyyy")</div>

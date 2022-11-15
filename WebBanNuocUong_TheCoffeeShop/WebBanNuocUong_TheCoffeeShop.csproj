@@ -131,7 +131,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
-    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
@@ -208,9 +207,6 @@
     <Compile Include="Models\sp_TimKiemSanPham_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_XemKhuyenMai_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TAIKHOAN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -277,8 +273,6 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\KhuyenMai\ChiTiet.cshtml" />
-    <Content Include="Areas\Admin\Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />
@@ -319,7 +313,6 @@
     <Content Include="Views\TimKiem\TimKiem.cshtml" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\QuanLy\DoiTenDangNhap.cshtml" />
-    <Content Include="Views\KhuyenMai\ChiTietKhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

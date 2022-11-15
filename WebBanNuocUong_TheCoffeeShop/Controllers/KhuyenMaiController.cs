@@ -13,7 +13,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         // GET: KhuyenMai
         public ActionResult DanhSachKhuyenMai()
         {
-            var khuyenMaiList = db.sp_XemKhuyenMai();
+            var khuyenMaiList = db.KHUYENMAIs.ToList();
             List<KHUYENMAI> list = new List<KHUYENMAI>();
             foreach (var item in khuyenMaiList)
             {
@@ -28,11 +28,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 list.Add(khuyenMai);
             }
             return View(list);
-        }
-        public ActionResult ChiTietKhuyenMai(string TenKM)
-        {
-            KHUYENMAI khuyenMai = db.KHUYENMAIs.FirstOrDefault(k => k.TENKM.Equals(TenKM));
-            return View(khuyenMai);
         }
     }
 }

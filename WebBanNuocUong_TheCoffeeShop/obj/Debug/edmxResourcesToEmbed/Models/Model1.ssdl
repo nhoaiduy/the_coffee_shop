@@ -305,7 +305,6 @@
   <Function Name="sp_TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="search_string" Type="nvarchar" Mode="In" />
   </Function>
-  <Function Name="sp_XemKhuyenMai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="thecoffeeshopModelStoreContainer">
     <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
