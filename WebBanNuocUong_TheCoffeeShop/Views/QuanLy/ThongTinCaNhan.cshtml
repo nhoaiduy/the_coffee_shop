@@ -34,13 +34,7 @@
     <div class="content_right-b">
         <div class="info_container-ci">
             <div class="form-horizontal_info-ci">
-                <div class="form-group form-group-ci" style="justify-content:center">
-                    <a>
-                        <div class="col-md-10">
-                            <img src="~/Banner/user.png" alt="Alternate Text" style="width:100px; height:100px; border-radius:100px;" />
-                        </div>
-                    </a>
-                </div>
+                
                 @using (Html.BeginForm("ChinhSuaThongTin", "QuanLy", new { area = "" }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
@@ -69,7 +63,7 @@
                             SĐT
                             <div class="col-md-10">
                                 <div class="form-control">
-                                    <input type="number" name="SDT" value="@Model.SDT" />
+                                    <input type="number" readonly ="readonly" name="SDT" value="@Model.SDT" />
                                 </div>
                             </div>
 

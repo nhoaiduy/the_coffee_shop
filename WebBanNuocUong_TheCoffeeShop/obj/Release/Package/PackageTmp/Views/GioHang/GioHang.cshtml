@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = new List<Tuple<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM, int>>();
+    var cart1 = new List<WebBanNuocUong_TheCoffeeShop.Models.CTDONHANG>();
+    if (Session["customer"] == null)
+    {
+        cart = ViewBag.CART;
+    }
+    else
+    {
+        cart1 = ViewBag.CART;
+    }
+}
+
+<div class="main-b">
+    <div class="content_right-b" style="background-color:white;">
+        <h2 style="color: var(--primary-color);">Giỏ hàng</h2>
+       
+        <table style="padding: 8px 16px; border-radius: 16px; background-color: #fff; box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
+            <tr>
+                <th class="order-number">STT</th>
+                <th class="name">Tên sản phẩm</th>
+                <th class="image">Ảnh</th>
+                <th class="price">Giá</th>
+                <th class="quantity">Số lượng</th>
+                <th class="total">Thành tiền</th>
+                <th class="chucnang"></th>
+            </tr>
+            @{
+                int i = 1;
+                if (Session["customer"] == null)
+                {
+                    if (cart != null )
+                    {
+                        foreach (var item in cart)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                    @{
+                                        i++;
+                                    }
+                                </td>
+                                <td>@item.Item1.TENSP</td>
+                                <td>
+                                    <img src="@Url.Content(item.Item1.ANHSP)" alt="Alternate Text" />
+                                </td>
+                                <td>@item.Item1.GIASP VNĐ</td>
+                                <td>@item.Item2</td>
+                                <td>
+                                    @{
+                                        string s = (item.Item2 * item.Item1.GIASP).ToString();
+                                    }
+                                    @s VNĐ
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("XoaChiTiet", "GioHang", new {MASP = item.Item1.MASP})" style="color: red; text-decoration: none">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                else
+                {
+                    if (cart1 != null)
+                    {
+                        foreach (var item in cart1)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                    @{
+                                        i++;
+                                    }
+                                </td>
+                                <td>@item.SANPHAM.TENSP</td>
+                                <td>
+                                    <img src="@Url.Content(item.SANPHAM.ANHSP)" alt="Alternate Text" />
+                                </td>
+                                <td>@item.SANPHAM.GIASP VNĐ</td>
+                                <td>@item.SOLUONG</td>
+                                <td>
+                                    @{
+                                        string s = (item.SOLUONG * item.SANPHAM.GIASP).ToString();
+                                    }
+                                    @s VNĐ
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("XoaChiTiet", "GioHang", new {MASP = item.MASP})" style="color: red; text-decoration: none">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </table>
+        <div class="cart_bottom" style="display: flex; width: 100%; justify-content: space-between; margin-top:30px;">
+
+            <div class="cart_bottom_right">
+                <span style="text-align: right; display: flex; flex-direction: column; margin: 16px 0; font-size: 24px; font-weight:bold; color: var(--primary-color);">
+                    @{
+                        decimal sum = 0;
+                        if (Session["customer"] == null)
+                        {
+                            if (cart != null)
+                            {
+                                sum = cart.Sum(d => d.Item1.GIASP * d.Item2);
+                            }
+                        }
+                        else
+                        {
+                            if (cart1 != null)
+                            {
+                                sum = cart1.Sum(d => d.THANHTIEN);
+                            }
+
+                        }
+                    }
+                    Tổng tiền: @sum VNĐ
+                </span>
+            </div>
+
+        </div>
+        <div style="display: flex; width: 100%; justify-content:right; margin-top:30px;">
+            <a href="@Url.Action("DatHang", "DatHang")"style="padding: 8px 16px; background-color: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; margin-right: 16px">Tiếp tục</a>
+        </div>
+    </div>
+</div>

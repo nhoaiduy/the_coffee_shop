@@ -75,11 +75,11 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     int num = int.Parse(last);
                     last = "U";
                     int zero = 0;
-                    if (num < 10) zero = 4;
-                    else if (num < 100) zero = 3;
-                    else if (num < 1000) zero = 2;
-                    else if (num < 10000) zero = 1;
-                    else if (num < 100000) zero = 0;
+                    if (num < 9) zero = 4;
+                    else if (num < 99) zero = 3;
+                    else if (num < 999) zero = 2;
+                    else if (num < 9999) zero = 1;
+                    else if (num < 99999) zero = 0;
 
                     for (int i = 0; i < zero; i++)
                     {
@@ -95,8 +95,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     nGUOIDUNG.USERID = last;
                     nGUOIDUNG.DIEMTICHLUY = 0;
 
-                    db.TAIKHOANs.Add(tAIKHOAN);
                     db.NGUOIDUNGs.Add(nGUOIDUNG);
+                    db.SaveChanges();
+                    db.TAIKHOANs.Add(tAIKHOAN);
                     db.SaveChanges();
                     return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
                 }

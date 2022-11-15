@@ -1,0 +1,128 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (!string.IsNullOrEmpty(ViewBag.Fail))
+    {
+        <script type="text/javascript">
+        alert("@ViewBag.Fail");
+        </script>
+    }
+}
+
+<link href="~/Content/specialStyle.css" rel="stylesheet" />
+<div class="main-b">
+    <div class="content_left-b">
+        <div class="categories_sidebar-p" style="box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
+            <ul class="categories_list-p">
+                <li class="categories_item-p">
+                    <a href="@Url.Action("ThongTinCaNhan","QuanLy")" class="categories_item_link-p">Thông tin cá nhân</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DanhSachDonHang","QuanLy")" class="categories_item_link-p">Đơn hàng</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
+                </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DoiTenDangNhap","QuanLy")" class="categories_item_link-p">Đổi tên đăng nhập</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content_right-b">
+        <div class="info_container-ci">
+            <div class="form-horizontal_info-ci">
+                <div class="form-group form-group-ci" style="justify-content:center">
+                    <a>
+                        <div class="col-md-10">
+                            <img src="~/Banner/user.png" alt="Alternate Text" style="width:100px; height:100px; border-radius:100px;" />
+                        </div>
+                    </a>
+                </div>
+                @using (Html.BeginForm("ChinhSuaThongTin", "QuanLy", new { area = "" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group form-group-ci row">
+                        <div class="form-group form-group-ci">
+                            Họ tên
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="text" name="HOTEN" value="@Model.HOTEN" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-ci">
+                            Ngày sinh
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="date" name="NGAYSINH" value="@Model.NGAYSINH.ToString("yyyy-MM-dd")" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-ci row">
+                        <div class="form-group form-group-ci">
+                            SĐT
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="number" readonly ="readonly" name="SDT" value="@Model.SDT" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-ci">
+                            Email
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="email" name="EMAIL" value="@Model.EMAIL" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-ci row">
+                        <div class="form-group form-group-ci">
+                            Địa chỉ 1
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="text" name="DIACHI" value="@Model.DIACHI" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group form-group-ci">
+                            Địa chỉ 2
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input type="text" name="DIACHI2" value="@Model.DIACHI2" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-ci row">
+                        <div class="form-group form-group-ci">
+                            Điểm tích lũy
+                            <div class="col-md-10">
+                                <div class="form-control">
+                                    <input style="pointer-events:none;" type="number" name="DIEMTICHLUY" value="@Model.DIEMTICHLUY" />
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="form-group form-group-ci" style="justify-content:center; margin-top: 30px;">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" name="" class="btn btn-default choose btn-update-ci" value="Cập nhật" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+

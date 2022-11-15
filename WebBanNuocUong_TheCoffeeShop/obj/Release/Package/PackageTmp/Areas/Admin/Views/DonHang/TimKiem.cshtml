@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
+
+@{
+    string searchString = ViewBag.SEARCHSTRING;
+    ViewBag.Title = "Kết quả - "+searchString;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="content">
+        <h1>Kết quả - @searchString</h1>
+        <hr />
+        <div class="categories__data">
+            <table class="table">
+                <tr>
+                    <th>
+                        Mã đơn hàng
+                    </th>
+                    <th>
+                        Thời gian đặt
+                    </th>
+                    <th>
+                        Tổng tiền
+                    </th>
+                    <th>
+                        Tình trạng đơn
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr class="order-item">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MADH)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NGAYLAP)
+                        </td>
+                        <td>
+                            @String.Format("{0:0,0 VNĐ}", item.TONGITEN)
+                        </td>
+                        <td>
+                            @item.TINHTRANG
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChiTietDonHang", new { @MADH = item.MADH})">Xem đơn hàng</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
