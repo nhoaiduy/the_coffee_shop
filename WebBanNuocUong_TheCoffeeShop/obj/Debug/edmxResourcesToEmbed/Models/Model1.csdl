@@ -373,7 +373,6 @@
     <FunctionImport Name="sp_ThongTinDonHang" ReturnType="Collection(thecoffeeshopModel.sp_ThongTinDonHang_Result)">
       <Parameter Name="ma_dh" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_ChiTietSanPham_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
@@ -451,15 +450,5 @@
     <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
     <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
-  </ComplexType>
-  <ComplexType Name="sp_XemKhuyenMai_Result">
-    <Property Type="String" Name="MAKM" Nullable="false" MaxLength="5" />
-    <Property Type="String" Name="TENKM" Nullable="false" MaxLength="100" />
-    <Property Type="Decimal" Name="SOTIENGIAM" Nullable="false" Precision="18" Scale="0" />
-    <Property Type="String" Name="ANHKM" Nullable="false" />
-    <Property Type="DateTime" Name="NGAYHETHAN" Nullable="false" Precision="23" />
-    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
-    <Property Type="Decimal" Name="DIEUKIEN" Nullable="false" Precision="18" Scale="0" />
-    <Property Type="String" Name="MOTAKM" Nullable="false" />
   </ComplexType>
 </Schema>
