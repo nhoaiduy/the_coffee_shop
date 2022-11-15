@@ -19,7 +19,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             return View(nGUOIDUNG);
         }
         [HttpPost]
-        public ActionResult ChinhSuaThongTin([Bind(Include = "HOTEN, DIACHI, NGAYSINH, EMAIL, DIACHI2")] NGUOIDUNG nGUOIDUNG)
+        public ActionResult ChinhSuaThongTin([Bind(Include = "HOTEN, SDT, DIACHI, NGAYSINH, EMAIL, DIACHI2")] NGUOIDUNG nGUOIDUNG)
         {
             if (ModelState.IsValid)
             {
@@ -28,6 +28,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 if (nGUOIDUNG.HOTEN != null)
                 {
                     nGUOIDUNG1.HOTEN = nGUOIDUNG.HOTEN;
+                }
+                if (nGUOIDUNG.SDT != null)
+                {
+                    nGUOIDUNG1.SDT = nGUOIDUNG.SDT;
                 }
                 if (nGUOIDUNG.DIACHI != null)
                 {
@@ -49,18 +53,11 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("ThongTinCaNhan", "QuanLy", new { area = "" });
         }
-        public ActionResult DanhSachDonHang(string tinhTrang="", string MADH="")
+        public ActionResult DanhSachDonHang(string tinhTrang)
         {
             var user = Session["customer"] as TAIKHOAN;
             NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
-            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT)).ToList();
-            if (!string.IsNullOrEmpty(MADH))
-            {
-                donHangs = donHangs.Where(d => d.MADH.ToLower().Trim().Equals(MADH.ToLower().Trim())).ToList();
-                ViewBag.SEARCHSTRING = MADH;
-                ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
-                return View(donHangs.ToList());
-            }
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT) && d.DIACHI.Equals(nGUOIDUNG.DIACHI) && d.TENNGUOINHAN.Equals(nGUOIDUNG.HOTEN)).ToList();
             if (!string.IsNullOrEmpty(tinhTrang))
             {
                 if (tinhTrang.Equals("Tất cả"))
@@ -155,9 +152,22 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
         }
         
-               
-        /*Dành cho khách vãng lai*/
+        public ActionResult XoaTaiKhoan()
+        {
+            var user = Session["customer"] as TAIKHOAN;
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+            tAIKHOAN.ISENABLE = !tAIKHOAN.ISENABLE;
+            db.Entry(tAIKHOAN).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            Session.Clear();
+            return RedirectToAction("TrangChu", "TrangChu", new { area = "" });
+        }
         
+        /*Dành cho khách vãng lai*/
+        //public ActionResult TraCuuDonHang()
+        //{
+        //    return View();
+        //}
         public ActionResult TraCuuDonHang(string searchMaDH)
         {
             var donHang = from d in db.DONHANGs select d;

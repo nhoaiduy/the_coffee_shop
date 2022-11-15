@@ -19,7 +19,7 @@
                     <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
                 </li>
                 <li class="categories_item-p">
-                    <a href="@Url.Action("DoiTenDangNhap","QuanLy")" class="categories_item_link-p">Đổi tên đăng nhập</a>
+                    <a href="@Url.Action("DoiTenDangNhap","QuanLy")" class="categories_item_link-p">Đổi tên / xóa tài khoản</a>
                 </li>
             </ul>
         </div>
@@ -91,49 +91,3 @@
 
     </div>
 </div>
-<div class="wrap">
-    <div class="create-modal modal">
-        <span class="close-btn" onclick="HideWrap()">
-            <i class="fa-solid fa-xmark"></i>
-        </span>
-        <div id="timKiem">
-            <h2>Tìm kiếm dơn hàng</h2>
-            @using (Html.BeginForm("DanhSachDonHang", "QuanLy",  new { enctype = "multipart/form-data",  area = "" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <span class="label">Mã đơn hàng</span>
-                    <input type="text" id="tenSP" name="MADH" value="" />
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="create-btn" class="create-btn choose" value="Tìm kiếm" />
-                </div>
-
-            }
-        </div>
-    </div>
-</div>
-<script>
-    var wrap = document.getElementsByClassName('wrap')[0];
-
-    function DisplayWrap(type) {
-        wrap.style.display = 'flex';
-        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-        if (type == 'l') {
-            document.getElementById('loaiSanPham').style.display = 'flex';
-        } else if (type == 's') {
-            document.getElementById('sanPham').style.display = 'flex';
-        } else {
-            document.getElementById('timKiem').style.display = 'flex';
-        }
-    }
-
-    function HideWrap() {
-        wrap.style.display = 'none';
-        document.getElementsByTagName('body')[0].style.overflow = 'visible';
-        document.getElementById('loaiSanPham').style.display = 'none';
-        document.getElementById('sanPham').style.display = 'none';
-        document.getElementById('timKiem').style.display = 'none';
-    }
-</script>
