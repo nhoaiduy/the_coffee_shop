@@ -131,9 +131,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhuyenMaiController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoaiSanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
     <Compile Include="Areas\Admin\Data\LoginModel.cs" />
     <Compile Include="Controllers\DatHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
@@ -201,10 +203,19 @@
     <Compile Include="Models\sp_HienThiDanhSachLoaiSanPham_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_ThongKeTheoNgay_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_ThongKeTheoNguoiDung_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_ThongTinDonHang_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_TimKiemSanPham_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_XemKhuyenMai_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TAIKHOAN.cs">
@@ -240,6 +251,61 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\1.jfif" />
+    <Content Include="Image\1636647328_arme-nong_400x400.jpg" />
+    <Content Include="Image\1639377738_ca-phe-sua-da_400x400.jpg" />
+    <Content Include="Image\1639377798_ca-phe-den-da_400x400.jpg" />
+    <Content Include="Image\1639377904_bac-siu_400x400.jpg" />
+    <Content Include="Image\1647510904_tra-sua-oolong-nuong-tran-chau-da_400x400.jpeg" />
+    <Content Include="Image\1653291164_da-tuyet-dao_400x400.jpg" />
+    <Content Include="Image\1653291175_da-tuyet-vai_400x400.jpg" />
+    <Content Include="Image\1653291185_hi-tea-dao_400x400.jpg" />
+    <Content Include="Image\1653291194_hi-tea-yuzu_400x400.jpg" />
+    <Content Include="Image\1653291204_hi-tea-vai_400x400.jpg" />
+    <Content Include="Image\1655199351_dau-man-muoi-aloe-vera_400x400.jpg" />
+    <Content Include="Image\1655199358_xoai-aloe-vera_400x400.jpg" />
+    <Content Include="Image\1665655022_tra-sua-oolong-dua_400x400.jpg" />
+    <Content Include="Image\1665655072_hong-tra-arabica_400x400.jpg" />
+    <Content Include="Image\1665655139_oolong-kem-dua-daxay_400x400.png" />
+    <Content Include="Image\1665655219_cloudfee-classic_400x400.jpg" />
+    <Content Include="Image\1665655225_cloudfee-caramel_400x400.jpg" />
+    <Content Include="Image\1665655231_cloudfee-roasted-almond_400x400.jpg" />
+    <Content Include="Image\1665655237_cloudfee-pandan-coconut_400x400.jpg" />
+    <Content Include="Image\1665655318_hi-tea-quyt_400x400.jpg" />
+    <Content Include="Image\1665655332_cold-brew-pbt_400x400.jpg" />
+    <Content Include="Image\1665655345_tch-sua-da_400x400.jpg" />
+    <Content Include="Image\1666020157_very-berry_400x400.jpg" />
+    <Content Include="Image\1666020159_smore-choco_400x400.jpg" />
+    <Content Include="Image\1667460766_kem-cheese_400x400.jpg" />
+    <Content Include="Image\1667460870_caramel_400x400.jpg" />
+    <Content Include="Image\20-10.png" />
+    <Content Include="Image\20-11.png" />
+    <Content Include="Image\cappuccino_621532_400x400.jpg" />
+    <Content Include="Image\Capu-da_487470_400x400.jpg" />
+    <Content Include="Image\caramel-macchiato_143623_400x400.jpg" />
+    <Content Include="Image\cfdenda-espressoDa_185438_400x400.jpg" />
+    <Content Include="Image\classic-cold-brew_239501_400x400.jpg" />
+    <Content Include="Image\classic-cold-brew_791256_400x400.jpg" />
+    <Content Include="Image\cold-brew-sua-tuoi_379576_400x400.jpg" />
+    <Content Include="Image\espressoNong_612688_400x400.jpg" />
+    <Content Include="Image\halloween.png" />
+    <Content Include="Image\hong-tra-latte_618293_400x400.jpg" />
+    <Content Include="Image\hong-tra-sua-nong_941687_400x400.jpg" />
+    <Content Include="Image\hong-tra-sua-tran-chau_326977_400x400.jpg" />
+    <Content Include="Image\latte-da_438410_400x400.jpg" />
+    <Content Include="Image\latte_851143_400x400.jpg" />
+    <Content Include="Image\merry-christmas.png" />
+    <Content Include="Image\nhan-hat-chia--nong_140427_400x400.jpg" />
+    <Content Include="Image\oolong-nuong-nong_948581_400x400.jpg" />
+    <Content Include="Image\tdcs-nong_288997_400x400.jpg" />
+    <Content Include="Image\tet.png" />
+    <Content Include="Image\tra-dao-cam-xa_668678_400x400.jpg" />
+    <Content Include="Image\tra-den-matchiato_430281_400x400.jpg" />
+    <Content Include="Image\tra-nhan-da_484810_400x400.jpg" />
+    <Content Include="Image\tra-sen-nong_025153_400x400.jpg" />
+    <Content Include="Image\tra-sen_905594_400x400.jpg" />
+    <Content Include="Image\tra-sua-mac-ca_377522_400x400.jpg" />
+    <Content Include="Image\valentine.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -273,6 +339,13 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\KhuyenMai\ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\KhuyenMai\DanhSachKhuyenMai.cshtml" />
+    <Content Include="Image\halloween.webp" />
+    <Content Include="Areas\Admin\Views\ThongKe\DanhMucThongKe.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\ThongKeTheoThang.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\ThongKeTheoNam.cshtml" />
+    <Content Include="Areas\Admin\Views\ThongKe\ThongKeTheoNguoiDung.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\displayWrap.js" />
     <Content Include="Scripts\format_currency.js" />
@@ -313,6 +386,7 @@
     <Content Include="Views\TimKiem\TimKiem.cshtml" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\QuanLy\DoiTenDangNhap.cshtml" />
+    <Content Include="Views\KhuyenMai\ChiTietKhuyenMai.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

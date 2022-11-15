@@ -1,0 +1,115 @@
+﻿/*Homepage*/
+.wrap-list-c {
+    padding-right: 150px;
+    padding-left: 150px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.product-list__row-c {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.wrap_list-title-c {
+    padding: 0 24px;
+    color: var(--primary-color);
+}
+
+.product__item-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eee;
+    padding: 16px 24px;
+    margin: 8px;
+    margin-right: 30px;
+    width: 150px;
+    min-height: 200px;
+    box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;
+    border-radius: 15px;
+    background: #fff;
+}
+
+.product__item__img-c {
+    max-width: 150px;
+    min-height: 150px;
+}
+
+.product__item__title-c {
+    margin: 8px 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.product__item__price-c {
+    margin: 8px 0;
+    color: red;
+}
+
+.btn-default {
+    float: right;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.btn-color {
+    color: #fff;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    border: var(--primary-color);
+}
+/*Product Page*/
+.main-p {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.content_left-p {
+    width:18%;
+    max-width:25%;
+    margin:32px 0;
+}
+
+.content_right-p {
+    width: 82%;
+    min-width:75%;
+    margin: 32px 0;
+
+}
+
+.categories_sidebar-p {
+    background-color: white;
+    height: fit-content;
+    width:fit-content;
+}
+.categories_list-p {
+    margin: 0;
+    padding: 0;
+}
+
+.categories_item-p {
+    list-style: none;
+    color: var(--primary-color);
+    font-size: 20px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.categories_item_link-p {
+    text-decoration: none;
+    color: var(--primary-color);
+    display: inline-block;
+    padding: 8px 16px;
+    width: calc(100% - 32px);
+}
+.categories_item-p :hover {
+    background-color: antiquewhite;
+}
+
+.choose {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+/*Product Details Page*/

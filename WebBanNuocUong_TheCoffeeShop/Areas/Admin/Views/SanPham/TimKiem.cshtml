@@ -14,13 +14,19 @@
             @foreach (var item in Model)
             {
                 <li class="product__item">
+                    @if (!item.ISENABLE)
+                    {
+                        <span class="disable">
+                            DISABLE
+                        </span>
+                    }
                     <a href="@Url.Action("ChiTiet", new {@productName = item.TENSP})">
                         <img src="@Url.Content(item.ANHSP)" alt="Alternate Text" class="product__item__img" />
                         <span class="product__item__name">
                             @item.TENSP
                         </span>
                         <span class="product__item__price">
-                            @item.GIASP VNĐ
+                            @String.Format("{0:0,0 VNĐ}", item.GIASP)
                         </span>
                         <span class="product__item__quantity">
                             Số Lượng: @item.SOLUONG

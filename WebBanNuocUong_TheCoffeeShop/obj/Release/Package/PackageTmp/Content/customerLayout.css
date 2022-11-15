@@ -1,0 +1,101 @@
+﻿/*Đăng nhập, đăng ký*/
+.navbar-menu_right {
+    flex-grow: 1;
+    width: auto;
+    padding: 8px 16px;
+    font-size: 19px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-menu__item1 {
+    list-style: none;
+    padding-right: 0;
+}
+
+.navbar-menu__item1:after {
+    margin-left: 16px;
+    content: "";
+    width: 0;
+    height: 10px;
+}
+
+.navbar-menu__item1__link {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-menu__item1__link:hover {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar-menu__item1__link:focus {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+/*Search*/
+.navbar-menu-search {
+    margin-right: 100px;
+}
+.navbar-menu_boxsearch{
+    width:200px;
+    height:28px;
+    color:#000;
+    font-size:16px;
+}
+.navbar-menu_boxsearch, button {
+    padding: 0 6px;
+    border-radius: 4px 4px;
+    border: none;
+}
+
+.navbar-menu_btn-search {
+    background: none;
+    color:white;
+}
+.margin_form{
+    margin: 0 50px 0 0;
+}
+
+/*Footer*/
+.footer-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    border-bottom: 1px solid;
+}
+
+.footer-list_item {
+    width: 33%;
+}
+
+.footer-list_item h2 {
+    text-align: left;
+}
+
+.footer-list_item p {
+    text-align: left;
+    font-size: 18px;
+    line-height: 2.0;
+}
+
+.footer-list_item img {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%, +25%);
+}
+
+.footer-list_item a {
+    color: #fff;
+    margin-right: 8px;
+}
+
