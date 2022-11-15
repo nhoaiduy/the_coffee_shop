@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Kết quả tìm kiếm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int c = 0;
+    foreach (var item in Model)
+    {
+        c++;
+    }
+}
+
+<style>
+    .hidden_text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="main-c">
+    @Html.Action("GetBanner", "TrangChu");
+
+    @{
+        if (c != 0)
+        {
+            <div class="wrap-list-c">
+                <h2 class="wrap_list-title-c">CÓ PHẢI BẠN ĐANG TÌM?</h2>
+                <ul class="product-list__row-c">
+                    @{
+                        foreach (var item in Model)
+                        {
+
+                            <li class="product__item-c">
+                                <a href="@Url.Action("ChiTietSanPham","SanPham", new {@productName = item.TENSP, area= ""})" style="text-decoration: none;">
+                                    <img src="@Url.Content(item.ANHSP)" alt="Alternate Text" class="product__item__img-c" />
+                                    <div class="product__item__title-c hidden_text">@item.TENSP</div>
+                                    <div class="product__item__price-c format_currency">@item.GIASP</div>
+                                </a>
+                                <input type="submit" name="cart-btn" style="margin: 16px 8px; cursor: pointer; " value="Đặt ngay" class="btn-default btn-color btnDat" />
+                            </li>
+
+                        }
+                    }
+                </ul>
+
+
+            </div>
+        }
+        else
+        {
+            <div class="wrap-list-c" style="margin-bottom:45px;">
+                <h2 class="wrap_list-title-c">KHÔNG TÌM THẤY SẢN PHẨM!</h2>
+            </div>
+        }
+    }
+
+</div>
+
+

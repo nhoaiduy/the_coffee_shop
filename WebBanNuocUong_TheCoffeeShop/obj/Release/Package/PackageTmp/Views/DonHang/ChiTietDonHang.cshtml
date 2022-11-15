@@ -1,0 +1,117 @@
+﻿@model WebBanNuocUong_TheCoffeeShop.Models.DONHANG
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng - " + Model.MADH ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+<div class="main">
+    <div class="content">
+        <h1>Chi tiết đơn hàng - @Model.MADH</h1>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start">
+            <div class="customer-info">
+                <table>
+                    <tr>
+                        <td>Họ tên:</td>
+                        <td>@Model.TENNGUOINHAN</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>@Model.SDT</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>@Model.DIACHI</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="status-update">
+                <h2 style="text-align: center;">@Model.TINHTRANG.TINHTRANG1</h2>
+            </div>
+            @{
+                if (Model.MATT < 5)
+                {
+                    <div class="status-update" style="padding: 24px">
+                        <a href="@Url.Action("HuyDon", "DonHang", new {area ="", MADH = Model.MADH})" style="background-color: var(--primary-color); margin: 16px; color: #fff;padding: 8px 16px; text-decoration: none">Hủy đơn</a>
+                    </div>
+                }
+            }
+        </div>
+        <div class="categories__data">
+            <table class="table">
+                <tr>
+                    <th class="order-number">
+                        STT
+                    </th>
+                    <th class="name">
+                        Tên sản phẩm
+                    </th>
+                    <th class="image">
+                        Ảnh sản phẩm
+                    </th>
+                    <th class="image">
+                        Giá
+                    </th>
+                    <th class="quantity">
+                        Số lượng
+                    </th>
+                    <th class="total">
+                        Thành tiền
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.CTDONHANGs.ToList())
+                {
+                    <tr>
+                        <td class="order-number">
+                            @i
+                            @{
+                                i++;
+                            }                      i
+                        </td>
+
+                        <td class="name">
+                            @item.SANPHAM.TENSP
+                        </td>
+                        <td class="image">
+                            <img src="@Url.Content(item.SANPHAM.ANHSP)" style="width:100px;" />
+                        </td>
+                        <td class="image">
+                            @item.SANPHAM.GIASP VNĐ
+                        </td>
+                        <td class="quantity">
+                            @Html.DisplayFor(modelItem => item.SOLUONG)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.THANHTIEN)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <hr />
+        <div class="total" style="width: 100%; display: flex; justify-content: flex-end">
+            <table>
+                <tr>
+                    <td>Tạm tính:</td>
+                    <td>@Model.TAMTINH</td>
+                </tr>
+                <tr>
+                    <td>Giảm giá:</td>
+                    <td>@Model.SOTIENGIAMKM</td>
+                </tr>
+                <tr>
+                    <td>Điểm tích lũy:</td>
+                    <td>@Model.TRUDIEMTINHLUY</td>
+                </tr>
+                <tr>
+                    <td>Tổng tiền:</td>
+                    <td>@Model.TONGITEN</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

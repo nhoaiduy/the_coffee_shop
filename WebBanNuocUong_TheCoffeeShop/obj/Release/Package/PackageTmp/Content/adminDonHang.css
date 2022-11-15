@@ -1,0 +1,85 @@
+﻿:root {
+    --primary-color: #A0522D;
+}
+
+.tinhtrang-droplist{
+    margin: 0 16px;
+    width: 20%;
+}
+
+.order-status {
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.order-status:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.categories__data table{
+    width: 100%;
+}
+
+.categories__data th{
+    color: var(--primary-color);
+}
+
+.categories__data th, .categories__data td {
+    min-width: 25%;
+    text-align: center;
+    border-bottom: 1px solid var(--primary-color);
+    padding: 8px 16px;
+}
+
+.categories__data td> a{
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    color: #fff;
+}
+
+.customer-info tr td:first-child{
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.customer-info td{
+    border: none;
+    min-width: 150px;
+    font-size: 20px;
+}
+
+.status-update{
+    width: 50%;
+}
+
+.status-update form{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.status-update select{
+    width: 150px;
+}
+
+.status-update input{
+    margin: 0;
+}
+
+.total tr:last-child td {
+    font-size: 30px;
+}
+
+.total tr td:first-child {
+    color: var(--primary-color);
+    font-weight: bold;
+    width: 150px;
+}
+
+.total td{
+    min-width: 50px;
+    font-size: 20px;
+}

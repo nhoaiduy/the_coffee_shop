@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\hoaid\OneDrive\Desktop\host</_PublishTargetUrl>
+    <History>True|2022-11-14T15:10:17.6705084Z;True|2022-11-14T21:52:12.3495307+07:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Admin/Views/DonHang/ChiTietDonHang.cshtml">
+      <publishTime>11/14/2022 21:37:43</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DonHang/DanhSachDonHang.cshtml">
+      <publishTime>11/14/2022 21:36:15</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/DonHang/TimKiem.cshtml">
+      <publishTime>11/14/2022 21:38:21</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/ChiTiet.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/KhuyenMai/DanhSachKhuyenMai.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/ChiTiet.cshtml">
+      <publishTime>11/14/2022 21:35:16</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/DanhMucSanPham.cshtml">
+      <publishTime>11/14/2022 21:34:48</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/SanPham/TimKiem.cshtml">
+      <publishTime>11/14/2022 21:35:32</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/Shared/_Layout.cshtml">
+      <publishTime>11/14/2022 21:21:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/TaiKhoan/ChiTietNguoiDung.cshtml">
+      <publishTime>11/13/2022 09:59:35</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/TaiKhoan/DanhSachTaiKhoan.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/TaiKhoan/ThongTinTaiKhoan.cshtml">
+      <publishTime>11/14/2022 21:44:51</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThongKe/DanhMucThongKe.cshtml">
+      <publishTime>11/14/2022 21:44:05</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThongKe/ThongKeTheoNam.cshtml">
+      <publishTime>11/14/2022 21:42:30</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThongKe/ThongKeTheoNguoiDung.cshtml">
+      <publishTime>11/14/2022 21:42:47</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/ThongKe/ThongKeTheoThang.cshtml">
+      <publishTime>11/14/2022 21:42:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/web.config">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Areas/Admin/Views/_ViewStart.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Banner/banner1.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Banner/banner2.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Banner/banner3.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Banner/banner4.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Banner/logo.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe.config">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Console.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Globalization.Calendars.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.Compression.ZipFile.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Http.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Net.Sockets.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Runtime.InteropServices.RuntimeInformation.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.ValueTuple.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="bin/WebBanNuocUong_TheCoffeeShop.dll">
+      <publishTime>11/14/2022 22:10:16</publishTime>
+    </File>
+    <File Include="bin/WebBanNuocUong_TheCoffeeShop.pdb">
+      <publishTime>11/14/2022 22:10:16</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>11/13/2022 09:49:12</publishTime>
+    </File>
+    <File Include="Content/adminDonHang.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/adminLayout.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/adminSanPham.css">
+      <publishTime>11/13/2022 09:56:23</publishTime>
+    </File>
+    <File Include="Content/adminTaiKhoan.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/banner.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/cart_shopping.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/cusProduct.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/customerInfo.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/customerLayout.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/specialStyle.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Content/taiKhoan.css">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>11/13/2022 09:49:11</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1.jfif">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1636647328_arme-nong_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1639377738_ca-phe-sua-da_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1639377798_ca-phe-den-da_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1639377904_bac-siu_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1647510904_tra-sua-oolong-nuong-tran-chau-da_400x400.jpeg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1653291164_da-tuyet-dao_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1653291175_da-tuyet-vai_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1653291185_hi-tea-dao_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1653291194_hi-tea-yuzu_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1653291204_hi-tea-vai_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1655199351_dau-man-muoi-aloe-vera_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1655199358_xoai-aloe-vera_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655022_tra-sua-oolong-dua_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655072_hong-tra-arabica_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655139_oolong-kem-dua-daxay_400x400.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655219_cloudfee-classic_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655225_cloudfee-caramel_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655231_cloudfee-roasted-almond_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655237_cloudfee-pandan-coconut_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655318_hi-tea-quyt_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655332_cold-brew-pbt_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1665655345_tch-sua-da_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1666020157_very-berry_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1666020159_smore-choco_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1667460766_kem-cheese_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/1667460870_caramel_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/20-10.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/20-11.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/cappuccino_621532_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/Capu-da_487470_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/caramel-macchiato_143623_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/cfdenda-espressoDa_185438_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/classic-cold-brew_239501_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/classic-cold-brew_791256_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/cold-brew-sua-tuoi_379576_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/espressoNong_612688_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/halloween.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/halloween.webp">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/hong-tra-latte_618293_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/hong-tra-sua-nong_941687_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/hong-tra-sua-tran-chau_326977_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/latte-da_438410_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/latte_851143_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/merry-christmas.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/nhan-hat-chia--nong_140427_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/oolong-nuong-nong_948581_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tdcs-nong_288997_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tet.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-dao-cam-xa_668678_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-den-matchiato_430281_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-nhan-da_484810_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-sen-nong_025153_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-sen_905594_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/tra-sua-mac-ca_377522_400x400.jpg">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Image/valentine.png">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Models/Model1.edmx.diagram">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/banner.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/boolFocus.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/displayWrap.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/format_currency.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.8.3.js">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/DatHang/DatHang.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/DonHang/ChiTietDonHang.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/GioHang/GioHang.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/KhuyenMai/DanhSachKhuyenMai.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DanhSachDonHang.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DoiMatKhau.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/QuanLy/DoiTenDangNhap.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/QuanLy/ThongTinCaNhan.cshtml">
+      <publishTime>11/14/2022 21:12:46</publishTime>
+    </File>
+    <File Include="Views/QuanLy/TraCuuDonHang.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/SanPham/ChiTietSanPham.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/SanPham/DanhMucSanPham.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/TaiKhoan/DangKy.cshtml">
+      <publishTime>11/14/2022 22:10:01</publishTime>
+    </File>
+    <File Include="Views/TaiKhoan/DangNhap.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/TimKiem/TimKiem.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/TrangChu/GetBanner.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/TrangChu/TrangChu.cshtml">
+      <publishTime>11/14/2022 21:50:45</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>11/13/2022 09:49:10</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/14/2022 21:52:11</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

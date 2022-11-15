@@ -1,0 +1,37 @@
+﻿.info_container-ci {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    margin: 0;
+}
+
+.form-horizontal_info-ci {
+    padding: 16px;
+    background-color: white;
+    box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;
+}
+
+.btn-update-ci {
+    border: none;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-group-ci {
+    display: flex;
+    margin: 0;
+    justify-content: space-between;
+    font-size: 18px;
+    min-width: 400px;
+    max-width: 1000px;
+    align-items: center;
+}
+
+    .form-group-ci input {
+        min-width: 200px;
+        padding: 8px 16px;
+    }

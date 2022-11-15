@@ -304,12 +304,19 @@
           <Parameter Name="ma_loai" Type="char" Mode="In" />
           <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="sp_ThongKeTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngay" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_ThongKeTheoNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ten" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_ThongTinDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma_dh" Type="char" Mode="In" />
         </Function>
         <Function Name="sp_TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="search_string" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_XemKhuyenMai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="thecoffeeshopModelStoreContainer">
           <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
@@ -744,6 +751,13 @@
           <FunctionImport Name="sp_ThongTinDonHang" ReturnType="Collection(thecoffeeshopModel.sp_ThongTinDonHang_Result)">
           <Parameter Name="ma_dh" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
+          <FunctionImport Name="sp_ThongKeTheoNgay" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNgay_Result)">
+            <Parameter Name="ngay" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThongKeTheoNguoiDung" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result)">
+            <Parameter Name="ten" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_ChiTietSanPham_Result">
           <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
@@ -805,6 +819,52 @@
           <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_ThongTinDonHang_Result">
+          <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="MATT" Nullable="false" />
+          <Property Type="DateTime" Name="NGAYLAP" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TENNGUOINHAN" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DIACHI" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="THOIGIANGIAOHANG" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="DANHGIA" Nullable="true" />
+          <Property Type="String" Name="NHANXET" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="TAMTINH" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TRUDIEMTINHLUY" Nullable="true" />
+          <Property Type="Decimal" Name="SOTIENGIAMKM" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_XemKhuyenMai_Result">
+          <Property Type="String" Name="MAKM" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="TENKM" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="SOTIENGIAM" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="ANHKM" Nullable="false" />
+          <Property Type="DateTime" Name="NGAYHETHAN" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+          <Property Type="Decimal" Name="DIEUKIEN" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="MOTAKM" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ThongKeTheoNgay_Result">
+          <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="MATT" Nullable="false" />
+          <Property Type="DateTime" Name="NGAYLAP" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TENNGUOINHAN" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DIACHI" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="THOIGIANGIAOHANG" Nullable="true" Precision="23" />
+          <Property Type="Byte" Name="DANHGIA" Nullable="true" />
+          <Property Type="String" Name="NHANXET" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="TAMTINH" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="TRUDIEMTINHLUY" Nullable="true" />
+          <Property Type="Decimal" Name="SOTIENGIAMKM" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ThongKeTheoNguoiDung_Result">
           <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
           <Property Type="Int32" Name="MATT" Nullable="false" />
@@ -1048,6 +1108,64 @@
           <FunctionImportMapping FunctionImportName="sp_ThongTinDonHang" FunctionName="thecoffeeshopModel.Store.sp_ThongTinDonHang">
             <ResultMapping>
               <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ThongTinDonHang_Result">
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="TENNGUOINHAN" ColumnName="TENNGUOINHAN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="THOIGIANGIAOHANG" ColumnName="THOIGIANGIAOHANG" />
+                <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+                <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+                <ScalarProperty Name="TAMTINH" ColumnName="TAMTINH" />
+                <ScalarProperty Name="TRUDIEMTINHLUY" ColumnName="TRUDIEMTINHLUY" />
+                <ScalarProperty Name="SOTIENGIAMKM" ColumnName="SOTIENGIAMKM" />
+                <ScalarProperty Name="TONGITEN" ColumnName="TONGITEN" />
+                <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+                <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_XemKhuyenMai" FunctionName="thecoffeeshopModel.Store.sp_XemKhuyenMai">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_XemKhuyenMai_Result">
+                <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+                <ScalarProperty Name="TENKM" ColumnName="TENKM" />
+                <ScalarProperty Name="SOTIENGIAM" ColumnName="SOTIENGIAM" />
+                <ScalarProperty Name="ANHKM" ColumnName="ANHKM" />
+                <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+                <ScalarProperty Name="MOTAKM" ColumnName="MOTAKM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ThongKeTheoNgay" FunctionName="thecoffeeshopModel.Store.sp_ThongKeTheoNgay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ThongKeTheoNgay_Result">
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+                <ScalarProperty Name="MATT" ColumnName="MATT" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="TENNGUOINHAN" ColumnName="TENNGUOINHAN" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="THOIGIANGIAOHANG" ColumnName="THOIGIANGIAOHANG" />
+                <ScalarProperty Name="DANHGIA" ColumnName="DANHGIA" />
+                <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+                <ScalarProperty Name="TAMTINH" ColumnName="TAMTINH" />
+                <ScalarProperty Name="TRUDIEMTINHLUY" ColumnName="TRUDIEMTINHLUY" />
+                <ScalarProperty Name="SOTIENGIAMKM" ColumnName="SOTIENGIAMKM" />
+                <ScalarProperty Name="TONGITEN" ColumnName="TONGITEN" />
+                <ScalarProperty Name="SOTK" ColumnName="SOTK" />
+                <ScalarProperty Name="TENPTTT" ColumnName="TENPTTT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ThongKeTheoNguoiDung" FunctionName="thecoffeeshopModel.Store.sp_ThongKeTheoNguoiDung">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result">
                 <ScalarProperty Name="MADH" ColumnName="MADH" />
                 <ScalarProperty Name="MAKM" ColumnName="MAKM" />
                 <ScalarProperty Name="MATT" ColumnName="MATT" />
