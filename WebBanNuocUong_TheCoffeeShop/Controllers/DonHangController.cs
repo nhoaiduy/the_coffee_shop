@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebBanNuocUong_TheCoffeeShop.Models;
 
 namespace WebBanNuocUong_TheCoffeeShop.Controllers
@@ -16,8 +17,11 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
             if(dONHANG != null)
             {
+                List<int> rate = new List<int> { 1, 2, 3, 4, 5 };
+                ViewBag.SAO = new SelectList(rate);
                 return View(dONHANG);
             }
+            
             return RedirectToAction("TrangChu", "TrangChu");
         }
         public ActionResult HuyDon(string MADH)
@@ -40,6 +44,20 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 }
             }
             db.SaveChanges();
+            return RedirectToAction("ChiTietDonHang", "DonHang", new { area = "", MADH = MADH });
+        }
+        public ActionResult DanhGia(string MADH, byte SAO, string NHANXET)
+        {
+            
+            DONHANG dONHANG = db.DONHANGs.FirstOrDefault(d => d.MADH.Equals(MADH));
+            if(!string.IsNullOrEmpty(NHANXET) && !string.IsNullOrEmpty(SAO.ToString()))
+            {
+                dONHANG.DANHGIA = SAO;
+                dONHANG.NHANXET = NHANXET;
+                dONHANG.MATT = 7;
+                db.Entry(dONHANG).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
             return RedirectToAction("ChiTietDonHang", "DonHang", new { area = "", MADH = MADH });
         }
     }

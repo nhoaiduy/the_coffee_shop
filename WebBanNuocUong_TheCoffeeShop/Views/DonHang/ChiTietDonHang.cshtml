@@ -36,10 +36,16 @@
                         <a href="@Url.Action("HuyDon", "DonHang", new {area ="", MADH = Model.MADH})" style="background-color: var(--primary-color); margin: 16px; color: #fff;padding: 8px 16px; text-decoration: none">Hủy đơn</a>
                     </div>
                 }
-                if (Model.MATT == 6)
+                else if (Model.MATT == 6)
                 {
                     <div class="status-update" style="padding: 24px">
-                        <a href="" style="background-color: var(--primary-color); margin: 16px; color: #fff;padding: 8px 16px; text-decoration: none">Đánh giá</a>
+                        <button type="submit" style="float:none" class="btn-color btn-default" onclick="DisplayWrap('t')">Đánh giá</button>
+                    </div>
+                }
+                else if (Model.MATT == 7)
+                {
+                    <div class="status-update" style="padding: 24px">
+                        <button type="submit" style="float:none" class="btn-color btn-default" onclick="DisplayWrap('t')">Xem đánh giá</button>
                     </div>
                 }
             }
@@ -121,3 +127,71 @@
     </div>
 </div>
 
+<div class="wrap">
+    <div class="create-modal modal">
+        <span class="close-btn" onclick="HideWrap()">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+        <div id="timKiem">
+            <h2>Đánh giá dơn hàng</h2>
+            @{
+                if (Model.MATT == 7)
+                {
+                    <div class="form-group">
+                        <span class="label">Sao</span>
+                        <input type="text" name="SAO" style="pointer-events:none;" value="@Model.DANHGIA" />
+                    </div>
+                    <div class="form-group">
+                        <span class="label">Nhận xét</span>
+                        <input type="text" name="NHANXET" style="pointer-events:none;" value="@Model.NHANXET" />
+                    </div>
+                }
+                else if (Model.MATT == 6)
+                {
+                    using (Html.BeginForm("DanhGia", "DonHang", new { enctype = "multipart/form-data", area = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(m => m.MADH)
+                        <div class="form-group">
+                            <span class="label">Sao</span>
+                            @Html.DropDownList("SAO", null, htmlAttributes: new { @class = "" })
+                        </div>
+                        <div class="form-group">
+                            <span class="label">Nhận xét</span>
+                            <input type="text" name="NHANXET" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="create-btn" class="create-btn choose" value="Đánh giá" />
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+    </div>
+
+<script>
+    var wrap = document.getElementsByClassName('wrap')[0];
+
+    function DisplayWrap(type) {
+        wrap.style.display = 'flex';
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+        if (type == 'l') {
+            document.getElementById('loaiSanPham').style.display = 'flex';
+        } else if (type == 's') {
+            document.getElementById('sanPham').style.display = 'flex';
+        } else {
+            document.getElementById('timKiem').style.display = 'flex';
+        }
+    }
+
+    function HideWrap() {
+        wrap.style.display = 'none';
+        document.getElementsByTagName('body')[0].style.overflow = 'visible';
+        document.getElementById('loaiSanPham').style.display = 'none';
+        document.getElementById('sanPham').style.display = 'none';
+        document.getElementById('timKiem').style.display = 'none';
+
+    }
+</script>
