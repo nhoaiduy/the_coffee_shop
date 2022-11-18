@@ -82,9 +82,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     int num = int.Parse(last);
                     last = "KM";
                     int zero = 0;
-                    if (num < 10) zero = 2;
-                    else if (num < 100) zero = 1;
-                    else if (num < 1000) zero = 0;
+                    if (num < 9) zero = 2;
+                    else if (num < 99) zero = 1;
+                    else if (num < 999) zero = 0;
                     for (int i = 0; i < zero; i++)
                     {
                         last += 0;

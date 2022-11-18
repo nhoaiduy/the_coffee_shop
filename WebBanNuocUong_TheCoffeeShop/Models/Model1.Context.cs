@@ -286,5 +286,19 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongTinDonHang_Result>("sp_ThongTinDonHang", ma_dhParameter);
         }
+    
+        public virtual ObjectResult<sp_XemKhuyenMai_Result> sp_XemKhuyenMai()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XemKhuyenMai_Result>("sp_XemKhuyenMai");
+        }
+    
+        public virtual ObjectResult<sp_ThongKeTheoNgay_Result> sp_ThongKeTheoNgay(string ngay)
+        {
+            var ngayParameter = ngay != null ?
+                new ObjectParameter("ngay", ngay) :
+                new ObjectParameter("ngay", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNgay_Result>("sp_ThongKeTheoNgay", ngayParameter);
+        }
     }
 }
