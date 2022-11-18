@@ -29,10 +29,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                 {
                     nGUOIDUNG1.HOTEN = nGUOIDUNG.HOTEN;
                 }
-                if (nGUOIDUNG.SDT != null)
-                {
-                    nGUOIDUNG1.SDT = nGUOIDUNG.SDT;
-                }
                 if (nGUOIDUNG.DIACHI != null)
                 {
                     nGUOIDUNG1.DIACHI = nGUOIDUNG.DIACHI;
@@ -53,11 +49,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("ThongTinCaNhan", "QuanLy", new { area = "" });
         }
-        public ActionResult DanhSachDonHang(string tinhTrang)
+        public ActionResult DanhSachDonHang(string tinhTrang = "", string MADH = "")
         {
             var user = Session["customer"] as TAIKHOAN;
             NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
-            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT) && d.DIACHI.Equals(nGUOIDUNG.DIACHI) && d.TENNGUOINHAN.Equals(nGUOIDUNG.HOTEN)).ToList();
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT)).ToList();
+            if (!string.IsNullOrEmpty(MADH))
+            {
+                donHangs = donHangs.Where(d => d.MADH.ToLower().Trim().Equals(MADH.ToLower().Trim())).ToList();
+                ViewBag.SEARCHSTRING = MADH;
+                ViewBag.TINHTRANG = db.TINHTRANGs.ToList();
+                return View(donHangs.ToList());
+            }
             if (!string.IsNullOrEmpty(tinhTrang))
             {
                 if (tinhTrang.Equals("Tất cả"))
@@ -112,10 +115,57 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             ViewBag.Fail = "Thông tin không được để trống";
             return RedirectToAction("DoiMatKhau", "QuanLy", new { area = "" });
         }
-        /*Dành cho khách vãng lai*/
-        public ActionResult TraCuuDonHang()
+        public ActionResult DoiTenDangNhap()
         {
-            return View();
+            var user = Session["customer"] as TAIKHOAN;
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
+
+            return View(tAIKHOAN);
         }
+        [HttpPost]
+        public ActionResult GhiNhanDoiTenDangNhap(string username, string mkhientai)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = Session["customer"] as TAIKHOAN;
+                TAIKHOAN tAIKHOAN1 = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+                if (!String.IsNullOrEmpty(username)&&!String.IsNullOrEmpty(mkhientai))
+                {
+                    if (mkhientai == tAIKHOAN1.USERPASSWORD)
+                    {
+                        var temp = db.TAIKHOANs.FirstOrDefault(u => u.USERNAME.ToLower().Trim().Equals(username.Trim()));
+                        if(temp != null)
+                        {
+                            return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+                        }
+                        else
+                        {
+                            tAIKHOAN1.USERNAME = username;
+                            db.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Fail = "Kiểm tra lại thông tin";
+                        return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+                    }
+                }
+            }
+            ViewBag.Fail = "Thông tin không được để trống";
+            return RedirectToAction("DoiTenDangNhap", "QuanLy", new { area = "" });
+        }
+        /*Dành cho khách vãng lai*/
+        
+        public ActionResult TraCuuDonHang(string searchMaDH)
+        {
+            var donHang = from d in db.DONHANGs select d;
+            if (!String.IsNullOrEmpty(searchMaDH))
+            {
+                donHang = donHang.Where(d => d.MADH.ToLower().Equals(searchMaDH.ToLower().Trim()));
+                return View(donHang.ToList());
+            }
+            return View(new List<DONHANG>());
+        }
+
     }
 }

@@ -1,0 +1,198 @@
+﻿@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cart = new List<Tuple<WebBanNuocUong_TheCoffeeShop.Models.SANPHAM, int>>();
+    var cart1 = new List<WebBanNuocUong_TheCoffeeShop.Models.CTDONHANG>();
+    decimal sum = 0;
+    if (Session["customer"] == null)
+    {
+        cart = ViewBag.CART;
+        if (cart != null)
+        {
+            sum = cart.Sum(d => d.Item1.GIASP * d.Item2);
+        }
+    }
+    else
+    {
+        cart1 = ViewBag.CART;
+        sum = cart1.Sum(d => d.THANHTIEN);
+    }
+    var user = Session["customer"] as WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN;
+}
+
+<div class="main-b">
+    <div class="content_right-b" style="background-color:white;">
+        <h2 style="color: var(--primary-color);">Đặt hàng</h2>
+
+        <table style="padding: 8px 16px; border-radius: 16px; background-color: #fff; box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;">
+            <tr>
+                <th class="order-number">STT</th>
+                <th class="name">Tên sản phẩm</th>
+                <th class="image">Ảnh</th>
+                <th class="price">Giá</th>
+                <th class="quantity">Số lượng</th>
+                <th class="total">Thành tiền</th>
+                <th class="chucnang"></th>
+            </tr>
+            @{
+                int i = 1;
+                if (Session["customer"] == null)
+                {
+                    if (cart != null)
+                    {
+                        foreach (var item in cart)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                    @{
+                                        i++;
+                                    }
+                                </td>
+                                <td>@item.Item1.TENSP</td>
+                                <td>
+                                    <img src="@Url.Content(item.Item1.ANHSP)" alt="Alternate Text" />
+                                </td>
+                                <td>@item.Item1.GIASP VNĐ</td>
+                                <td>@item.Item2</td>
+                                <td>
+                                    @{
+                                        string s = (item.Item2 * item.Item1.GIASP).ToString();
+                                    }
+                                    @s VNĐ
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("XoaChiTiet", "GioHang", new {MASP = item.Item1.MASP})" style="color: red; text-decoration: none">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+                else
+                {
+                    if (cart1 != null)
+                    {
+                        foreach (var item in cart1)
+                        {
+                            <tr>
+                                <td>
+                                    @i
+                                    @{
+                                        i++;
+                                    }
+                                </td>
+                                <td>@item.SANPHAM.TENSP</td>
+                                <td>
+                                    <img src="@Url.Content(item.SANPHAM.ANHSP)" alt="Alternate Text" />
+                                </td>
+                                <td>@item.SANPHAM.GIASP VNĐ</td>
+                                <td>@item.SOLUONG</td>
+                                <td>
+                                    @{
+                                        string s = (item.SOLUONG * item.SANPHAM.GIASP).ToString();
+                                    }
+                                    @s VNĐ
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("XoaChiTiet", "GioHang", new {MASP = item.MASP})" style="color: red; text-decoration: none">Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            }
+        </table>
+        @using (Html.BeginForm("DatHang", "DatHang", FormMethod.Post))
+        {
+
+
+<div class="cart_bottom" style="display: flex; width: 100%; justify-content: space-between; margin-top:30px;">
+
+                <div style="width: 70%;">
+                    @{
+                        if (user == null)
+                        {
+
+
+                            <div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                                <p style="width:130px">Họ tên:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="hoTen" />
+                                    </div>
+                                </div>
+                            </div><div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                                <p style="width:130px">Địa chỉ:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="diaChi" />
+                                    </div>
+                                </div>
+                            </div><div class="form-group" style="justify-content: left; padding: 0px 16px;">
+                                <p style="width:130px">SĐT:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="sdt" />
+                                    </div>
+                                </div>
+                            </div><div class="form-group" style="justify-content: left; padding: 0px 16px;">
+                                <p style="width:130px">Chọn khuyến mãi:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="MAKM" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                                <p style="width:130px">Họ tên:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="hoTen" value="@user.NGUOIDUNG.HOTEN" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="justify-content: left; padding: 0px 16px; ">
+                                <p style="width:130px">Địa chỉ:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="diaChi"value="@user.NGUOIDUNG.DIACHI"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="justify-content: left; padding: 0px 16px;">
+                                <p style="width:130px">SĐT:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="sdt"value="@user.NGUOIDUNG.SDT"  />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="justify-content: left; padding: 0px 16px;">
+                                <p style="width:130px">Chọn khuyến mãi:</p>
+                                <div class="col-md-10" style="margin-left:8px;">
+                                    <div class="form-control form-control_nologin">
+                                        <input type="text" name="MAKM" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="cart_bottom_right">
+                    <span style="text-align: left; display: flex; flex-direction: column; margin: 16px 0; font-size: 24px; font-weight:bold; color: var(--primary-color);">
+                        Tổng tiền: @sum VNĐ
+                    </span>
+                </div>
+
+
+
+            </div>
+            <div style="display: flex; width: 100%; justify-content:right; margin-top:30px;">
+                <input type="submit" name="name" value="Đặt hàng" style="padding: 8px 16px; background-color: var(--primary-color); color: #fff; text-decoration: none; border-radius: 25px; margin-right: 16px" />
+            </div>
+        }
+    </div>
+</div>

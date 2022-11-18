@@ -300,5 +300,16 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNgay_Result>("sp_ThongKeTheoNgay", ngayParameter);
         }
+
+    
+        public virtual ObjectResult<sp_ThongKeTheoNguoiDung_Result> sp_ThongKeTheoNguoiDung(string ten)
+        {
+            var tenParameter = ten != null ?
+                new ObjectParameter("ten", ten) :
+                new ObjectParameter("ten", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNguoiDung_Result>("sp_ThongKeTheoNguoiDung", tenParameter);
+        }
+
     }
 }

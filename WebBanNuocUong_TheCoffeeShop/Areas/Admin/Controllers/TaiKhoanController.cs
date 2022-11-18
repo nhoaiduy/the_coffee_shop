@@ -99,7 +99,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 {
                     nGUOIDUNG1.EMAIL = nGUOIDUNG.EMAIL;
                 }
-                nGUOIDUNG1.DIACHI2 = nGUOIDUNG.DIACHI2;
                 db.Entry(nGUOIDUNG1).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new { area = "Admin" });
@@ -111,8 +110,9 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult DoiMatKhau(string MATKHAU, string MATKHAUMOI, string NMATKHAUMOI)
         {
-            TAIKHOAN user = Session["admin"] as TAIKHOAN;
-            if (!user.USERPASSWORD.Equals(MATKHAU))
+            var user = Session["admin"] as TAIKHOAN;
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(user.USERID));
+            if (!tAIKHOAN.USERPASSWORD.Equals(MATKHAU))
             {
                 ViewBag.Fail = "Mật khẩu không đúng";
                 return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new { area = "Admin" });
@@ -122,10 +122,19 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 ViewBag.Fail = "Mật khẩu không trùng khớp";
                 return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new { area = "Admin" });
             }
-            user.USERPASSWORD = MATKHAUMOI;
-            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            tAIKHOAN.USERPASSWORD = MATKHAUMOI;
+            db.Entry(tAIKHOAN).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("ThongTinTaiKhoan", "TaiKhoan", new { area = "Admin" });
+        }
+
+        public ActionResult ThayDoiTrangThai(string USERID)
+        {
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.FirstOrDefault(u => u.USERID.Equals(USERID));
+            tAIKHOAN.ISENABLE = !tAIKHOAN.ISENABLE;
+            db.Entry(tAIKHOAN).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("ChiTietNguoiDung", "TaiKhoan", new { nguoiDung = USERID });
         }
     }
 }

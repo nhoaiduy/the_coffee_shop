@@ -25,19 +25,16 @@
                 <li class="categories_item-p">
                     <a href="@Url.Action("DoiMatKhau","QuanLy")" class="categories_item_link-p">Đổi mật khẩu</a>
                 </li>
+                <li class="categories_item-p">
+                    <a href="@Url.Action("DoiTenDangNhap","QuanLy")" class="categories_item_link-p">Đổi tên đăng nhập</a>
+                </li>
             </ul>
         </div>
     </div>
     <div class="content_right-b">
         <div class="info_container-ci">
             <div class="form-horizontal_info-ci">
-                <div class="form-group form-group-ci" style="justify-content:center">
-                    <a>
-                        <div class="col-md-10">
-                            <img src="~/Banner/user.png" alt="Alternate Text" style="width:100px; height:100px; border-radius:100px;" />
-                        </div>
-                    </a>
-                </div>
+                
                 @using (Html.BeginForm("ChinhSuaThongTin", "QuanLy", new { area = "" }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
@@ -56,8 +53,7 @@
                             Ngày sinh
                             <div class="col-md-10">
                                 <div class="form-control">
-                                    
-                                    <input type="date" name="NGAYSINH" value="@Model.NGAYSINH" />
+                                    <input type="date" name="NGAYSINH" value="@Model.NGAYSINH.ToString("yyyy-MM-dd")" />
                                 </div>
                             </div>
                         </div>
@@ -67,7 +63,7 @@
                             SĐT
                             <div class="col-md-10">
                                 <div class="form-control">
-                                    <input type="number" name="SDT" value="@Model.SDT" />
+                                    <input type="number" readonly ="readonly" name="SDT" value="@Model.SDT" />
                                 </div>
                             </div>
 

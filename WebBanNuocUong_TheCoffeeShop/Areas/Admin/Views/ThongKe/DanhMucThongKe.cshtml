@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
 
 @{
-    ViewBag.Title = "DanhMucThongKe";
+
+    ViewBag.Title = "Danh mục thống kê";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    decimal s = 0;
-    int c = 0;
+
 
 
 }
@@ -24,6 +24,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group" style="float:right;">
             <input type="date" value="" id="searchString" name="searchString" style="margin-right: 5px; width:80%;"/>
             <input type="submit" class="create-btn active" style="cursor:pointer; margin-left: 0;" value="Tìm kiếm "  />

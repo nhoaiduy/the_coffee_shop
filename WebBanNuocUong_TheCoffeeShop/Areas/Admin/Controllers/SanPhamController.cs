@@ -17,7 +17,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         {
             if (Session["admin"] == null)
             {
-                return RedirectToAction("DangNhap", "TaiKhoan", new {area = "Admin"});
+                return RedirectToAction("DangNhap", "TaiKhoan", new {area = ""});
             }
             var sanPhamList = db.sp_DanhSachSanPham(categoryName);
             List<SANPHAM> list = new List<SANPHAM>();
@@ -30,6 +30,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 sanPham.GIASP = item.GIASP;
                 sanPham.SOLUONG = item.SOLUONG;
                 sanPham.MALOAISP = item.MALOAISP;
+                sanPham.ISENABLE = item.ISENABLE;
                 list.Add(sanPham);
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP");
@@ -55,6 +56,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 string fileName = System.IO.Path.GetFileName(image.FileName);
                 string urlName = Server.MapPath("~/Image/" + fileName);
                 image.SaveAs(urlName);
+
                 sANPHAM.ANHSP = "~/Image/" + fileName;
             }
             if (ModelState.IsValid)
@@ -72,10 +74,10 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     int num = int.Parse(last);
                     last = sANPHAM.MALOAISP;
                     int zero = 0;
-                    if (num < 10) zero = 3;
-                    else if (num < 100) zero = 2;
-                    else if (num < 1000) zero = 1;
-                    else if (num < 10000) zero = 0;
+                    if (num < 9) zero = 3;
+                    else if (num < 99) zero = 2;
+                    else if (num < 999) zero = 1;
+                    else if (num < 9999) zero = 0;
 
                     for (int i = 0; i < zero; i++)
                     {
@@ -112,6 +114,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                 sanPham.SOLUONG = item.SOLUONG;
                 sanPham.MALOAISP = item.MALOAISP;
                 sanPham.MOTASP = item.MOTASP;
+                sanPham.ISENABLE = item.ISENABLE;
                 break;
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sanPham.MALOAISP);
@@ -119,7 +122,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChinhSuaSanPham([Bind(Include = "MASP,TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG")] SANPHAM sANPHAM, HttpPostedFileBase image)
+        public ActionResult ChinhSuaSanPham([Bind(Include = "MASP,TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG, ISENABLE")] SANPHAM sANPHAM, HttpPostedFileBase image)
         {
             SANPHAM sANPHAM1 = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(sANPHAM.MASP));
             if (ModelState.IsValid)
@@ -156,13 +159,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
                     {
                         sANPHAM1.MALOAISP = sANPHAM.MALOAISP;
                     }
+                    sANPHAM1.ISENABLE = sANPHAM.ISENABLE;
                     db.Entry(sANPHAM1).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ChiTiet", new { @productName = sANPHAM1.TENSP });
                 }
             }
             //ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sANPHAM.MALOAISP);
-            return View("ChiTiet", new { @productName = sANPHAM.TENSP });
+            return RedirectToAction("ChiTiet", new { @productName = sANPHAM.TENSP });
         }
 
         [HttpPost]

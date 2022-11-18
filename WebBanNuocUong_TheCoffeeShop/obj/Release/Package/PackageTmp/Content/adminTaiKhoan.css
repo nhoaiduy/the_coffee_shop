@@ -1,0 +1,35 @@
+﻿:root {
+    --primary-color: #A0522D;
+}
+
+.feature-options{
+    display: flex;
+    justify-content: flex-start
+}
+
+.info-user, .change-password {
+    padding: 8px 16px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+
+
+.info-user:hover, .change-password:hover{
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#change-password__form{
+    display: none;
+}
+
+.label, .data{
+    font-size: 20px;
+    padding: 8px 16px;
+}
+
+.label{
+    color: var(--primary-color);
+}
+

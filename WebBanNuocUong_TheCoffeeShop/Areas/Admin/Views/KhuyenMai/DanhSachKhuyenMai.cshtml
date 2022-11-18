@@ -24,7 +24,7 @@
                                     <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img" />
                                 }
                                 <div class="product__item__name">@item.TENKM</div>
-                                <div class="product__item__price-c">@item.NGAYHETHAN.ToShortDateString()</div>
+                                <div class="product__item__price-c">@item.NGAYHETHAN.ToString("dd/MM/yyyy")</div>
                             </a>
                         </li>
                     }
