@@ -27,7 +27,9 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>WebBanNuocUong_TheCoffeeShop.Models.thecoffeeshopEntities</WebStackScaffolding_DbContextTypeFullName>
     <ProjectView>ShowAllFiles</ProjectView>
+
     <NameOfLastUsedPublishProfile>C:\Users\hoaid\Downloads\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

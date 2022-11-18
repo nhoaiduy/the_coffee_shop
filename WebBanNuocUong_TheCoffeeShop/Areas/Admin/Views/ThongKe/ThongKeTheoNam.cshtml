@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
 
 @{
+
     ViewBag.Title = "Thống kê theo năm";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
 
 
 }
@@ -28,6 +30,7 @@
             </div>
         }
         <h3 style="float: right; margin-right: 120px; color: var(--primary-color)">Tổng doanh thu: @String.Format("{0:0,0 VNĐ}", Model.Sum(d => d.TONGITEN)) | @Model.Count() đơn hàng </h3>
+
 
         <div class="bottom">
             <div class="categories__data">
@@ -55,6 +58,7 @@
 
                     @foreach (var item in Model)
                     {
+
                         <tr class="order-item">
                             <td>
                                 @Html.DisplayFor(modelItem => item.MADH)
@@ -69,7 +73,7 @@
                                 @Html.DisplayFor(modelItem => item.NGAYLAP)
                             </td>
                             <td>
-                                @String.Format("{0:0,0 VNĐ}", item.TONGITEN)
+
                             </td>
                             <td>
                                 <a href="@Url.Action("ChiTietDonHang", new { @MADH= item.MADH})">Chi tiết</a>

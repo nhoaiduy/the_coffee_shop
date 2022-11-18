@@ -300,6 +300,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNgay_Result>("sp_ThongKeTheoNgay", ngayParameter);
         }
+
     
         public virtual ObjectResult<sp_ThongKeTheoNguoiDung_Result> sp_ThongKeTheoNguoiDung(string ten)
         {
@@ -309,5 +310,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNguoiDung_Result>("sp_ThongKeTheoNguoiDung", tenParameter);
         }
+
     }
 }

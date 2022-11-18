@@ -307,9 +307,12 @@
         <Function Name="sp_ThongKeTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ngay" Type="char" Mode="In" />
         </Function>
+
+
         <Function Name="sp_ThongKeTheoNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten" Type="nvarchar" Mode="In" />
         </Function>
+
         <Function Name="sp_ThongTinDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma_dh" Type="char" Mode="In" />
         </Function>
@@ -755,9 +758,11 @@
           <FunctionImport Name="sp_ThongKeTheoNgay" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNgay_Result)">
             <Parameter Name="ngay" Mode="In" Type="String" />
           </FunctionImport>
+
           <FunctionImport Name="sp_ThongKeTheoNguoiDung" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result)">
             <Parameter Name="ten" Mode="In" Type="String" />
           </FunctionImport>
+
         </EntityContainer>
         <ComplexType Name="sp_ChiTietSanPham_Result">
           <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
@@ -864,6 +869,7 @@
           <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
         </ComplexType>
+
         <ComplexType Name="sp_ThongKeTheoNguoiDung_Result">
           <Property Type="String" Name="MADH" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="MAKM" Nullable="true" MaxLength="5" />
@@ -882,6 +888,7 @@
           <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
         </ComplexType>
+
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1163,6 +1170,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+
           <FunctionImportMapping FunctionImportName="sp_ThongKeTheoNguoiDung" FunctionName="thecoffeeshopModel.Store.sp_ThongKeTheoNguoiDung">
             <ResultMapping>
               <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result">
