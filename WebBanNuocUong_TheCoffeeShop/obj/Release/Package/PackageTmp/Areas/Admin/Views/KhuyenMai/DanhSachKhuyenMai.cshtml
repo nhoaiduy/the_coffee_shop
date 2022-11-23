@@ -24,7 +24,7 @@
                                     <img src="@Url.Content(item.ANHKM)" alt="Alternate Text" class="product__item__img" />
                                 }
                                 <div class="product__item__name">@item.TENKM</div>
-                                <div class="product__item__price-c">@item.NGAYHETHAN.ToShortDateString()</div>
+                                <div class="product__item__price-c">@item.NGAYHETHAN.ToString("dd/MM/yyyy")</div>
                             </a>
                         </li>
                     }
@@ -47,11 +47,11 @@
 
                 <div class="form-group">
                     <span class="label">Tên khuyến mãi:</span>
-                    <input type="text" name="image" value="" placeholder="Tên khuyến mãi" />
+                    <input type="text" name="TENKM" value="" placeholder="Tên khuyến mãi" />
                 </div>
                 <div class="form-group">
                     <span class="label">Ảnh khuyến mãi:</span>
-                    <input type="file" name="ANHKM" value="" />
+                    <input type="file" name="image" value="" />
                 </div>
                 <div class="form-group">
                     <span class="label">Điều kiện:</span>

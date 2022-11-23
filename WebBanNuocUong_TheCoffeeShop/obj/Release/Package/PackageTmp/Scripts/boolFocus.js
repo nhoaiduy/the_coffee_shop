@@ -7,7 +7,7 @@
         temp.classList.remove("errorClass");
     }
     if (temp.value.length > 50) {
-        alert("Họ tên nhỏ hơn hoặc bằng 50 ký tự!")
+        alert("Họ tên nhỏ hơn hoặc bằng 50 ký tự!");
     }
 }
 function SdtEvent() {
@@ -20,7 +20,7 @@ function SdtEvent() {
         temp.classList.remove("errorClass");
     }
     if (temp.value.length > 12) {
-        alert("Vui lòng kiểm tra số điện thoại")
+        alert("Vui lòng kiểm tra số điện thoại");
     }
 }
 
@@ -33,7 +33,7 @@ function DiaChiEvent() {
         temp.classList.remove("errorClass");
     }
     if (temp.value.length > 100) {
-        alert("Địa chỉ nhỏ hơn hoặc bằng 100 ký tự!")
+        alert("Địa chỉ nhỏ hơn hoặc bằng 100 ký tự!");
     }
 }
 
@@ -47,14 +47,14 @@ function EmailEvent() {
         temp.classList.remove("errorClass");
     }
     if (temp.value.length > 50) {
-        alert("Email nhỏ hơn hoặc bằng 50 ký tự!")
+        alert("Email nhỏ hơn hoặc bằng 50 ký tự!");
     }
 }
 
 function DiaChi2Event() {
     var temp = document.getElementById("diachi2");
     if (temp.value.length > 100) {
-        alert("Địa chỉ nhỏ hơn hoặc bằng 100 ký tự!")
+        alert("Địa chỉ nhỏ hơn hoặc bằng 100 ký tự!");
     }
 }
 
@@ -67,7 +67,7 @@ function UsernameEvent() {
         temp.classList.remove("errorClass");
     }
     if (temp.value.length > 20) {
-        alert("Tên đăng nhập nhỏ hơn hoặc bằng 20 ký tự!")
+        alert("Tên đăng nhập nhỏ hơn hoặc bằng 20 ký tự!");
     }
 }
 
@@ -88,4 +88,15 @@ function KiemTraTrong() {
     EmailEvent();
     UsernameEvent();
     PasswordEvent();
+}
+
+function SdtEvent_Cart() {
+    var temp = document.getElementById("sdt");
+    var reg = /^[0-9]+$/;
+    if (reg.test(temp.value) == false) {
+        alert("Vui lòng kiểm tra số điện thoại");
+    }
+    if (temp.value.length > 12) {
+        alert("Vui lòng kiểm tra số điện thoại");
+    }
 }

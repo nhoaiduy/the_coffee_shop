@@ -6,7 +6,7 @@
 }
 
 <div class="main">
-    <div class="product-detail">
+    <div class="product-detail" style="width:100%;">
         <div class="product-detail__left">
             <img src="@Url.Content(Model.ANHSP)" alt="@Model.TENSP" title="@Model.TENSP" class="product-detail__left__img" />
 
@@ -24,7 +24,7 @@
                     @Model.GIASP
                 </span>
             </div>
-            <div class="product-detail__element column" style="flex-direction: column; align-items: start">
+            <div class="product-detail__element column" style="flex-direction: column; align-items: start;">
                 <span class="product-detail__element__title">
                     Mô tả:
                 </span>
@@ -37,7 +37,7 @@
                     <a href="@Url.Action("ThemGioHang", "GioHang", new {MASP = Model.MASP, soLuong = 1})" style="color: #000; background-color: #f0f0f0; text-decoration: none; padding: 8px 16px">Thêm vào giỏ hàng</a>
                 </span>
                 <span class="product-detail__element__title__data">
-                    <a href="#" class="btn-default btn-color btnDat">Đặt ngay</a>
+                    <a href="@Url.Action("DatNgay", "DatHang", new {MASP = Model.MASP, soLuong = 1})" class="btn-default btn-color btnDat">Đặt ngay</a>
                 </span>
             </div>
         </div>

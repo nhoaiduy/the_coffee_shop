@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<WebBanNuocUong_TheCoffeeShop.Models.DONHANG>
 
 @{
+
     ViewBag.Title = "Danh mục thống kê";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
 
 
 }
@@ -13,7 +15,7 @@
                 <a href="@Url.Action("DanhMucThongKe","ThongKe")" class="categories__item__link">Thống kê ngày</a>
                 <a href="@Url.Action("ThongKeTheoThang", "ThongKe")" class="categories__item__link">Thống kê tháng</a>
                 <a href="@Url.Action("ThongKeTheoNam", "ThongKe")" class="categories__item__link">Thống kê năm</a>
-                <a href="@Url.Action("ThongKeTheoNguoiDung", "ThongKe")" class="categories__item__link">Thống kê theo người dùng</a>
+                @*<a href="@Url.Action("ThongKeTheoNguoiDung", "ThongKe")" class="categories__item__link">Thống kê theo người dùng</a>*@
             </li>
         </ul>
     </div>
@@ -22,12 +24,14 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group" style="float:right;">
-                <input type="date" id="searchString" name="searchString" style="margin-right: 5px; width:80%;" />
+                <input type="date" value="" id="searchString" name="searchString" style="margin-right: 5px; width:80%;" />
                 <input type="submit" class="create-btn active" style="cursor:pointer; margin-left: 0;" value="Tìm kiếm " />
             </div>
         }
-        <h3 style="float: right; margin-right: 120px; color: var(--primary-color)">Tổng doanh thu: @String.Format("{0:0,0 VNĐ}", Model.Sum(d => d.TONGITEN)) | @Model.Count() đơn hàng </h3>
+        <h3 style="float: right; margin-right: 120px; color: var(--primary-color)">Tổng doanh thu: @String.Format("{0:0,0 VNĐ}", Model.Sum(m => m.TONGITEN)) | @Model.Count() đơn hàng </h3>
+
         <div class="bottom">
             <div class="categories__data">
                 <table class="table">
@@ -40,9 +44,6 @@
                         </th>
                         <th>
                             Số điện thoại
-                        </th>
-                        <th>
-                            Ngày lập
                         </th>
                         <th>
                             Tổng tiền
@@ -65,13 +66,10 @@
                                 @Html.DisplayFor(modelItem => item.SDT)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NGAYLAP)
+                                @Html.DisplayFor(modelItem => item.TONGITEN)
                             </td>
                             <td>
-                                @String.Format("{0:0,0 VNĐ}", item.TONGITEN)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("ChiTietDonHang", new { @MADH= item.MADH})">Chi tiết</a>
+                                <a href="@Url.Action("ChiTietDonHang","DonHang", new { @MADH= item.MADH, area = "Admin"})">Chi tiết</a>
                             </td>
                         </tr>
                     }
@@ -82,6 +80,5 @@
 
     </div>
 </div>
-
 
 

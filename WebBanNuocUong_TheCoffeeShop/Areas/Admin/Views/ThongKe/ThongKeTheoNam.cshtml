@@ -15,7 +15,7 @@
                 <a href="@Url.Action("DanhMucThongKe", "ThongKe")" class="categories__item__link">Thống kê ngày</a>
                 <a href="@Url.Action("ThongKeTheoThang","ThongKe")" class="categories__item__link">Thống kê tháng</a>
                 <a href="@Url.Action("ThongKeTheoNam", "ThongKe")" class="categories__item__link">Thống kê năm</a>
-                <a href="@Url.Action("ThongKeTheoNguoiDung", "ThongKe")" class="categories__item__link">Thống kê theo người dùng</a>
+                @*<a href="@Url.Action("ThongKeTheoNguoiDung", "ThongKe")" class="categories__item__link">Thống kê theo người dùng</a>*@
             </li>
         </ul>
     </div>
@@ -76,7 +76,7 @@
 
                             </td>
                             <td>
-                                <a href="@Url.Action("ChiTietDonHang", new { @MADH= item.MADH})">Chi tiết</a>
+                                <a href="@Url.Action("ChiTietDonHang","DonHang", new { @MADH= item.MADH, area = "Admin"})">Chi tiết</a>
                             </td>
                         </tr>
                     }
