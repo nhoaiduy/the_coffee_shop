@@ -17,14 +17,18 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             List<SANPHAM> list = new List<SANPHAM>();
             foreach (var item in sanPhamList)
             {
-                SANPHAM sanPham = new SANPHAM();
-                sanPham.MASP = item.MASP;
-                sanPham.TENSP = item.TENSP;
-                sanPham.ANHSP = item.ANHSP;
-                sanPham.GIASP = item.GIASP;
-                sanPham.SOLUONG = item.SOLUONG;
-                sanPham.MALOAISP = item.MALOAISP;
-                list.Add(sanPham);
+                if (item.ISENABLE)
+                {
+                    SANPHAM sanPham = new SANPHAM();
+                    sanPham.MASP = item.MASP;
+                    sanPham.TENSP = item.TENSP;
+                    sanPham.ANHSP = item.ANHSP;
+                    sanPham.GIASP = item.GIASP;
+                    sanPham.SOLUONG = item.SOLUONG;
+                    sanPham.MALOAISP = item.MALOAISP;
+                    sanPham.ISENABLE = item.ISENABLE;
+                    list.Add(sanPham);
+                }
             }
             ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP");
             ViewBag.LOAISP = db.LOAISANPHAMs.ToList();

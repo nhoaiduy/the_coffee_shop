@@ -291,6 +291,14 @@
     <Parameter Name="ma_loai" Type="char" Mode="In" />
     <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_ThemNVQuanTri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="ngaySinh" Type="date" Mode="In" />
+    <Parameter Name="diaChi" Type="nvarchar" Mode="In" />
+    <Parameter Name="diaChi2" Type="nvarchar" Mode="In" />
+    <Parameter Name="sdt" Type="char" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
     <Parameter Name="gia_sp" Type="decimal" Mode="In" />
@@ -298,6 +306,10 @@
     <Parameter Name="soluong" Type="int" Mode="In" />
     <Parameter Name="ma_loai" Type="char" Mode="In" />
     <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma" Type="char" Mode="In" />
+    <Parameter Name="sdt" Type="char" Mode="In" />
   </Function>
   <Function Name="sp_ThongKeTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ngay" Type="char" Mode="In" />

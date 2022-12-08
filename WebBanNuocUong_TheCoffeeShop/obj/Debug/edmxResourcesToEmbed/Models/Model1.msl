@@ -298,5 +298,7 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThemNVQuanTri1" FunctionName="thecoffeeshopModel.Store.sp_ThemNVQuanTri" />
+    <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV1" FunctionName="thecoffeeshopModel.Store.sp_ThemTaiKhoanNV" />
   </EntityContainerMapping>
 </Mapping>

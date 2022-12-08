@@ -296,6 +296,14 @@
           <Parameter Name="ma_loai" Type="char" Mode="In" />
           <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="sp_ThemNVQuanTri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="ngaySinh" Type="date" Mode="In" />
+          <Parameter Name="diaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="diaChi2" Type="nvarchar" Mode="In" />
+          <Parameter Name="sdt" Type="char" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_ThemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten_sp" Type="nvarchar" Mode="In" />
           <Parameter Name="gia_sp" Type="decimal" Mode="In" />
@@ -304,15 +312,16 @@
           <Parameter Name="ma_loai" Type="char" Mode="In" />
           <Parameter Name="mo_ta" Type="nvarchar(max)" Mode="In" />
         </Function>
+        <Function Name="sp_ThemTaiKhoanNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma" Type="char" Mode="In" />
+          <Parameter Name="sdt" Type="char" Mode="In" />
+        </Function>
         <Function Name="sp_ThongKeTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ngay" Type="char" Mode="In" />
         </Function>
-
-
         <Function Name="sp_ThongKeTheoNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ten" Type="nvarchar" Mode="In" />
         </Function>
-
         <Function Name="sp_ThongTinDonHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ma_dh" Type="char" Mode="In" />
         </Function>
@@ -756,11 +765,23 @@
           </FunctionImport>
           <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
           <FunctionImport Name="sp_ThongKeTheoNgay" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNgay_Result)">
-            <Parameter Name="ngay" Mode="In" Type="String" />
+          <Parameter Name="ngay" Mode="In" Type="String" />
           </FunctionImport>
 
           <FunctionImport Name="sp_ThongKeTheoNguoiDung" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result)">
-            <Parameter Name="ten" Mode="In" Type="String" />
+          <Parameter Name="ten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemNVQuanTri1">
+            <Parameter Name="hoTen" Mode="In" Type="String" />
+            <Parameter Name="ngaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="diaChi" Mode="In" Type="String" />
+            <Parameter Name="diaChi2" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemTaiKhoanNV1">
+            <Parameter Name="ma" Mode="In" Type="String" />
+            <Parameter Name="sdt" Mode="In" Type="String" />
           </FunctionImport>
 
         </EntityContainer>
@@ -1193,6 +1214,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ThemNVQuanTri1" FunctionName="thecoffeeshopModel.Store.sp_ThemNVQuanTri" />
+          <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV1" FunctionName="thecoffeeshopModel.Store.sp_ThemTaiKhoanNV" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
