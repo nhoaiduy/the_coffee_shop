@@ -380,6 +380,18 @@
     <FunctionImport Name="sp_ThongKeTheoNguoiDung" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result)">
       <Parameter Name="ten" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_ThemNVQuanTri1">
+      <Parameter Name="hoTen" Mode="In" Type="String" />
+      <Parameter Name="ngaySinh" Mode="In" Type="DateTime" />
+      <Parameter Name="diaChi" Mode="In" Type="String" />
+      <Parameter Name="diaChi2" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThemTaiKhoanNV1">
+      <Parameter Name="ma" Mode="In" Type="String" />
+      <Parameter Name="sdt" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_ChiTietSanPham_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />

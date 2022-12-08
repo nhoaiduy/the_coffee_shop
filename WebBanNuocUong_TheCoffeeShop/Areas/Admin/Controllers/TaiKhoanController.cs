@@ -50,7 +50,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.sp_ThemNVQuanTri(nGUOIDUNG.HOTEN, nGUOIDUNG.NGAYSINH, nGUOIDUNG.DIACHI, nGUOIDUNG.DIACHI2, nGUOIDUNG.SDT, nGUOIDUNG.EMAIL);
+                db.sp_ThemNVQuanTri1(nGUOIDUNG.HOTEN, nGUOIDUNG.NGAYSINH, nGUOIDUNG.DIACHI, nGUOIDUNG.DIACHI2, nGUOIDUNG.SDT, nGUOIDUNG.EMAIL);
             }
             var acc = db.TAIKHOANs.FirstOrDefault(t => t.USERNAME == nGUOIDUNG.SDT);
             return RedirectToAction("DanhSachTaiKhoan", "TaiKhoan", new {area = "Admin"});

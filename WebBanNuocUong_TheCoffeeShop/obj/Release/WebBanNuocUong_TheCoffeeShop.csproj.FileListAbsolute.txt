@@ -164,4 +164,3 @@ C:\Users\hoaid\OneDrive\Desktop\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\obj
 C:\Users\hoaid\OneDrive\Desktop\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\obj\Release\WebBanNuocUong_TheCoffeeShop.csproj.CopyComplete
 C:\Users\hoaid\OneDrive\Desktop\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\obj\Release\WebBanNuocUong_TheCoffeeShop.dll
 C:\Users\hoaid\OneDrive\Desktop\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\obj\Release\WebBanNuocUong_TheCoffeeShop.pdb
-C:\Users\hoaid\OneDrive\Desktop\the_coffee_shop\WebBanNuocUong_TheCoffeeShop\bin\UrlRewritingNet.UrlRewriter.dll

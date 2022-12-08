@@ -309,5 +309,47 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNguoiDung_Result>("sp_ThongKeTheoNguoiDung", tenParameter);
         }
+    
+        public virtual int sp_ThemNVQuanTri1(string hoTen, Nullable<System.DateTime> ngaySinh, string diaChi, string diaChi2, string sdt, string email)
+        {
+            var hoTenParameter = hoTen != null ?
+                new ObjectParameter("hoTen", hoTen) :
+                new ObjectParameter("hoTen", typeof(string));
+    
+            var ngaySinhParameter = ngaySinh.HasValue ?
+                new ObjectParameter("ngaySinh", ngaySinh) :
+                new ObjectParameter("ngaySinh", typeof(System.DateTime));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("diaChi", diaChi) :
+                new ObjectParameter("diaChi", typeof(string));
+    
+            var diaChi2Parameter = diaChi2 != null ?
+                new ObjectParameter("diaChi2", diaChi2) :
+                new ObjectParameter("diaChi2", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemNVQuanTri1", hoTenParameter, ngaySinhParameter, diaChiParameter, diaChi2Parameter, sdtParameter, emailParameter);
+        }
+    
+        public virtual int sp_ThemTaiKhoanNV1(string ma, string sdt)
+        {
+            var maParameter = ma != null ?
+                new ObjectParameter("ma", ma) :
+                new ObjectParameter("ma", typeof(string));
+    
+            var sdtParameter = sdt != null ?
+                new ObjectParameter("sdt", sdt) :
+                new ObjectParameter("sdt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV1", maParameter, sdtParameter);
+        }
     }
 }
