@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\hoaid\OneDrive\Desktop\New folder</_PublishTargetUrl>
-    <History>True|2022-12-05T14:38:50.1936566Z;</History>
+    <History>True|2022-12-12T11:55:56.8505046Z;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -271,10 +271,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/10/2014 10:33:00</publishTime>
     </File>
     <File Include="bin/WebBanNuocUong_TheCoffeeShop.dll">
-      <publishTime>12/05/2022 21:38:48</publishTime>
+      <publishTime>12/12/2022 18:55:55</publishTime>
     </File>
     <File Include="bin/WebBanNuocUong_TheCoffeeShop.pdb">
-      <publishTime>12/05/2022 21:38:48</publishTime>
+      <publishTime>12/12/2022 18:55:55</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>11/21/2022 20:54:16</publishTime>
@@ -322,7 +322,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/21/2022 20:54:14</publishTime>
     </File>
     <File Include="Content/cusProduct.css">
-      <publishTime>11/21/2022 20:54:14</publishTime>
+      <publishTime>12/12/2022 18:28:27</publishTime>
     </File>
     <File Include="Content/customerInfo.css">
       <publishTime>11/21/2022 20:54:14</publishTime>
@@ -610,7 +610,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/21/2022 20:54:14</publishTime>
     </File>
     <File Include="Views/SanPham/ChiTietSanPham.cshtml">
-      <publishTime>11/21/2022 21:10:44</publishTime>
+      <publishTime>12/12/2022 18:49:11</publishTime>
     </File>
     <File Include="Views/SanPham/DanhMucSanPham.cshtml">
       <publishTime>11/21/2022 21:12:25</publishTime>
@@ -634,7 +634,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/21/2022 20:54:14</publishTime>
     </File>
     <File Include="Views/TrangChu/TrangChu.cshtml">
-      <publishTime>11/21/2022 21:14:30</publishTime>
+      <publishTime>12/12/2022 18:11:49</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/21/2022 20:54:14</publishTime>

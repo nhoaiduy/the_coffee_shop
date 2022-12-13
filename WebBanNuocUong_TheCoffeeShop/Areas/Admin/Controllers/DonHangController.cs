@@ -51,7 +51,8 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             dONHANG.MATT = MATT;
             if (MATT == 8)
             {
-                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.HOTEN.Equals(dONHANG.TENNGUOINHAN)&&n.SDT.Equals(dONHANG.SDT) && n.DIACHI.Equals(dONHANG.DIACHI));
+                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => 
+                    n.HOTEN.Equals(dONHANG.TENNGUOINHAN)&&n.SDT.Equals(dONHANG.SDT) && n.DIACHI.Equals(dONHANG.DIACHI));
                 nGUOIDUNG.DIEMTICHLUY -= (int)(dONHANG.TONGITEN / 1000);
                 db.Entry(nGUOIDUNG).State = System.Data.Entity.EntityState.Modified;
                 List<CTDONHANG> cTDONHANGs = db.CTDONHANGs.Where(c => c.MADH.Equals(MADH)).ToList();
@@ -66,5 +67,5 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("ChiTietDonHang", "DonHang", new { area = "Admin", MADH = MADH });
         }
-    }
+    }   
 }

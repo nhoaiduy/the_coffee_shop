@@ -61,14 +61,14 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     else
                     {
                         CTDONHANG cTDONHANG = new CTDONHANG();
-                        cTDONHANG.MASP = MASP;
+                        cTDONHANG.MASP = MASP;  
                         cTDONHANG.MADH = user.USERID + "0000";
                         cTDONHANG.SOLUONG = soLuong;
                         cTDONHANG.THANHTIEN = sANPHAM.GIASP * soLuong;
                         db.CTDONHANGs.Add(cTDONHANG);
                         cart.Add(cTDONHANG);
                     }
-                    dONHANG.TAMTINH = cart.Sum(d => d.THANHTIEN);
+                    dONHANG.TAMTINH = cart.Sum(d => d.THANHTIEN);   
                     dONHANG.TONGITEN = cart.Sum(d => d.THANHTIEN);
                     db.Entry(dONHANG).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
