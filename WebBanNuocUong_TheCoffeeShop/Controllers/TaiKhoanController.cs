@@ -19,7 +19,8 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         [HttpPost]
         public ActionResult DangNhap(string username, string password)
         {
-            var isUser = db.TAIKHOANs.FirstOrDefault(u => u.USERNAME.Equals(username.Trim()) && u.USERPASSWORD.Equals(password.Trim()));
+            var isUser = db.TAIKHOANs.FirstOrDefault(u => 
+                u.USERNAME.Equals(username.Trim()) && u.USERPASSWORD.Equals(password.Trim()));
             if (isUser != null && isUser.ISENABLE)
             {
                 if (isUser.PHANQUYEN.Equals("AD"))

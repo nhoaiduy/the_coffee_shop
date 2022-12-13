@@ -113,3 +113,12 @@
     color: white !important;
 }
 /*Product Details Page*/
+#like_button>i{
+    font-size: 24px;
+    color: black;
+}
+
+#like_button > i:hover {
+    color: red;
+}
+

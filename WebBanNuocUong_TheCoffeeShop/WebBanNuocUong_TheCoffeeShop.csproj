@@ -149,6 +149,7 @@
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
+    <Compile Include="Controllers\YeuThichController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -397,6 +398,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\LoaiSanPham\" />
     <Folder Include="Views\LoaiSanPham\" />
+    <Folder Include="Views\YeuThich\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

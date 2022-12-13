@@ -46,6 +46,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             ViewBag.LOAISP = lOAISANPHAMs;
             return View(list);
         }
+
         [HttpPost]
         public ActionResult ThemSanPham([Bind(Include = "TENSP, GIASP, ANHSP, MOTASP, MALOAISP, SOLUONG")] SANPHAM sANPHAM, HttpPostedFileBase image)
         {
@@ -167,15 +168,6 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
             }
             //ViewBag.MALOAISP = new SelectList(db.LOAISANPHAMs, "MALOAISP", "TENLOAISP", sANPHAM.MALOAISP);
             return RedirectToAction("ChiTiet", new { @productName = sANPHAM.TENSP });
-        }
-
-        [HttpPost]
-        public ActionResult XoaSanPham(string MASP)
-        {
-            SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.ToString().Equals(MASP));
-            db.SANPHAMs.Remove(sANPHAM);
-            db.SaveChanges();
-            return RedirectToAction("DanhMucSanPham");
         }
         public ActionResult TimKiem()
         {

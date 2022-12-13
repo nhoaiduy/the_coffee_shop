@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Chi tiết sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var user = Session["customer"] as WebBanNuocUong_TheCoffeeShop.Models.TAIKHOAN;
+
+    bool isLike(string MASP)
+    {
+        var sp = user.NGUOIDUNG.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(MASP));
+        return sp != null ? true : false;
+    }
 }
 
 <div class="main">
@@ -14,7 +21,19 @@
         <div class="product-detail__right">
             <div class="product-detail__element">
                 <h1 class="product-detail__element__heading">@Model.TENSP</h1>
-
+                <a id="like_button" href="@Url.Action("YeuThich", "YeuThich", new {MASP = Model.MASP})">
+                    @if (user != null)
+                    {
+                        if (isLike(Model.MASP))
+                        {
+                            <i class="fa-solid fa-heart" style="color: red"></i>
+                        }
+                        else
+                        {
+                            <i class="fa-regular fa-heart"></i>
+                        }
+                    }
+                </a>
             </div>
             <div class="product-detail__element">
                 <span class="product-detail__element__title">
@@ -44,3 +63,9 @@
     </div>
 </div>
 
+<script>
+    let icon = document.querySelector('ion-icon');
+    icon.onclick = function () {
+        icon.classList.toggle('active');
+    }
+</script>

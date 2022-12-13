@@ -26,7 +26,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             {
                 var user = Session["customer"] as TAIKHOAN;
                 List<CTDONHANG> cart = db.CTDONHANGs.Where(d => d.MADH.Equals(user.USERID + "0000")).ToList();
-                if(cart.Count == 0)
+                if(cart.Count == 0) 
                 {
                     return RedirectToAction("GioHang", "GioHang");
                 }
@@ -86,13 +86,13 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             dONHANG.SDT = sdt;
             dONHANG.TENNGUOINHAN = hoTen;
             dONHANG.DIACHI = diaChi;
-            decimal giam = 0;
+            decimal giam = 0;   
             dONHANG.THOIGIANGIAOHANG = date.AddMinutes(30);
             if (!string.IsNullOrEmpty(MAKM))
             {
                 if(db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.Equals(MAKM)) != null)
                 {
-                    dONHANG.MAKM = MAKM;
+                    dONHANG.MAKM = MAKM;    
                     giam = db.KHUYENMAIs.FirstOrDefault(k => k.MAKM.Equals(MAKM)).SOTIENGIAM;
                 }
             }
@@ -160,7 +160,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
                     item.MADH = dONHANG.MADH;
                     SANPHAM sANPHAM = db.SANPHAMs.FirstOrDefault(s => s.MASP.Equals(item.MASP));
                     sANPHAM.SOLUONG -= item.SOLUONG;
-                    if (sANPHAM.SOLUONG == 0)
+                    if (sANPHAM.SOLUONG == 0)   
                     {
                         sANPHAM.ISENABLE = false;
                     }
