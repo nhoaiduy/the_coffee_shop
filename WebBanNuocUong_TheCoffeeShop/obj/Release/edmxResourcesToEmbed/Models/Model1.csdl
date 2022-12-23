@@ -375,7 +375,8 @@
     </FunctionImport>
     <FunctionImport Name="sp_XemKhuyenMai" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_Result)" />
     <FunctionImport Name="sp_ThongKeTheoNgay" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNgay_Result)">
-      <Parameter Name="ngay" Mode="In" Type="String" />
+      <Parameter Name="ngay" Mode="In" Type="DateTime" />
+      <Parameter Name="ngay2" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="sp_ThongKeTheoNguoiDung" ReturnType="Collection(thecoffeeshopModel.sp_ThongKeTheoNguoiDung_Result)">
       <Parameter Name="ten" Mode="In" Type="String" />
@@ -392,6 +393,10 @@
       <Parameter Name="ma" Mode="In" Type="String" />
       <Parameter Name="sdt" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_XemDanhSachSanPham_KH" ReturnType="Collection(thecoffeeshopModel.sp_XemDanhSachSanPham_KH_Result)">
+      <Parameter Name="ten_loai" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_XemKhuyenMai_KH" ReturnType="Collection(thecoffeeshopModel.sp_XemKhuyenMai_KH_Result)" />
   </EntityContainer>
   <ComplexType Name="sp_ChiTietSanPham_Result">
     <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
@@ -515,5 +520,25 @@
     <Property Type="Decimal" Name="TONGITEN" Nullable="false" Precision="18" Scale="0" />
     <Property Type="String" Name="SOTK" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="TENPTTT" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_XemDanhSachSanPham_KH_Result">
+    <Property Type="String" Name="MASP" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="TENSP" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="GIASP" Nullable="false" Precision="5" Scale="0" />
+    <Property Type="String" Name="ANHSP" Nullable="false" />
+    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+    <Property Type="String" Name="MALOAISP" Nullable="false" MaxLength="2" />
+    <Property Type="Boolean" Name="ISENABLE" Nullable="false" />
+    <Property Type="String" Name="MOTASP" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_XemKhuyenMai_KH_Result">
+    <Property Type="String" Name="MAKM" Nullable="false" MaxLength="5" />
+    <Property Type="String" Name="TENKM" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="SOTIENGIAM" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="ANHKM" Nullable="false" />
+    <Property Type="DateTime" Name="NGAYHETHAN" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="SOLUONG" Nullable="false" />
+    <Property Type="Decimal" Name="DIEUKIEN" Nullable="false" Precision="18" Scale="0" />
+    <Property Type="String" Name="MOTAKM" Nullable="false" />
   </ComplexType>
 </Schema>

@@ -53,7 +53,8 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         {
             var user = Session["customer"] as TAIKHOAN;
             NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(n => n.USERID.Equals(user.USERID));
-            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH).Where(d => d.SDT.Equals(nGUOIDUNG.SDT)).ToList();
+            var donHangs = db.DONHANGs.OrderByDescending(d => d.MADH)
+                .Where(d => d.SDT.Equals(nGUOIDUNG.SDT)).ToList();
             if (!string.IsNullOrEmpty(MADH))
             {
                 donHangs = donHangs.Where(d => d.MADH.ToLower().Trim().Equals(MADH.ToLower().Trim())).ToList();

@@ -13,12 +13,12 @@ namespace WebBanNuocUong_TheCoffeeShop.Areas.Admin.Controllers
     {
         thecoffeeshopEntities db = new thecoffeeshopEntities();
         // GET: Admin/ThongKe
-        public ActionResult DanhMucThongKe(string searchString)
+        public ActionResult DanhMucThongKe(DateTime date1 , DateTime date2)
         {
             var donhang = db.DONHANGs.ToList();
-            if (searchString != null)
+            if (date1 != null && date2 != null)
             {
-                var ngay = db.sp_ThongKeTheoNgay(searchString);
+                var ngay = db.sp_ThongKeTheoNgay(date1, date2);
                 List<DONHANG> list = new List<DONHANG>();
                 foreach (var item in ngay)
                 {

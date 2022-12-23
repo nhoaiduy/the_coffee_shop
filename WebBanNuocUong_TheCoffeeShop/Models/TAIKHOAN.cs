@@ -11,9 +11,42 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public partial class TAIKHOAN
     {
+        private static volatile TAIKHOAN instance;
+
+        thecoffeeshopEntities db = new thecoffeeshopEntities();
+
+        static object key = new object();
+
+        private static bool login = true;
+        public static TAIKHOAN Instance
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    lock (key)
+                    {
+                        instance = new TAIKHOAN();
+                        login = false;
+                    }
+                }
+                else
+                {
+                    login = true;
+                }
+                return instance;
+            }
+        }
+
+        private TAIKHOAN()
+        {
+
+        }
+
         public string USERID { get; set; }
         public string USERNAME { get; set; }
         public string USERPASSWORD { get; set; }
@@ -21,5 +54,21 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
         public bool ISENABLE { get; set; }
     
         public virtual NGUOIDUNG NGUOIDUNG { get; set; }
+
+        public bool isLogin()
+        {
+            return login;
+        }
+
+        public void Login(string username, string password)
+        {
+            instance = db.TAIKHOANs.FirstOrDefault(u =>
+                u.USERNAME.Equals(username.Trim()) && u.USERPASSWORD.Equals(password.Trim()));
+        }
+
+        public void LogOut()
+        {
+            instance = null;
+        }
     }
 }
