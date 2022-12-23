@@ -292,13 +292,17 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XemKhuyenMai_Result>("sp_XemKhuyenMai");
         }
     
-        public virtual ObjectResult<sp_ThongKeTheoNgay_Result> sp_ThongKeTheoNgay(string ngay)
+        public virtual ObjectResult<sp_ThongKeTheoNgay_Result> sp_ThongKeTheoNgay(Nullable<System.DateTime> ngay, Nullable<System.DateTime> ngay2)
         {
-            var ngayParameter = ngay != null ?
+            var ngayParameter = ngay.HasValue ?
                 new ObjectParameter("ngay", ngay) :
-                new ObjectParameter("ngay", typeof(string));
+                new ObjectParameter("ngay", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNgay_Result>("sp_ThongKeTheoNgay", ngayParameter);
+            var ngay2Parameter = ngay2.HasValue ?
+                new ObjectParameter("ngay2", ngay2) :
+                new ObjectParameter("ngay2", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeTheoNgay_Result>("sp_ThongKeTheoNgay", ngayParameter, ngay2Parameter);
         }
     
         public virtual ObjectResult<sp_ThongKeTheoNguoiDung_Result> sp_ThongKeTheoNguoiDung(string ten)
@@ -350,6 +354,20 @@ namespace WebBanNuocUong_TheCoffeeShop.Models
                 new ObjectParameter("sdt", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ThemTaiKhoanNV1", maParameter, sdtParameter);
+        }
+    
+        public virtual ObjectResult<sp_XemDanhSachSanPham_KH_Result> sp_XemDanhSachSanPham_KH(string ten_loai)
+        {
+            var ten_loaiParameter = ten_loai != null ?
+                new ObjectParameter("ten_loai", ten_loai) :
+                new ObjectParameter("ten_loai", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XemDanhSachSanPham_KH_Result>("sp_XemDanhSachSanPham_KH", ten_loaiParameter);
+        }
+    
+        public virtual ObjectResult<sp_XemKhuyenMai_KH_Result> sp_XemKhuyenMai_KH()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_XemKhuyenMai_KH_Result>("sp_XemKhuyenMai_KH");
         }
     }
 }

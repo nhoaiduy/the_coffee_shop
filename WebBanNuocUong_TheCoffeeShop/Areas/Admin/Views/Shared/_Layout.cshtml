@@ -43,7 +43,7 @@
                         <a href="@Url.Action("DanhSachTaiKhoan", "TaiKhoan")" class="navbar-menu__item__link">Người dùng</a>
                     </li>
                     <li class="navbar-menu__item">
-                        <a href="@Url.Action("DanhMucThongKe", "ThongKe")" class="navbar-menu__item__link">Thống kê</a>
+                        <a href="@Url.Action("DanhMucThongKe", "ThongKe", new { date1 = DateTime.Today, date2 = DateTime.Today })" class="navbar-menu__item__link">Thống kê</a>
                     </li>
                 </ul>
             </div>

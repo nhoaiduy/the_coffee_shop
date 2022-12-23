@@ -12,9 +12,9 @@
     <div class="categories__sidebar">
         <ul class="categories__list">
             <li class="categories__item">
-                <a href="@Url.Action("DanhMucThongKe", "ThongKe")" class="categories__item__link">Thống kê ngày</a>
+                <a href="@Url.Action("DanhMucThongKe", "ThongKe", new {date1 = DateTime.Now, date2 = DateTime.Now})" class="categories__item__link">Thống kê ngày</a>
                 <a href="@Url.Action("ThongKeTheoThang","ThongKe")" class="categories__item__link">Thống kê tháng</a>
-                <a href="@Url.Action("ThongKeTheoNam", "ThongKe")" class="categories__item__link">Thống kê năm</a>
+                <a href="@Url.Action("ThongKeTheoNam", "ThongKe",new { date1 = DateTime.Today, date2 = DateTime.Today }))" class="categories__item__link">Thống kê năm</a>
                 @*<a href="@Url.Action("ThongKeTheoNguoiDung", "ThongKe")" class="categories__item__link">Thống kê theo người dùng</a>*@
             </li>
         </ul>

@@ -312,7 +312,8 @@
     <Parameter Name="sdt" Type="char" Mode="In" />
   </Function>
   <Function Name="sp_ThongKeTheoNgay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="ngay" Type="char" Mode="In" />
+    <Parameter Name="ngay" Type="datetime" Mode="In" />
+    <Parameter Name="ngay2" Type="datetime" Mode="In" />
   </Function>
   <Function Name="sp_ThongKeTheoNguoiDung" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ten" Type="nvarchar" Mode="In" />
@@ -323,7 +324,11 @@
   <Function Name="sp_TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="search_string" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="sp_XemDanhSachSanPham_KH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ten_loai" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="sp_XemKhuyenMai" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_XemKhuyenMai_KH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="thecoffeeshopModelStoreContainer">
     <EntitySet Name="CTDONHANG" EntityType="Self.CTDONHANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />

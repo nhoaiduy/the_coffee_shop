@@ -103,7 +103,8 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
             else
             {
                 var user = Session["customer"] as TAIKHOAN;
-                CTDONHANG cTDONHANG = db.CTDONHANGs.FirstOrDefault(c => c.MASP.Equals(MASP) && c.MADH.Equals(user.USERID + "0000"));
+                CTDONHANG cTDONHANG = db.CTDONHANGs
+                    .FirstOrDefault(c => c.MASP.Equals(MASP) && c.MADH.Equals(user.USERID + "0000"));
                 db.CTDONHANGs.Remove(cTDONHANG);
                 db.SaveChanges();
             }

@@ -14,24 +14,38 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         // GET: TaiKhoan
         public ActionResult DangNhap()
         {
-            return View();
+            if (!TAIKHOAN.Instance.isLogin())
+            {
+                return View();
+            }
+            if (TAIKHOAN.Instance.PHANQUYEN.Equals("AD"))
+            {
+                Session["admin"] = TAIKHOAN.Instance;
+                return RedirectToAction("DanhMucSanPham", "SanPham", new { area = "Admin" });
+            }
+            else
+            {
+                Session["customer"] = TAIKHOAN.Instance;
+                NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(TAIKHOAN.Instance.USERID));
+                ViewBag.HOTEN = nGUOIDUNG.HOTEN;
+                return RedirectToAction("TrangChu", "TrangChu");
+            }
         }
         [HttpPost]
         public ActionResult DangNhap(string username, string password)
         {
-            var isUser = db.TAIKHOANs.FirstOrDefault(u => 
-                u.USERNAME.Equals(username.Trim()) && u.USERPASSWORD.Equals(password.Trim()));
-            if (isUser != null && isUser.ISENABLE)
+            TAIKHOAN.Instance.Login(username, password);
+            if (TAIKHOAN.Instance != null && TAIKHOAN.Instance.ISENABLE)
             {
-                if (isUser.PHANQUYEN.Equals("AD"))
+                if (TAIKHOAN.Instance.PHANQUYEN.Equals("AD"))
                 {
-                    Session["admin"] = isUser;
+                    Session["admin"] = TAIKHOAN.Instance;
                     return RedirectToAction("DanhMucSanPham", "SanPham", new {area = "Admin"});
                 }
                 else
                 {
-                    Session["customer"] = isUser;
-                    NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(isUser.USERID));
+                    Session["customer"] = TAIKHOAN.Instance;
+                    NGUOIDUNG nGUOIDUNG = db.NGUOIDUNGs.FirstOrDefault(u => u.USERID.Equals(TAIKHOAN.Instance.USERID));
                     ViewBag.HOTEN = nGUOIDUNG.HOTEN;
                     return RedirectToAction("TrangChu", "TrangChu");
                 }
@@ -43,6 +57,7 @@ namespace WebBanNuocUong_TheCoffeeShop.Controllers
         public ActionResult DangXuat()
         {
             Session.Clear();
+            TAIKHOAN.Instance.LogOut();
             return RedirectToAction("TrangChu", "TrangChu", new {area = ""});
         }
         public ActionResult DangKy()

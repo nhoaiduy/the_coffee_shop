@@ -300,5 +300,33 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_ThemNVQuanTri1" FunctionName="thecoffeeshopModel.Store.sp_ThemNVQuanTri" />
     <FunctionImportMapping FunctionImportName="sp_ThemTaiKhoanNV1" FunctionName="thecoffeeshopModel.Store.sp_ThemTaiKhoanNV" />
+    <FunctionImportMapping FunctionImportName="sp_XemDanhSachSanPham_KH" FunctionName="thecoffeeshopModel.Store.sp_XemDanhSachSanPham_KH">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_XemDanhSachSanPham_KH_Result">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="GIASP" ColumnName="GIASP" />
+          <ScalarProperty Name="ANHSP" ColumnName="ANHSP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MALOAISP" ColumnName="MALOAISP" />
+          <ScalarProperty Name="ISENABLE" ColumnName="ISENABLE" />
+          <ScalarProperty Name="MOTASP" ColumnName="MOTASP" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_XemKhuyenMai_KH" FunctionName="thecoffeeshopModel.Store.sp_XemKhuyenMai_KH">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="thecoffeeshopModel.sp_XemKhuyenMai_KH_Result">
+          <ScalarProperty Name="MAKM" ColumnName="MAKM" />
+          <ScalarProperty Name="TENKM" ColumnName="TENKM" />
+          <ScalarProperty Name="SOTIENGIAM" ColumnName="SOTIENGIAM" />
+          <ScalarProperty Name="ANHKM" ColumnName="ANHKM" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="DIEUKIEN" ColumnName="DIEUKIEN" />
+          <ScalarProperty Name="MOTAKM" ColumnName="MOTAKM" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
